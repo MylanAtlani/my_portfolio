@@ -25,21 +25,21 @@ export function Footer() {
   ];
 
   const quickLinks = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'Expertise', href: '#expertise' },
-    { name: 'Technologies', href: '#technologies' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('navigation.home'), href: '#home' },
+    { name: t('navigation.expertise'), href: '#expertise' },
+    { name: t('navigation.technologies'), href: '#technologies' },
+    { name: t('navigation.projects'), href: '#projects' },
+    { name: t('navigation.services'), href: '#services' },
+    { name: t('navigation.contact'), href: '#contact' },
   ];
 
   const services = [
-    'Architecture Backend',
-    'Refonte & Structuration',
-    'CI/CD & Infrastructure',
-    'Conseil Stratégique',
-    'Audit Technique',
-    'CTO Fractionné'
+    t('services.architecture'),
+    t('services.refactoring'),
+    t('services.cicd'),
+    t('services.consulting'),
+    t('services.audit'),
+    t('services.cto')
   ];
 
   return (
@@ -66,8 +66,7 @@ export function Footer() {
               </div>
               
               <p className="nothing-text max-w-md opacity-70 leading-relaxed">
-                Lead Dev Freelance & CTO - Spécialisé dans la refonte d'architectures backend robustes 
-                avec Go, NestJS et Next.js. 8 ans d'expérience au service des startups et scale-ups.
+                {t('description')}
               </p>
             </div>
             
@@ -79,14 +78,14 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-sm opacity-70">
                 <Globe className="w-4 h-4" />
-                <span>📍 Marseille, France • 🌍 Remote friendly</span>
+                <span>{t('location')} • {t('remote')}</span>
               </div>
             </div>
           </div>
 
           {/* Services */}
           <div className="space-y-6">
-            <h3 className="nothing-title text-xl font-light">Services</h3>
+            <h3 className="nothing-title text-xl font-light">{t('services.title')}</h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={service}>
@@ -114,7 +113,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="space-y-6">
-            <h3 className="nothing-title text-xl font-light">Navigation</h3>
+            <h3 className="nothing-title text-xl font-light">{t('navigation.title')}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={link.name}>
@@ -167,7 +166,7 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 text-center md:text-right">
               <div className="flex items-center space-x-2">
                 <div className="nothing-status scale-75"></div>
-                <span className="nothing-text text-xs opacity-60">Disponible pour missions</span>
+                <span className="nothing-text text-xs opacity-60">{t('status')}</span>
               </div>
               
               <div className="space-y-1">
@@ -175,7 +174,7 @@ export function Footer() {
                   © 2025 ATLANI Mylan. {t('rights')}
                 </p>
                 <p className="nothing-text text-xs opacity-50">
-                  {t('builtWith')} • Design Nothing OS
+                  {t('builtWith')} • {t('design')}
                 </p>
               </div>
             </div>

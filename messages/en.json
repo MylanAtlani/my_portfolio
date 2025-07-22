@@ -1,8 +1,10 @@
 {
   "navigation": {
     "home": "Home",
-    "about": "About",
+    "expertise": "Expertise",
+    "technologies": "Technologies",
     "projects": "Projects",
+    "services": "Services",
     "contact": "Contact",
     "toggleTheme": "Toggle theme",
     "toggleLanguage": "Toggle language"
@@ -10,34 +12,255 @@
   "home": {
     "title": "Lead Dev Freelance & CTO",
     "subtitle": "Backend refactoring, structuring & production deployment",
-    "description": "I help startups and scale-ups structure, industrialize and deliver robust and scalable backends with Go, NestJS and Next.js.",
+    "description": "I help startups and scale-ups structure, industrialize and deliver robust and scalable backends. EPITECH engineer with 8 years of experience including 7 as a freelancer.",
     "cta": "Discover my projects",
-    "ctaContact": "Let's discuss your challenges"
+    "ctaContact": "Let's discuss your challenges",
+    "available": "Available for projects",
+    "status": "Available for freelance missions"
   },
-  "about": {
-    "title": "About",
-    "description": "EPITECH software engineer with 8 years of experience including 7 as a freelancer, specialized in robust backend architecture."
+  "stats": {
+    "years": "Years of experience",
+    "projects": "Projects completed",
+    "satisfaction": "Client satisfaction"
+  },
+  "expertise": {
+    "title": "Expertise",
+    "subtitle": "My typical interventions: architecture refactoring, CI/CD structuring and strategic technical consulting",
+    "architecture": {
+      "title": "Backend Architecture",
+      "description": "Refactoring and implementation of robust architectures with Go, NestJS and Next.js for scalable backends"
+    },
+    "infrastructure": {
+      "title": "Infrastructure & CI/CD",
+      "description": "Complete CI/CD structuring with Docker, Traefik, PostgreSQL and AWS for scalable infrastructure"
+    },
+    "consulting": {
+      "title": "Strategic Consulting",
+      "description": "Technical audit, technical debt consulting and delivery support to optimize productivity"
+    }
+  },
+  "technologies": {
+    "title": "Technologies",
+    "subtitle": "My main technologies and frameworks",
+    "years": "years exp"
   },
   "projects": {
-    "title": "Recent Projects",
-    "subtitle": "Lead Dev and CTO missions",
+    "title": "Projects & Missions",
+    "subtitle": "8 years of experience in Lead Dev, CTO and backend architecture - From startups to large companies",
     "viewProject": "View project",
-    "viewCode": "Contact"
+    "viewCode": "Contact",
+    "freelance": "Freelance",
+    "cdi": "Full-time",
+    "stage": "Internship",
+    "active": "Active",
+    "completed": "Completed",
+    "ciffreo": {
+      "title": "Ciffréo Bona",
+      "role": "Lead Developer",
+      "description": "Modern backend architecture with Go & NestJS, OpenSearch integration, CI/CD pipelines and ERP connection. Latency divided by 2.",
+      "period": "Dec 2024 - June 2025"
+    },
+    "petpalz": {
+      "title": "Petpalz.io",
+      "role": "CTO",
+      "description": "Mobile-first pet health platform from scratch. NestJS/Go API, Flutter app, Next.js interface and PostgreSQL infrastructure.",
+      "period": "Apr 2024 - May 2025"
+    },
+    "thales": {
+      "title": "Thales Digital Identity",
+      "role": "Technical Project Manager",
+      "description": "Strategic national project for digital health card. Critical work package management and multi-site coordination.",
+      "period": "Oct 2023 - May 2024"
+    },
+    "plateforme": {
+      "title": "La Plateforme_",
+      "role": "Educational Manager",
+      "description": "Manager of Cybersecurity, Network and Development courses. Content creation, evaluation and learner follow-up.",
+      "period": "Aug 2022 - Oct 2023"
+    },
+    "kbrw": {
+      "title": "KBRW",
+      "role": "Lead Software Engineer",
+      "description": "WMS/OMS solutions for large groups (Michelin, LVMH, PSA). Elixir, NodeJS, React architecture with Jenkins deployment.",
+      "period": "Nov 2020 - Sept 2021"
+    },
+    "woman": {
+      "title": "Woman & Luxury",
+      "role": "FullStack Developer",
+      "description": "Complete fashion mobile application: NestJS API, React back-office, Next.js creator interface, Python/Go microservices on Azure.",
+      "period": "May 2019 - March 2025"
+    },
+    "nexen": {
+      "title": "NEXEN Partners",
+      "role": "IT Architect",
+      "description": "Python scripts for AWS deployment, national network architecture documentation for SAMU, ReactJS and VueJS POCs.",
+      "period": "March 2020 - July 2020"
+    },
+    "dizio": {
+      "title": "DIZIO LAB",
+      "role": "Project Manager & Product Owner",
+      "description": "Management of 3 developer team, parallel project coordination, Android technical audits, client relationship management.",
+      "period": "Sept 2019 - Feb 2020"
+    }
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "What my clients appreciate: autonomy, efficiency, and measurable results",
+    "metrics": {
+      "latency": "Latency",
+      "experience": "Years exp",
+      "delivered": "Projects delivered",
+      "satisfaction": "Client satisfaction"
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "subtitle": "From express audit to fractional CTO, solutions adapted to your challenges",
+    "available": "Available from March 2025",
+    "popular": "POPULAR",
+    "cto": {
+      "title": "Fractional CTO",
+      "description": "Strategic and technical support to structure your team and tech stack.",
+      "duration": "2-3 days/week",
+      "price": "7200€/month",
+      "features": [
+        "Technical strategy & roadmap",
+        "Dev team management",
+        "Architecture & tech choices",
+        "Processes & methodologies",
+        "Technical recruitment",
+        "Investor interface"
+      ]
+    },
+    "lead": {
+      "title": "Lead Developer",
+      "description": "Refactoring and structuring of robust backend architectures with the latest technologies.",
+      "duration": "3-5 days/week",
+      "price": "600€/day",
+      "features": [
+        "Modern backend architecture",
+        "Refactoring & optimization",
+        "API design & development",
+        "CI/CD & deployment",
+        "Monitoring & performance",
+        "Technical documentation"
+      ]
+    },
+    "audit": {
+      "title": "Express Audit",
+      "description": "Complete technical diagnosis and action plan to rescue your project urgently.",
+      "duration": "3-5 days",
+      "price": "3000€",
+      "features": [
+        "Architecture & code audit",
+        "Technical debt analysis",
+        "Recovery plan",
+        "Priority recommendations",
+        "Effort estimation",
+        "Implementation support"
+      ]
+    },
+    "budget": {
+      "title": "Budget Estimation",
+      "duration": "Duration (months)",
+      "months": "months",
+      "estimated": "Estimated budget",
+      "indicative": "Indicative rate • Custom quote",
+      "discuss": "Discuss project",
+      "calculator": "Budget calculator"
+    }
   },
   "contact": {
-    "title": "Contact",
-    "subtitle": "Available for freelance missions",
-    "description": "Freelance missions from 2 days/week to full-time - Part-time CTO, Lead Dev or architecture consultant.",
+    "title": "Let's Discuss Your Project",
+    "subtitle": "Available for freelance missions from 2 days/week to full-time",
+    "description": "Available from March 2025 • Response within 24h",
+    "direct": "DIRECT",
+    "popular_badge": "DIRECT",
+    "form_title": "Quick Contact Form",
+    "form_description": "Share your project details with me for a personalized response",
+    "form_name_label": "Full name",
+    "form_name_placeholder": "Your name",
+    "form_email_label": "Professional email",
+    "form_email_placeholder": "your@email.com",
+    "form_company_label": "Company",
+    "form_company_placeholder": "Your company name",
+    "form_project_label": "Project type",
+    "form_project_select_option": "Select a type",
+    "form_project_cto_option": "Fractional CTO",
+    "form_project_lead_option": "Lead Developer",
+    "form_project_audit_option": "Express Audit",
+    "form_project_refonte_option": "Architecture Refactoring",
+    "form_project_autre_option": "Other",
+    "form_budget_label": "Approximate budget",
+    "form_budget_select_option": "Select a range",
+    "form_budget_3k_10k_option": "3k - 10k €",
+    "form_budget_10k_25k_option": "10k - 25k €",
+    "form_budget_25k_50k_option": "25k - 50k €",
+    "form_budget_50k_option": "50k € and more",
+    "form_budget_a_discuter_option": "To discuss",
+    "form_message_label": "Project description",
+    "form_message_placeholder": "Describe your project, technical challenges, and expectations...",
+    "form_submit_button": "Send message",
+    "form_submit_sending": "Sending...",
+    "email": {
+      "title": "Direct Email",
+      "description": "Detailed discussion of your project",
+      "action": "Send email"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "description": "Quick professional connection",
+      "action": "Connect"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Quick and responsive chat",
+      "action": "Start chat"
+    },
+    "portfolio": {
+      "title": "Complete Portfolio",
+      "description": "See all my projects in detail",
+      "action": "Visit site"
+    },
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "send": "Send"
+      "title": "Quick Contact Form",
+      "description": "Share your project details with me for a personalized response",
+      "name": "Full name *",
+      "email": "Professional email *",
+      "company": "Company",
+      "projectType": "Project type",
+      "selectType": "Select a type",
+      "budget": "Approximate budget",
+      "selectBudget": "Select a range",
+      "description": "Project description *",
+      "send": "Send message"
     }
   },
   "footer": {
     "rights": "All rights reserved.",
     "builtWith": "Built with Next.js and Tailwind CSS",
-    "location": "Marseille, France"
+    "design": "Design Nothing OS",
+    "location": "📍 Marseille, France",
+    "remote": "🌍 Remote friendly",
+    "description": "Lead Dev Freelance & CTO - Specialized in refactoring robust backend architectures with Go, NestJS and Next.js. 8 years of experience serving startups and scale-ups.",
+    "status": "Available for missions",
+    "services": {
+      "title": "Services",
+      "architecture": "Backend Architecture",
+      "refactoring": "Refactoring & Structuring",
+      "cicd": "CI/CD & Infrastructure",
+      "consulting": "Strategic Consulting",
+      "audit": "Technical Audit",
+      "cto": "Fractional CTO"
+    },
+    "navigation": {
+      "title": "Navigation",
+      "home": "Home",
+      "expertise": "Expertise",
+      "technologies": "Technologies",
+      "projects": "Projects",
+      "services": "Services",
+      "contact": "Contact"
+    }
   }
 } 

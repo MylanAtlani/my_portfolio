@@ -2,6 +2,7 @@
 
 import { useInView } from '@/hooks/use-in-view';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { 
   Mail, 
   Phone, 
@@ -28,51 +29,8 @@ interface ContactMethod {
   popular?: boolean;
 }
 
-const contactMethods: ContactMethod[] = [
-  {
-    id: 'email',
-    icon: Mail,
-    title: 'Email Direct',
-    description: 'Discussion détaillée de votre projet',
-    action: 'Envoyer un email',
-    href: 'mailto:atlani.mylan@gmail.com',
-    color: 'var(--nothing-blue)',
-    gradient: 'from-blue-400 to-indigo-500',
-    popular: true
-  },
-  {
-    id: 'linkedin',
-    icon: Linkedin,
-    title: 'LinkedIn',
-    description: 'Connexion professionnelle rapide',
-    action: 'Se connecter',
-    href: 'https://www.linkedin.com/in/mylan-atlani',
-    color: 'var(--nothing-green)',
-    gradient: 'from-green-400 to-blue-500'
-  },
-  {
-    id: 'whatsapp',
-    icon: MessageCircle,
-    title: 'WhatsApp',
-    description: 'Chat rapide et réactif',
-    action: 'Démarrer le chat',
-    href: 'https://wa.me/33123456789',
-    color: 'var(--nothing-orange)',
-    gradient: 'from-green-400 to-emerald-500'
-  },
-  {
-    id: 'portfolio',
-    icon: Globe,
-    title: 'Portfolio Complet',
-    description: 'Voir tous mes projets en détail',
-    action: 'Visiter le site',
-    href: 'https://moonimize.collective.work/',
-    color: 'var(--nothing-yellow)',
-    gradient: 'from-purple-400 to-pink-500'
-  }
-];
-
 export function ContactCTASection() {
+  const t = useTranslations('contact');
   const [ref, inView] = useInView({ threshold: 0.2 });
   const [formData, setFormData] = useState({
     name: '',
@@ -84,6 +42,50 @@ export function ContactCTASection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const contactMethods: ContactMethod[] = [
+    {
+      id: 'email',
+      icon: Mail,
+      title: t('email.title'),
+      description: t('email.description'),
+      action: t('email.action'),
+      href: 'mailto:atlani.mylan@gmail.com',
+      color: 'var(--nothing-blue)',
+      gradient: 'from-blue-400 to-indigo-500',
+      popular: true
+    },
+    {
+      id: 'linkedin',
+      icon: Linkedin,
+      title: t('linkedin.title'),
+      description: t('linkedin.description'),
+      action: t('linkedin.action'),
+      href: 'https://www.linkedin.com/in/mylan-atlani',
+      color: 'var(--nothing-green)',
+      gradient: 'from-green-400 to-blue-500'
+    },
+    {
+      id: 'whatsapp',
+      icon: MessageCircle,
+      title: t('whatsapp.title'),
+      description: t('whatsapp.description'),
+      action: t('whatsapp.action'),
+      href: 'https://wa.me/33123456789',
+      color: 'var(--nothing-orange)',
+      gradient: 'from-green-400 to-emerald-500'
+    },
+    {
+      id: 'portfolio',
+      icon: Globe,
+      title: t('portfolio.title'),
+      description: t('portfolio.description'),
+      action: t('portfolio.action'),
+      href: 'https://moonimize.collective.work/',
+      color: 'var(--nothing-yellow)',
+      gradient: 'from-purple-400 to-pink-500'
+    }
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -128,15 +130,15 @@ export function ContactCTASection() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
           <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-            Discutons de Votre Projet
+            {t('title')}
           </h2>
           <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
           <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
             <span className="hidden sm:inline">
-              Disponible pour missions freelance de 2 jours/semaine à temps plein
+              {t('subtitle')}
             </span>
             <span className="sm:hidden">
-              Discutons de vos enjeux tech
+              {t('subtitle')}
             </span>
           </p>
         </div>
@@ -149,7 +151,7 @@ export function ContactCTASection() {
             <div className="nothing-status"></div>
             <Clock className="w-4 h-4 text-[var(--nothing-green)]" />
             <span className="nothing-text text-sm font-medium">
-              Disponible à partir de Mars 2025 • Réponse sous 24h
+              {t('description')}
             </span>
           </div>
         </div>
@@ -175,7 +177,7 @@ export function ContactCTASection() {
                 {/* Popular Badge */}
                 {method.popular && (
                   <div className="absolute top-4 right-4 px-2 py-1 bg-[var(--nothing-orange)] text-black text-xs font-bold rounded-full">
-                    DIRECT
+                    {t('popular_badge')}
                   </div>
                 )}
 
@@ -214,10 +216,10 @@ export function ContactCTASection() {
           <div className="nothing-card p-8 sm:p-12">
             <div className="text-center mb-8 sm:mb-12">
               <h3 className="nothing-title text-2xl sm:text-3xl font-light mb-4">
-                Formulaire de Contact Rapide
+                {t('form_title')}
               </h3>
               <p className="nothing-text opacity-70">
-                Partagez-moi les détails de votre projet pour une réponse personnalisée
+                {t('form_description')}
               </p>
             </div>
 
@@ -227,7 +229,7 @@ export function ContactCTASection() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block nothing-text text-sm font-medium mb-2">
-                      Nom complet *
+                      {t('form_name_label')} *
                     </label>
                     <input
                       type="text"
@@ -236,13 +238,13 @@ export function ContactCTASection() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
-                      placeholder="Votre nom"
+                      placeholder={t('form_name_placeholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block nothing-text text-sm font-medium mb-2">
-                      Email professionnel *
+                      {t('form_email_label')} *
                     </label>
                     <input
                       type="email"
@@ -251,13 +253,13 @@ export function ContactCTASection() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
-                      placeholder="votre@email.com"
+                      placeholder={t('form_email_placeholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block nothing-text text-sm font-medium mb-2">
-                      Entreprise
+                      {t('form_company_label')}
                     </label>
                     <input
                       type="text"
@@ -265,13 +267,13 @@ export function ContactCTASection() {
                       value={formData.company}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
-                      placeholder="Nom de votre entreprise"
+                      placeholder={t('form_company_placeholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block nothing-text text-sm font-medium mb-2">
-                      Type de projet
+                      {t('form_project_label')}
                     </label>
                     <select
                       name="project"
@@ -279,18 +281,18 @@ export function ContactCTASection() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
                     >
-                      <option value="">Sélectionner un type</option>
-                      <option value="cto-fractionne">CTO Fractionné</option>
-                      <option value="lead-dev">Lead Developer</option>
-                      <option value="audit-express">Audit Express</option>
-                      <option value="refonte">Refonte Architecture</option>
-                      <option value="autre">Autre</option>
+                      <option value="">{t('form_project_select_option')}</option>
+                      <option value="cto-fractionne">{t('form_project_cto_option')}</option>
+                      <option value="lead-dev">{t('form_project_lead_option')}</option>
+                      <option value="audit-express">{t('form_project_audit_option')}</option>
+                      <option value="refonte">{t('form_project_refonte_option')}</option>
+                      <option value="autre">{t('form_project_autre_option')}</option>
                     </select>
                   </div>
 
                   <div className="md:col-span-2">
                     <label className="block nothing-text text-sm font-medium mb-2">
-                      Budget approximatif
+                      {t('form_budget_label')}
                     </label>
                     <select
                       name="budget"
@@ -298,12 +300,12 @@ export function ContactCTASection() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
                     >
-                      <option value="">Sélectionner une fourchette</option>
-                                             <option value="3k-10k">3k - 10k €</option>
-                       <option value="10k-25k">10k - 25k €</option>
-                       <option value="25k-50k">25k - 50k €</option>
-                       <option value="50k+">50k € et plus</option>
-                      <option value="à-discuter">À discuter</option>
+                      <option value="">{t('form_budget_select_option')}</option>
+                                             <option value="3k-10k">{t('form_budget_3k_10k_option')}</option>
+                       <option value="10k-25k">{t('form_budget_10k_25k_option')}</option>
+                       <option value="25k-50k">{t('form_budget_25k_50k_option')}</option>
+                       <option value="50k+">{t('form_budget_50k_option')}</option>
+                      <option value="à-discuter">{t('form_budget_a_discuter_option')}</option>
                     </select>
                   </div>
                 </div>
@@ -311,7 +313,7 @@ export function ContactCTASection() {
                 {/* Message */}
                 <div>
                   <label className="block nothing-text text-sm font-medium mb-2">
-                    Description du projet *
+                    {t('form_message_label')} *
                   </label>
                   <textarea
                     name="message"
@@ -320,7 +322,7 @@ export function ContactCTASection() {
                     required
                     rows={4}
                     className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300 resize-none"
-                    placeholder="Décrivez votre projet, vos enjeux techniques, et vos attentes..."
+                    placeholder={t('form_message_placeholder')}
                   />
                 </div>
 
@@ -334,12 +336,12 @@ export function ContactCTASection() {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                        <span>Envoi en cours...</span>
+                        <span>{t('form_submit_sending')}</span>
                       </>
                     ) : (
                       <>
                         <Send className="w-5 h-5" />
-                        <span>Envoyer le message</span>
+                        <span>{t('form_submit_button')}</span>
                         <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                       </>
                     )}

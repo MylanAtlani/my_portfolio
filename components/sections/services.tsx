@@ -2,6 +2,7 @@
 
 import { useInView } from '@/hooks/use-in-view';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { 
   Server, 
   Cloud, 
@@ -29,69 +30,70 @@ interface Service {
   popular?: boolean;
 }
 
-const services: Service[] = [
-  {
-    id: 'cto-fractionne',
-    icon: Users,
-    title: 'CTO Fractionné',
-    description: 'Accompagnement stratégique et technique pour structurer votre équipe et votre stack tech.',
-    duration: '2-3 jours/semaine',
-    price: '7200€/mois',
-    features: [
-      'Stratégie technique & roadmap',
-      'Management d\'équipe dev',
-      'Architecture & choix techno',
-      'Processus & méthodologies',
-      'Recrutement technique',
-      'Interface avec les investisseurs'
-    ],
-    color: 'var(--nothing-blue)',
-    gradient: 'from-blue-400 to-indigo-500',
-    popular: true
-  },
-  {
-    id: 'lead-dev',
-    icon: Server,
-    title: 'Lead Developer',
-    description: 'Refonte et structuration d\'architectures backend robustes avec les dernières technologies.',
-    duration: '3-5 jours/semaine',
-    price: '600€/jour',
-    features: [
-      'Architecture backend moderne',
-      'Refactoring & optimisation',
-      'API design & développement',
-      'CI/CD & infrastructure',
-      'Code review & mentoring',
-      'Documentation technique'
-    ],
-    color: 'var(--nothing-green)',
-    gradient: 'from-green-400 to-emerald-500'
-  },
-  {
-    id: 'audit-express',
-    icon: Zap,
-    title: 'Audit Express',
-    description: 'Diagnostic technique complet et plan d\'action pour redresser votre projet en urgence.',
-    duration: '3-5 jours',
-    price: '3000€',
-    features: [
-      'Audit architecture & code',
-      'Analyse dette technique',
-      'Plan de redressement',
-      'Recommandations prioritaires',
-      'Estimation timeline & budget',
-      'Présentation aux décideurs'
-    ],
-    color: 'var(--nothing-orange)',
-    gradient: 'from-orange-400 to-red-500'
-  }
-];
-
 export function ServicesSection() {
+  const t = useTranslations('services');
   const [ref, inView] = useInView({ threshold: 0.2 });
   const [selectedService, setSelectedService] = useState<string>('cto-fractionne');
   const [duration, setDuration] = useState<number>(3);
   const [showCalculator, setShowCalculator] = useState(false);
+
+  const services: Service[] = [
+    {
+      id: 'cto-fractionne',
+      icon: Users,
+      title: t('cto.title'),
+      description: t('cto.description'),
+      duration: t('cto.duration'),
+      price: t('cto.price'),
+      features: [
+        t('cto.features.0'),
+        t('cto.features.1'),
+        t('cto.features.2'),
+        t('cto.features.3'),
+        t('cto.features.4'),
+        t('cto.features.5')
+      ],
+      color: 'var(--nothing-blue)',
+      gradient: 'from-blue-400 to-indigo-500',
+      popular: true
+    },
+    {
+      id: 'lead-dev',
+      icon: Server,
+      title: t('lead.title'),
+      description: t('lead.description'),
+      duration: t('lead.duration'),
+      price: t('lead.price'),
+      features: [
+        t('lead.features.0'),
+        t('lead.features.1'),
+        t('lead.features.2'),
+        t('lead.features.3'),
+        t('lead.features.4'),
+        t('lead.features.5')
+      ],
+      color: 'var(--nothing-green)',
+      gradient: 'from-green-400 to-emerald-500'
+    },
+    {
+      id: 'audit-express',
+      icon: Zap,
+      title: t('audit.title'),
+      description: t('audit.description'),
+      duration: t('audit.duration'),
+      price: t('audit.price'),
+      features: [
+        t('audit.features.0'),
+        t('audit.features.1'),
+        t('audit.features.2'),
+        t('audit.features.3'),
+        t('audit.features.4'),
+        t('audit.features.5')
+      ],
+      color: 'var(--nothing-orange)',
+      gradient: 'from-orange-400 to-red-500'
+    }
+  ];
 
   const currentService = services.find(s => s.id === selectedService);
 
@@ -121,15 +123,15 @@ export function ServicesSection() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
           <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-            Mes Services
+            {t('title')}
           </h2>
           <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
           <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
             <span className="hidden sm:inline">
-              De l'audit express au CTO fractionné, des solutions adaptées à vos enjeux
+              {t('subtitle')}
             </span>
             <span className="sm:hidden">
-              Solutions sur mesure
+              {t('subtitle')}
             </span>
           </p>
         </div>
@@ -142,7 +144,7 @@ export function ServicesSection() {
             <div className="nothing-status"></div>
             <Clock className="w-4 h-4 text-[var(--nothing-green)]" />
             <span className="nothing-text text-sm font-medium">
-              Disponible à partir de Mars 2025
+              {t('available')}
             </span>
           </div>
         </div>
@@ -169,7 +171,7 @@ export function ServicesSection() {
                 {/* Popular Badge */}
                 {service.popular && (
                   <div className="absolute top-4 right-4 px-3 py-1 bg-[var(--nothing-orange)] text-black text-xs font-bold rounded-full">
-                    POPULAIRE
+                    {t('popular')}
                   </div>
                 )}
 
@@ -257,7 +259,7 @@ export function ServicesSection() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="nothing-btn-primary flex items-center justify-center space-x-2 group">
                     <Mail className="w-4 h-4" />
-                    <span>Discuter du projet</span>
+                    <span>{t('budget.discuss')}</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                   <button 
@@ -265,7 +267,7 @@ export function ServicesSection() {
                     className="nothing-btn-secondary flex items-center justify-center space-x-2"
                   >
                     <Calculator className="w-4 h-4" />
-                    <span>Calculateur de budget</span>
+                    <span>{t('budget.calculator')}</span>
                   </button>
                 </div>
               </div>
@@ -275,14 +277,14 @@ export function ServicesSection() {
                 showCalculator ? 'opacity-100 translate-x-0' : 'opacity-50 translate-x-4'
               }`}>
                 <h4 className="nothing-title text-lg sm:text-xl font-light">
-                  Estimation Budget
+                  {t('budget.title')}
                 </h4>
 
                 {/* Duration Selector avec curseur et points */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="nothing-text text-sm">Durée (mois)</span>
-                    <span className="nothing-text text-sm font-medium">{duration} mois</span>
+                    <span className="nothing-text text-sm">{t('budget.duration')}</span>
+                    <span className="nothing-text text-sm font-medium">{duration} {t('budget.months')}</span>
                   </div>
                   
                   {/* Slider avec curseur gros */}
@@ -307,7 +309,7 @@ export function ServicesSection() {
                               key={monthValue}
                               onClick={() => setDuration(monthValue)}
                               className={`relative w-full h-full flex items-center justify-center group`}
-                              title={`${monthValue} mois`}
+                              title={`${monthValue} ${t('budget.months')}`}
                             >
                               {/* Zone cliquable élargie */}
                               <div className="absolute -top-2 -bottom-2 w-full"></div>
@@ -361,13 +363,13 @@ export function ServicesSection() {
                 <div className="nothing-glass p-6 rounded-2xl">
                   <div className="text-center">
                     <div className="nothing-text text-sm opacity-60 mb-2">
-                      Budget estimé
+                      {t('budget.estimated')}
                     </div>
                     <div className="nothing-title text-3xl sm:text-4xl font-light nothing-gradient-text">
                       {calculateBudget().toLocaleString()}€
                     </div>
                     <div className="nothing-text text-xs opacity-50 mt-2">
-                      Tarif indicatif • Devis personnalisé
+                      {t('budget.indicative')}
                     </div>
                   </div>
                 </div>
@@ -375,7 +377,7 @@ export function ServicesSection() {
                 {/* Contact Info */}
                 <div className="text-center p-4 nothing-glass rounded-xl">
                   <div className="nothing-text text-xs opacity-60 mb-2">
-                    Discutons de votre projet
+                    {t('budget.discuss')}
                   </div>
                   <div className="nothing-text text-sm font-medium">
                     atlani.mylan@gmail.com

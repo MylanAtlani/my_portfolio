@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Code2, Zap, Palette, Mail, Download, Github, ExternalLink, Linkedin, Server, Database, Cloud, Award, Users, Globe, Shield, Briefcase, GraduationCap } from 'lucide-react';
-import { ProgressDots } from '@/components/ui/progress-dots';
+import { ArrowRight, Code2, Zap, Palette, Mail, Download, Github, ExternalLink, Linkedin, Server, Database, Cloud, Award, Users, Globe, Shield, Briefcase, GraduationCap, Terminal, Layers, Cpu, HardDrive, Wifi, Code, GitBranch, Settings, Smartphone } from 'lucide-react';
+
 import { ParticleField } from '@/components/ui/particle-field';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { ServicesSection } from '@/components/sections/services';
@@ -10,7 +10,7 @@ import { ContactCTASection } from '@/components/sections/contact-cta';
 import { useInView } from '@/hooks/use-in-view';
 
 export default function HomePage() {
-  const t = useTranslations('home');
+  const t = useTranslations();
   const [techRef, techInView] = useInView({ threshold: 0.3 });
   const [projectsRef, projectsInView] = useInView({ threshold: 0.1 });
 
@@ -37,112 +37,120 @@ export default function HomePage() {
 
   const projects = [
     {
-      title: 'Ciffréo Bona',
-      role: 'Lead Developer',
-      description: 'Architecture backend moderne avec Go & NestJS, intégration OpenSearch, pipelines CI/CD et connexion ERP. Latence divisée par 2.',
+      title: t('projects.ciffreo.title'),
+      role: t('projects.ciffreo.role'),
+      description: t('projects.ciffreo.description'),
       technologies: ['Go', 'NestJS', 'OpenSearch', 'Docker', 'PayXpert', 'GitHub Actions'],
       status: 'active',
       gradient: 'from-blue-400 to-purple-500',
-      period: 'Déc 2024 - Juin 2025',
-      type: 'Freelance',
+      period: t('projects.ciffreo.period'),
+      type: 'freelance',
       freelance: true,
-      icon: Server
+      icon: Server,
+      logo: '/logo/ciffreo.png'
     },
     {
-      title: 'Petpalz.io',
-      role: 'CTO',
-      description: 'Plateforme mobile-first de santé animale from scratch. API NestJS/Go, app Flutter, interface Next.js et infrastructure PostgreSQL.',
+      title: t('projects.petpalz.title'),
+      role: t('projects.petpalz.role'),
+      description: t('projects.petpalz.description'),
       technologies: ['NestJS', 'Go', 'Flutter', 'Next.js', 'PostgreSQL', 'CI/CD'],
       status: 'active',
       gradient: 'from-green-400 to-blue-500',
-      period: 'Avr 2024 - Mai 2025',
-      type: 'Freelance',
+      period: t('projects.petpalz.period'),
+      type: 'freelance',
       freelance: true,
-      icon: Briefcase
+      icon: Briefcase,
+      logo: '/logo/petpalz.png'
     },
     {
-      title: 'Thales Digital Identity',
-      role: 'Chef de projet technique',
-      description: 'Projet national stratégique pour la carte Vitale numérique. Gestion de work packages critiques et coordination multi-sites.',
+      title: t('projects.thales.title'),
+      role: t('projects.thales.role'),
+      description: t('projects.thales.description'),
       technologies: ['Sécurité', 'SESAM-Vitale', 'Agile', 'Multi-timezone'],
       status: 'completed',
       gradient: 'from-red-400 to-orange-500',
-      period: 'Oct 2023 - Mai 2024',
-      type: 'Freelance',
+      period: t('projects.thales.period'),
+      type: 'freelance',
       freelance: true,
-      icon: Shield
+      icon: Shield,
+      logo: '/logo/thales.webp'
     },
     {
-      title: 'La Plateforme_',
-      role: 'Responsable pédagogique',
-      description: 'Responsable des cursus Cybersécurité, Réseau et Développement. Création contenus, évaluation et suivi des apprenants.',
+      title: t('projects.plateforme.title'),
+      role: t('projects.plateforme.role'),
+      description: t('projects.plateforme.description'),
       technologies: ['Cybersécurité', 'Réseau IP', 'Pédagogie', 'Evaluation'],
       status: 'completed',
       gradient: 'from-purple-400 to-pink-500',
-      period: 'Août 2022 - Oct 2023',
-      type: 'CDI',
+      period: t('projects.plateforme.period'),
+      type: 'cdi',
       freelance: false,
-      icon: GraduationCap
+      icon: GraduationCap,
+      logo: '/logo/laplateforme.svg'
     },
     {
-      title: 'KBRW',
-      role: 'Lead Software Engineer',
-      description: 'Solutions WMS/OMS pour grands groupes (Michelin, LVMH, PSA). Architecture Elixir, NodeJS, React avec déploiement Jenkins.',
+      title: t('projects.kbrw.title'),
+      role: t('projects.kbrw.role'),
+      description: t('projects.kbrw.description'),
       technologies: ['Elixir', 'NodeJS', 'React', 'SOLR', 'AWS', 'Jenkins'],
       status: 'completed',
       gradient: 'from-indigo-400 to-blue-500',
-      period: 'Nov 2020 - Sept 2021',
-      type: 'CDI',
+      period: t('projects.kbrw.period'),
+      type: 'cdi',
       freelance: false,
-      icon: Server
+      icon: Server,
+      logo: '/logo/kbrw.webp'
     },
     {
-      title: 'Woman & Luxury',
-      role: 'Développeur FullStack',
-      description: 'Application mobile de mode complète : API NestJS, back-office React, interface créateurs Next.js, microservices Python/Go sur Azure.',
+      title: t('projects.woman.title'),
+      role: t('projects.woman.role'),
+      description: t('projects.woman.description'),
       technologies: ['NestJS', 'React', 'Next.js', 'Python', 'Go', 'Azure'],
       status: 'active',
       gradient: 'from-orange-400 to-red-500',
-      period: 'Mai 2019 - Mars 2025',
-      type: 'Freelance',
+      period: t('projects.woman.period'),
+      type: 'freelance',
       freelance: true,
-      icon: Code2
+      icon: Code2,
+      logo: '/logo/happer.png'
     },
     {
-      title: 'NEXEN Partners',
-      role: 'Architecte informatique',
-      description: 'Scripts Python pour déploiement AWS, documentation architecture réseau nationale SAMU, POCs ReactJS et VueJS.',
+      title: t('projects.nexen.title'),
+      role: t('projects.nexen.role'),
+      description: t('projects.nexen.description'),
       technologies: ['Python', 'AWS', 'ReactJS', 'VueJS', 'Architecture'],
       status: 'completed',
       gradient: 'from-teal-400 to-green-500',
-      period: 'Mars 2020 - Juil 2020',
-      type: 'Stage',
+      period: t('projects.nexen.period'),
+      type: 'stage',
       freelance: false,
-      icon: Cloud
+      icon: Cloud,
+      logo: '/logo/nexen.png'
     },
     {
-      title: 'DIZIO LAB',
-      role: 'Chef de projet & Product owner',
-      description: 'Management équipe de 3 développeurs, coordination projets parallèles, audits techniques Android, gestion relations clients.',
+      title: t('projects.dizio.title'),
+      role: t('projects.dizio.role'),
+      description: t('projects.dizio.description'),
       technologies: ['Management', 'Android', 'Ruby', 'Product Owner'],
       status: 'completed',
       gradient: 'from-cyan-400 to-blue-500',
-      period: 'Sept 2019 - Fév 2020',
-      type: 'Stage',
+      period: t('projects.dizio.period'),
+      type: 'stage',
       freelance: false,
-      icon: Users
+      icon: Users,
+      logo: '/logo/diziolab.png'
     }
   ];
 
   const technologies = [
-    { name: 'Go', level: 95 },
-    { name: 'NestJS', level: 95 },
-    { name: 'Next.js', level: 90 },
-    { name: 'PostgreSQL', level: 90 },
-    { name: 'Docker', level: 88 },
-    { name: 'AWS', level: 85 },
-    { name: 'Flutter', level: 85 },
-    { name: 'TypeScript', level: 85 }
+    { name: 'Go', years: 4, icon: Terminal },
+    { name: 'NestJS', years: 5, icon: Layers },
+    { name: 'Next.js', years: 4, icon: Code },
+    { name: 'PostgreSQL', years: 6, icon: Database },
+    { name: 'Docker', years: 5, icon: Cpu },
+    { name: 'AWS', years: 4, icon: Cloud },
+    { name: 'Flutter', years: 3, icon: Smartphone },
+    { name: 'TypeScript', years: 5, icon: Code2 }
   ];
 
   return (
@@ -164,8 +172,8 @@ export default function HomePage() {
           <div className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-6 sm:mb-8">
             <div className="nothing-status scale-75 sm:scale-100"></div>
             <span className="nothing-text text-xs sm:text-sm font-medium">
-              <span className="hidden sm:inline">Disponible pour missions freelance</span>
-              <span className="sm:hidden">Disponible</span>
+              <span className="hidden sm:inline">{t('home.status')}</span>
+              <span className="sm:hidden">{t('home.available')}</span>
             </span>
           </div>
 
@@ -175,26 +183,24 @@ export default function HomePage() {
               ATLANI Mylan
             </h1>
             <h2 className="nothing-text text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light opacity-80">
-              Lead Dev Freelance & CTO
+              {t('home.title')}
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full"></div>
             <p className="nothing-text text-sm sm:text-base md:text-lg opacity-60 max-w-2xl mx-auto px-4 sm:px-0">
-              <span className="hidden sm:inline">Refacto, structuration & mise en production de backends robustes</span>
-              <span className="sm:hidden">Backend robuste & architecture scalable</span>
+              <span className="hidden sm:inline">{t('home.subtitle')}</span>
+              <span className="sm:hidden">{t('home.subtitle')}</span>
             </p>
           </div>
 
           {/* Description - Better mobile text */}
-          <p className="nothing-text text-sm sm:text-lg md:text-xl lg:text-2xl max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto mb-8 sm:mb-12 opacity-70 leading-relaxed px-4 sm:px-0">
-            <span className="hidden sm:inline">
-              J'aide les startups et scale-ups à structurer, industrialiser et livrer des backends robustes et évolutifs. 
-              Ingénieur EPITECH avec 8 ans d'expérience dont 7 en freelance.
-            </span>
-            <span className="sm:hidden">
-              Lead Dev spécialisé en Go, NestJS et Next.js. 
-              8 ans d'expérience en architecture backend robuste.
-            </span>
-          </p>
+                      <p className="nothing-text text-sm sm:text-lg md:text-xl lg:text-2xl max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto mb-8 sm:mb-12 opacity-70 leading-relaxed px-4 sm:px-0">
+              <span className="hidden sm:inline">
+                {t('home.description')}
+              </span>
+              <span className="sm:hidden">
+                {t('home.description')}
+              </span>
+            </p>
 
           {/* CTA Buttons - Much better mobile layout */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
@@ -207,8 +213,8 @@ export default function HomePage() {
               }}
               className="w-full sm:w-auto nothing-btn-primary flex items-center justify-center space-x-2 sm:space-x-3 group text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
             >
-              <span className="hidden sm:inline">Découvrir mes projets</span>
-              <span className="sm:hidden">Mes projets</span>
+              <span className="hidden sm:inline">{t('home.cta')}</span>
+              <span className="sm:hidden">{t('projects.title')}</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
             <button 
@@ -221,8 +227,8 @@ export default function HomePage() {
               className="w-full sm:w-auto nothing-btn-secondary flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
             >
               <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">Discutons de vos enjeux</span>
-              <span className="sm:hidden">Contact</span>
+              <span className="hidden sm:inline">{t('home.ctaContact')}</span>
+              <span className="sm:hidden">{t('contact.title')}</span>
             </button>
           </div>
 
@@ -231,22 +237,22 @@ export default function HomePage() {
             <div className="text-center">
               <div className="nothing-title text-xl sm:text-3xl md:text-4xl nothing-gradient-text">8+</div>
               <div className="nothing-text text-xs sm:text-sm opacity-60">
-                <span className="hidden sm:inline">Années d'expérience</span>
-                <span className="sm:hidden">Années</span>
+                <span className="hidden sm:inline">{t('stats.years')}</span>
+                <span className="sm:hidden">{t('stats.years')}</span>
               </div>
             </div>
             <div className="text-center">
               <div className="nothing-title text-xl sm:text-3xl md:text-4xl nothing-gradient-text">50+</div>
               <div className="nothing-text text-xs sm:text-sm opacity-60">
-                <span className="hidden sm:inline">Projets réalisés</span>
-                <span className="sm:hidden">Projets</span>
+                <span className="hidden sm:inline">{t('stats.projects')}</span>
+                <span className="sm:hidden">{t('stats.projects')}</span>
               </div>
             </div>
             <div className="text-center">
               <div className="nothing-title text-xl sm:text-3xl md:text-4xl nothing-gradient-text">100%</div>
               <div className="nothing-text text-xs sm:text-sm opacity-60">
-                <span className="hidden sm:inline">Clients satisfaits</span>
-                <span className="sm:hidden">Clients</span>
+                <span className="hidden sm:inline">{t('stats.satisfaction')}</span>
+                <span className="sm:hidden">{t('stats.satisfaction')}</span>
               </div>
             </div>
           </div>
@@ -266,15 +272,15 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-              Expertise
+              {t('expertise.title')}
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
             <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
               <span className="hidden sm:inline">
-                Mes interventions types : refonte d'architecture, structuration CI/CD et conseil stratégique technique
+                {t('expertise.subtitle')}
               </span>
               <span className="sm:hidden">
-                Architecture, CI/CD et conseil stratégique technique
+                {t('expertise.subtitle')}
               </span>
             </p>
           </div>
@@ -314,41 +320,70 @@ export default function HomePage() {
       </section>
 
       {/* Technologies Section avec animations */}
-      <section id="technologies" ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section id="technologies" ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background gradient subtil */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--nothing-orange)]/3 via-transparent to-[var(--nothing-blue)]/3"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-              Technologies
+              {t('technologies.title')}
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
+            <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
+              {t('technologies.subtitle')}
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            {technologies.map((tech, index) => (
-              <div 
-                key={tech.name} 
-                className={`nothing-card transform transition-all duration-700 ${
-                  techInView 
-                    ? 'translate-y-0 opacity-100' 
-                    : 'translate-y-8 opacity-0'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 150}ms` 
-                }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="nothing-text font-medium text-sm sm:text-base">{tech.name}</span>
-                  <span className="nothing-text text-xs sm:text-sm opacity-60">{tech.level}%</span>
+          {/* Technologies Grid avec design Nothing OS */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {technologies.map((tech, index) => {
+              const TechIcon = tech.icon;
+              return (
+                <div 
+                  key={tech.name} 
+                  className={`group relative transform transition-all duration-700 hover:scale-105 ${
+                    techInView 
+                      ? 'translate-y-0 opacity-100' 
+                      : 'translate-y-8 opacity-0'
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 150}ms` 
+                  }}
+                >
+                  {/* Card avec effet glass Nothing OS */}
+                  <div className="nothing-glass rounded-2xl p-4 sm:p-6 h-full flex flex-col items-center justify-center text-center space-y-3 sm:space-y-4 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--nothing-orange)]/10">
+                    
+                    {/* Icône avec conteneur Nothing OS */}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center nothing-glass border border-[var(--nothing-orange)]/20 group-hover:scale-110 transition-transform duration-300">
+                      <TechIcon className="w-6 h-6 sm:w-8 sm:h-8 text-[var(--nothing-orange)]" />
+                    </div>
+                    
+                    {/* Contenu */}
+                    <div className="space-y-2">
+                      <span className="nothing-text font-semibold text-sm sm:text-base group-hover:text-[var(--nothing-orange)] transition-colors duration-300">
+                        {tech.name}
+                      </span>
+                      
+                      <span className="nothing-title text-lg sm:text-xl text-[var(--nothing-orange)] font-light tracking-wider block">
+                        {tech.years} {t('technologies.years')}
+                      </span>
+                    </div>
+                    
+                    {/* Indicateur d'expertise Nothing OS */}
+                    <div className="flex space-x-1">
+                      {[...Array(Math.min(tech.years, 5))].map((_, i) => (
+                        <div 
+                          key={i}
+                          className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[var(--nothing-orange)] opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                          style={{ animationDelay: `${i * 100}ms` }}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Barre de progression en dots Nothing OS avec animation */}
-                <ProgressDots 
-                  percentage={tech.level} 
-                  delay={techInView ? index * 100 : 0} 
-                  animate={techInView}
-                />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -359,15 +394,15 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-              Projets & Missions
+              {t('projects.title')}
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
             <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
               <span className="hidden sm:inline">
-                8 ans d'expérience en Lead Dev, CTO et architecture backend - Des startups aux grands groupes
+                {t('projects.subtitle')}
               </span>
               <span className="sm:hidden">
-                8 ans d'expérience Lead Dev et CTO
+                {t('projects.subtitle')}
               </span>
             </p>
           </div>
@@ -392,11 +427,22 @@ export default function HomePage() {
                   <div className={`h-48 sm:h-56 lg:h-64 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
                     
+                    {/* Logo de l'entreprise */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center p-3 sm:p-4 group-hover:scale-110 transition-transform duration-300">
+                        <img 
+                          src={project.logo} 
+                          alt={`${project.title} logo`}
+                          className="w-full h-full object-contain filter brightness-0 invert"
+                        />
+                      </div>
+                    </div>
+                    
                     {/* Status & Type */}
                     <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center space-x-1.5 sm:space-x-2">
                       <div className={`nothing-status scale-75 sm:scale-100 ${project.status === 'active' ? 'bg-(--nothing-green)' : 'bg-(--nothing-blue)'}`}></div>
                       <span className="text-white text-xs font-medium">
-                        {project.status === 'active' ? 'Actif' : 'Terminé'}
+                        {project.status === 'active' ? t('projects.active') : t('projects.completed')}
                       </span>
                     </div>
                     
@@ -415,10 +461,10 @@ export default function HomePage() {
                           : 'text-white nothing-glass'
                       }`}>
                         <IconComponent className="w-3 h-3" />
-                        <span>{project.type}</span>
+                        <span>{t(`projects.${project.type.toLowerCase()}`)}</span>
                       </span>
                       {project.freelance && (
-                        <span className="text-white/80 text-xs font-medium px-2 py-1 bg-black/30 rounded-full">
+                        <span className="text-white/80 text-xs font-medium px-2 py-1 nothing-glass rounded-full">
                           💼
                         </span>
                       )}
@@ -448,15 +494,15 @@ export default function HomePage() {
                     </p>
                     
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {project.technologies.map((tech) => (
-                        <span 
-                          key={tech}
-                          className="px-2 sm:px-3 py-0.5 sm:py-1 nothing-glass rounded-full text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {project.technologies.map((tech) => (
+                          <span 
+                            className="nothing-tech-tag"
+                            key={tech}
+                          >
+                            {tech}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>

@@ -3,6 +3,7 @@
 import { useInView } from '@/hooks/use-in-view';
 import { Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface Testimonial {
   name: string;
@@ -64,6 +65,7 @@ const testimonials: Testimonial[] = [
 ];
 
 export function TestimonialsSection() {
+  const t = useTranslations('testimonials');
   const [ref, inView] = useInView({ threshold: 0.2 });
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -87,15 +89,15 @@ export function TestimonialsSection() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
           <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-            Témoignages Clients
+            {t('title')}
           </h2>
           <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
           <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
             <span className="hidden sm:inline">
-              Ce que mes clients apprécient : autonomie, efficacité, et résultats mesurables
+              {t('subtitle')}
             </span>
             <span className="sm:hidden">
-              L'avis de mes clients
+              {t('subtitle')}
             </span>
           </p>
         </div>
@@ -207,7 +209,7 @@ export function TestimonialsSection() {
               8+
             </div>
             <div className="nothing-text text-xs sm:text-sm opacity-60">
-              Ans d'expérience
+              {t('metrics.experience')}
             </div>
           </div>
           <div className="text-center">
@@ -215,7 +217,7 @@ export function TestimonialsSection() {
               15+
             </div>
             <div className="nothing-text text-xs sm:text-sm opacity-60">
-              Projets livrés
+              {t('metrics.delivered')}
             </div>
           </div>
           <div className="text-center">
@@ -223,7 +225,7 @@ export function TestimonialsSection() {
               100%
             </div>
             <div className="nothing-text text-xs sm:text-sm opacity-60">
-              Satisfaction client
+              {t('metrics.satisfaction')}
             </div>
           </div>
         </div>

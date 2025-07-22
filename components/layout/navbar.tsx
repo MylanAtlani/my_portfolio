@@ -13,10 +13,10 @@ export function Navbar() {
 
   const navigation = [
     { name: t('home'), href: '#home' },
-    { name: 'Expertise', href: '#expertise' },
-    { name: 'Technologies', href: '#technologies' },
+    { name: t('expertise'), href: '#expertise' },
+    { name: t('technologies'), href: '#technologies' },
     { name: t('projects'), href: '#projects' },
-    { name: 'Services', href: '#services' },
+    { name: t('services'), href: '#services' },
     { name: t('contact'), href: '#contact' },
   ];
 
@@ -30,9 +30,7 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'nothing-glass shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 nothing-glass shadow-lg`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
