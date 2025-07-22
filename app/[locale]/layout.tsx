@@ -23,8 +23,11 @@ export const metadata: Metadata = {
   publisher: 'Mylan Atlani',
   robots: 'index, follow',
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png' }
+    ],
+    shortcut: '/favicon.ico',
     apple: '/favicon.png',
   },
   openGraph: {
@@ -79,9 +82,10 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning className="scroll-smooth">
       <head>
         <link rel="canonical" href="https://my-portfolio-tau-eight-60.vercel.app" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <link rel="icon" href="/favicon.png?v=2" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=2" />
         <meta name="geo.region" content="FR-13" />
         <meta name="geo.placename" content="Marseille" />
         <meta name="geo.position" content="43.296482;5.369780" />
