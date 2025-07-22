@@ -110,12 +110,40 @@ export function EditProtection() {
     // Vérifier périodiquement (au cas où)
     const interval = setInterval(disableEditing, 5000);
 
+    // Empêcher la sélection de texte sur tous les éléments cliquables
+    const style = document.createElement('style');
+    style.textContent = `
+      a, button, [role="button"], .no-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      /* Autorise la sélection de texte sur les éléments de contenu */
+      p, span, div:not([role]), .selectable {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+      
+      /* Curseur pointer pour tous les éléments cliquables */
+      a, button, [role="button"], .clickable {
+        cursor: pointer !important;
+      }
+    `;
+    document.head.appendChild(style);
+
     // Cleanup
     return () => {
       document.removeEventListener('selectstart', preventAccidentalSelection);
       document.removeEventListener('keydown', preventEditingShortcuts);
       observer.disconnect();
       clearInterval(interval);
+      document.head.removeChild(style);
     };
   }, []);
 

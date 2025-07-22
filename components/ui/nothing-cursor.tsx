@@ -7,8 +7,30 @@ export function NothingCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isText, setIsText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Détecter si on est sur mobile/tablette
+    const checkMobile = () => {
+      // Détecter seulement les vrais mobiles/tablettes
+      const hasTouch = 'ontouchstart' in window;
+      const hasMaxTouchPoints = navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768; // Seulement mobile/tablette réels
+      
+      // Détection plus précise : vraiment mobile/tablette
+      const isMobileDevice = (hasTouch || hasMaxTouchPoints) && isSmallScreen;
+      setIsMobile(isMobileDevice);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Si mobile/tablette, ne pas afficher le curseur custom
+    if (isMobile) return;
     // Suivre la position de la souris
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -98,6 +120,9 @@ export function NothingCursor() {
       observer.disconnect();
     };
   }, []);
+
+  // Ne pas afficher le curseur sur mobile/tablette
+  if (isMobile) return null;
 
   // Classes conditionnelles
   const cursorClasses = [

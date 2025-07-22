@@ -3,6 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Code2, Zap, Palette, Mail, Download, Github, ExternalLink, Linkedin, Server, Database, Cloud, Award, Users, Globe, Shield, Briefcase, GraduationCap } from 'lucide-react';
 import { ProgressDots } from '@/components/ui/progress-dots';
+import { ParticleField } from '@/components/ui/particle-field';
+import { TestimonialsSection } from '@/components/sections/testimonials';
+import { ServicesSection } from '@/components/sections/services';
+import { ContactCTASection } from '@/components/sections/contact-cta';
 import { useInView } from '@/hooks/use-in-view';
 
 export default function HomePage() {
@@ -40,7 +44,8 @@ export default function HomePage() {
       status: 'active',
       gradient: 'from-blue-400 to-purple-500',
       period: 'Déc 2024 - Juin 2025',
-      type: 'Lead Dev',
+      type: 'Freelance',
+      freelance: true,
       icon: Server
     },
     {
@@ -51,7 +56,8 @@ export default function HomePage() {
       status: 'active',
       gradient: 'from-green-400 to-blue-500',
       period: 'Avr 2024 - Mai 2025',
-      type: 'CTO',
+      type: 'Freelance',
+      freelance: true,
       icon: Briefcase
     },
     {
@@ -62,7 +68,8 @@ export default function HomePage() {
       status: 'completed',
       gradient: 'from-red-400 to-orange-500',
       period: 'Oct 2023 - Mai 2024',
-      type: 'Chef de projet',
+      type: 'Freelance',
+      freelance: true,
       icon: Shield
     },
     {
@@ -73,7 +80,8 @@ export default function HomePage() {
       status: 'completed',
       gradient: 'from-purple-400 to-pink-500',
       period: 'Août 2022 - Oct 2023',
-      type: 'Education',
+      type: 'CDI',
+      freelance: false,
       icon: GraduationCap
     },
     {
@@ -84,18 +92,20 @@ export default function HomePage() {
       status: 'completed',
       gradient: 'from-indigo-400 to-blue-500',
       period: 'Nov 2020 - Sept 2021',
-      type: 'Lead Dev',
+      type: 'CDI',
+      freelance: false,
       icon: Server
     },
     {
       title: 'Woman & Luxury',
-      role: 'Freelance Développeur FullStack',
+      role: 'Développeur FullStack',
       description: 'Application mobile de mode complète : API NestJS, back-office React, interface créateurs Next.js, microservices Python/Go sur Azure.',
       technologies: ['NestJS', 'React', 'Next.js', 'Python', 'Go', 'Azure'],
       status: 'active',
       gradient: 'from-orange-400 to-red-500',
       period: 'Mai 2019 - Mars 2025',
-      type: 'Fullstack',
+      type: 'Freelance',
+      freelance: true,
       icon: Code2
     },
     {
@@ -107,6 +117,7 @@ export default function HomePage() {
       gradient: 'from-teal-400 to-green-500',
       period: 'Mars 2020 - Juil 2020',
       type: 'Stage',
+      freelance: false,
       icon: Cloud
     },
     {
@@ -117,41 +128,9 @@ export default function HomePage() {
       status: 'completed',
       gradient: 'from-cyan-400 to-blue-500',
       period: 'Sept 2019 - Fév 2020',
-      type: 'Management',
+      type: 'Stage',
+      freelance: false,
       icon: Users
-    },
-    {
-      title: 'Epitech VR Project',
-      role: 'Développeur chef de projet',
-      description: 'Visite virtuelle école Epitech Marseille avec Unity en collaboration avec 3Drudder. Management équipe de 5 développeurs.',
-      technologies: ['Unity', 'VR', 'C#', 'Management', '3D'],
-      status: 'completed',
-      gradient: 'from-violet-400 to-purple-500',
-      period: 'Mai 2017 - Mai 2018',
-      type: 'Projet étudiant',
-      icon: Award
-    },
-    {
-      title: 'Groupe SII',
-      role: 'Développeur VR',
-      description: 'Établissement pôle VR/AR. Visualisation ordinateur démonté en réalité augmentée avec casque Daqri.',
-      technologies: ['VR', 'AR', 'Daqri', 'Visualisation 3D'],
-      status: 'completed',
-      gradient: 'from-emerald-400 to-teal-500',
-      period: 'Oct 2017 - Fév 2018',
-      type: 'Stage',
-      icon: Globe
-    },
-    {
-      title: 'Friool.com',
-      role: 'Développeur web',
-      description: 'Plateforme de billetterie associative sport. Développement fullstack Ruby on Rails et JavaScript en télétravail.',
-      technologies: ['Ruby on Rails', 'JavaScript', 'Billetterie'],
-      status: 'completed',
-      gradient: 'from-amber-400 to-orange-500',
-      period: 'Juil 2016 - Déc 2016',
-      type: 'Stage',
-      icon: Code2
     }
   ];
 
@@ -162,21 +141,24 @@ export default function HomePage() {
     { name: 'PostgreSQL', level: 90 },
     { name: 'Docker', level: 88 },
     { name: 'AWS', level: 85 },
-    { name: 'React', level: 85 },
+    { name: 'Flutter', level: 85 },
     { name: 'TypeScript', level: 85 }
   ];
 
   return (
     <div className="min-h-screen overflow-hidden">
+      {/* Particle Field Background */}
+      <ParticleField />
+      
       {/* Floating background elements - Smaller on mobile */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 nothing-gradient-orange rounded-full blur-3xl opacity-20 nothing-animate-float"></div>
+        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 nothing-gradient-blue rounded-full blur-3xl opacity-10 nothing-animate-float"></div>
         <div className="absolute bottom-20 sm:bottom-40 left-10 sm:left-20 w-32 sm:w-80 h-32 sm:h-80 bg-(--nothing-blue) rounded-full blur-3xl opacity-10 nothing-animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 sm:w-60 h-24 sm:h-60 bg-(--nothing-green) rounded-full blur-3xl opacity-15 nothing-animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-0">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-0">
         <div className="max-w-7xl mx-auto text-center nothing-animate-slide-up">
           {/* Status Badge - Responsive */}
           <div className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-6 sm:mb-8">
@@ -195,7 +177,7 @@ export default function HomePage() {
             <h2 className="nothing-text text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light opacity-80">
               Lead Dev Freelance & CTO
             </h2>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full"></div>
             <p className="nothing-text text-sm sm:text-base md:text-lg opacity-60 max-w-2xl mx-auto px-4 sm:px-0">
               <span className="hidden sm:inline">Refacto, structuration & mise en production de backends robustes</span>
               <span className="sm:hidden">Backend robuste & architecture scalable</span>
@@ -216,12 +198,28 @@ export default function HomePage() {
 
           {/* CTA Buttons - Much better mobile layout */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
-            <button className="w-full sm:w-auto nothing-btn-primary flex items-center justify-center space-x-2 sm:space-x-3 group text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8">
+            <button 
+              onClick={() => {
+                const element = document.querySelector('#projects');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="w-full sm:w-auto nothing-btn-primary flex items-center justify-center space-x-2 sm:space-x-3 group text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
+            >
               <span className="hidden sm:inline">Découvrir mes projets</span>
               <span className="sm:hidden">Mes projets</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            <button className="w-full sm:w-auto nothing-btn-secondary flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8">
+            <button 
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="w-full sm:w-auto nothing-btn-secondary flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
+            >
               <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="hidden sm:inline">Discutons de vos enjeux</span>
               <span className="sm:hidden">Contact</span>
@@ -263,14 +261,14 @@ export default function HomePage() {
       </section>
 
       {/* Expertise Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <section id="expertise" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
               Expertise
             </h2>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full mb-6 sm:mb-8"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
             <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
               <span className="hidden sm:inline">
                 Mes interventions types : refonte d'architecture, structuration CI/CD et conseil stratégique technique
@@ -316,13 +314,13 @@ export default function HomePage() {
       </section>
 
       {/* Technologies Section avec animations */}
-      <section ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <section id="technologies" ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
               Technologies
             </h2>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full mb-6 sm:mb-8"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
@@ -356,14 +354,14 @@ export default function HomePage() {
       </section>
 
       {/* Projects Section avec animations */}
-      <section ref={projectsRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <section id="projects" ref={projectsRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
               Projets & Missions
             </h2>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full mb-6 sm:mb-8"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
             <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
               <span className="hidden sm:inline">
                 8 ans d'expérience en Lead Dev, CTO et architecture backend - Des startups aux grands groupes
@@ -409,12 +407,21 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    {/* Type Badge */}
-                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                      <span className="text-white text-xs font-medium px-3 py-1 nothing-glass rounded-full flex items-center space-x-1">
+                    {/* Type Badge with Freelance/CDI distinction */}
+                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 flex items-center space-x-2">
+                      <span className={`text-xs font-medium px-3 py-1 rounded-full flex items-center space-x-1 ${
+                        project.freelance 
+                          ? 'bg-[var(--nothing-orange)] text-black' 
+                          : 'text-white nothing-glass'
+                      }`}>
                         <IconComponent className="w-3 h-3" />
                         <span>{project.type}</span>
                       </span>
+                      {project.freelance && (
+                        <span className="text-white/80 text-xs font-medium px-2 py-1 bg-black/30 rounded-full">
+                          💼
+                        </span>
+                      )}
                     </div>
                     
                     {/* Hover Actions */}
@@ -459,79 +466,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Section Header */}
-          <div className="mb-12 sm:mb-16 nothing-animate-slide-up">
-            <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-              Contact
-            </h2>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full mb-6 sm:mb-8"></div>
-            <p className="nothing-text text-sm sm:text-lg md:text-xl opacity-70 mb-8 sm:mb-12 px-4 sm:px-0">
-              <span className="hidden sm:inline">
-                Discutons de vos enjeux tech → Mission freelance de 2 jours/semaine à temps plein
-              </span>
-              <span className="sm:hidden">
-                Discutons de vos enjeux tech et projets
-              </span>
-            </p>
-          </div>
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
-          {/* Contact Card */}
-          <div className="nothing-card max-w-2xl mx-auto">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="flex justify-center">
-                <div className="nothing-status"></div>
-              </div>
-              
-              <div className="space-y-4 sm:space-y-6">
-                <h3 className="nothing-title text-lg sm:text-xl lg:text-2xl font-light">
-                  <span className="hidden sm:inline">Disponible pour missions CTO & Lead Dev</span>
-                  <span className="sm:hidden">Disponible pour missions</span>
-                </h3>
-                <p className="nothing-text opacity-70 text-sm sm:text-base px-4 sm:px-0">
-                  <span className="hidden sm:inline">
-                    Refonte d'architecture, audit technique, conseil stratégique ou intervention d'urgence - 
-                    transformons ensemble vos défis techniques en succès.
-                  </span>
-                  <span className="sm:hidden">
-                    Architecture, audit technique et conseil stratégique - 
-                    transformons vos défis en succès.
-                  </span>
-                </p>
-              </div>
+      {/* Services Section */}
+      <ServicesSection />
 
-              {/* Contact Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <a 
-                  href="mailto:atlani.mylan@gmail.com"
-                  className="flex items-center justify-center space-x-2 nothing-btn-primary text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
-                >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>atlani.mylan@gmail.com</span>
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/mylan-atlani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 nothing-btn-secondary text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8"
-                >
-                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
+      {/* Contact Section Unified */}
+      <ContactCTASection />
 
-              {/* Location */}
-              <div className="pt-4 border-t border-white/10">
-                <p className="nothing-text text-xs sm:text-sm opacity-60">
-                  📍 Marseille, France • 🌍 Remote friendly
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

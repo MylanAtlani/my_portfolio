@@ -1,0 +1,365 @@
+'use client';
+
+import { useInView } from '@/hooks/use-in-view';
+import { useState } from 'react';
+import { 
+  Mail, 
+  Phone, 
+  MessageCircle, 
+  Calendar, 
+  Clock,
+  ArrowRight,
+  Send,
+  CheckCircle,
+  ExternalLink,
+  Linkedin,
+  Globe
+} from 'lucide-react';
+
+interface ContactMethod {
+  id: string;
+  icon: any;
+  title: string;
+  description: string;
+  action: string;
+  href: string;
+  color: string;
+  gradient: string;
+  popular?: boolean;
+}
+
+const contactMethods: ContactMethod[] = [
+  {
+    id: 'email',
+    icon: Mail,
+    title: 'Email Direct',
+    description: 'Discussion détaillée de votre projet',
+    action: 'Envoyer un email',
+    href: 'mailto:atlani.mylan@gmail.com',
+    color: 'var(--nothing-blue)',
+    gradient: 'from-blue-400 to-indigo-500',
+    popular: true
+  },
+  {
+    id: 'linkedin',
+    icon: Linkedin,
+    title: 'LinkedIn',
+    description: 'Connexion professionnelle rapide',
+    action: 'Se connecter',
+    href: 'https://www.linkedin.com/in/mylan-atlani',
+    color: 'var(--nothing-green)',
+    gradient: 'from-green-400 to-blue-500'
+  },
+  {
+    id: 'whatsapp',
+    icon: MessageCircle,
+    title: 'WhatsApp',
+    description: 'Chat rapide et réactif',
+    action: 'Démarrer le chat',
+    href: 'https://wa.me/33123456789',
+    color: 'var(--nothing-orange)',
+    gradient: 'from-green-400 to-emerald-500'
+  },
+  {
+    id: 'portfolio',
+    icon: Globe,
+    title: 'Portfolio Complet',
+    description: 'Voir tous mes projets en détail',
+    action: 'Visiter le site',
+    href: 'https://moonimize.collective.work/',
+    color: 'var(--nothing-yellow)',
+    gradient: 'from-purple-400 to-pink-500'
+  }
+];
+
+export function ContactCTASection() {
+  const [ref, inView] = useInView({ threshold: 0.2 });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    project: '',
+    budget: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          project: '',
+          budget: '',
+          message: ''
+        });
+      }, 3000);
+    }, 2000);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  return (
+    <section id="contact" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
+          <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
+            Discutons de Votre Projet
+          </h2>
+          <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
+          <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
+            <span className="hidden sm:inline">
+              Disponible pour missions freelance de 2 jours/semaine à temps plein
+            </span>
+            <span className="sm:hidden">
+              Discutons de vos enjeux tech
+            </span>
+          </p>
+        </div>
+
+        {/* Availability Banner */}
+        <div className={`flex justify-center mb-12 sm:mb-16 transform transition-all duration-700 ${
+          inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          <div className="inline-flex items-center space-x-3 px-6 py-3 nothing-glass rounded-full">
+            <div className="nothing-status"></div>
+            <Clock className="w-4 h-4 text-[var(--nothing-green)]" />
+            <span className="nothing-text text-sm font-medium">
+              Disponible à partir de Mars 2025 • Réponse sous 24h
+            </span>
+          </div>
+        </div>
+
+        {/* Contact Methods Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
+          {contactMethods.map((method, index) => {
+            const IconComponent = method.icon;
+            
+            return (
+              <a
+                key={method.id}
+                href={method.href}
+                target={method.id !== 'email' ? '_blank' : undefined}
+                rel={method.id !== 'email' ? 'noopener noreferrer' : undefined}
+                className={`nothing-card group relative overflow-hidden text-center transform transition-all duration-700 hover:scale-105 ${
+                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 150}ms`
+                }}
+              >
+                {/* Popular Badge */}
+                {method.popular && (
+                  <div className="absolute top-4 right-4 px-2 py-1 bg-[var(--nothing-orange)] text-black text-xs font-bold rounded-full">
+                    DIRECT
+                  </div>
+                )}
+
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+
+                <div className="relative p-6 sm:p-8">
+                  {/* Icon */}
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 nothing-glass rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="nothing-title text-lg font-light mb-2">
+                    {method.title}
+                  </h3>
+                  <p className="nothing-text text-sm opacity-70 mb-4">
+                    {method.description}
+                  </p>
+
+                  {/* Action */}
+                  <div className="flex items-center justify-center space-x-2 nothing-text text-sm font-medium group-hover:text-[var(--nothing-orange)] transition-colors duration-300">
+                    <span>{method.action}</span>
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Contact Form */}
+        <div className={`max-w-4xl mx-auto transform transition-all duration-700 ${
+          inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`} style={{ transitionDelay: '600ms' }}>
+          <div className="nothing-card p-8 sm:p-12">
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="nothing-title text-2xl sm:text-3xl font-light mb-4">
+                Formulaire de Contact Rapide
+              </h3>
+              <p className="nothing-text opacity-70">
+                Partagez-moi les détails de votre projet pour une réponse personnalisée
+              </p>
+            </div>
+
+            {!isSubmitted ? (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Form Grid */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block nothing-text text-sm font-medium mb-2">
+                      Nom complet *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
+                      placeholder="Votre nom"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block nothing-text text-sm font-medium mb-2">
+                      Email professionnel *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
+                      placeholder="votre@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block nothing-text text-sm font-medium mb-2">
+                      Entreprise
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
+                      placeholder="Nom de votre entreprise"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block nothing-text text-sm font-medium mb-2">
+                      Type de projet
+                    </label>
+                    <select
+                      name="project"
+                      value={formData.project}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
+                    >
+                      <option value="">Sélectionner un type</option>
+                      <option value="cto-fractionne">CTO Fractionné</option>
+                      <option value="lead-dev">Lead Developer</option>
+                      <option value="audit-express">Audit Express</option>
+                      <option value="refonte">Refonte Architecture</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block nothing-text text-sm font-medium mb-2">
+                      Budget approximatif
+                    </label>
+                    <select
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
+                    >
+                      <option value="">Sélectionner une fourchette</option>
+                                             <option value="3k-10k">3k - 10k €</option>
+                       <option value="10k-25k">10k - 25k €</option>
+                       <option value="25k-50k">25k - 50k €</option>
+                       <option value="50k+">50k € et plus</option>
+                      <option value="à-discuter">À discuter</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block nothing-text text-sm font-medium mb-2">
+                    Description du projet *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300 resize-none"
+                    placeholder="Décrivez votre projet, vos enjeux techniques, et vos attentes..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="nothing-btn-primary flex items-center space-x-3 px-8 py-4 group"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                        <span>Envoi en cours...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        <span>Envoyer le message</span>
+                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div className="text-center py-12">
+                <CheckCircle className="w-16 h-16 text-[var(--nothing-green)] mx-auto mb-6" />
+                <h3 className="nothing-title text-2xl font-light mb-4">
+                  Message envoyé avec succès !
+                </h3>
+                <p className="nothing-text opacity-70">
+                  Je vous répondrai dans les 24h. En attendant, n'hésitez pas à consulter mon portfolio complet.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+} 

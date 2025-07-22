@@ -27,7 +27,9 @@ export function Footer() {
   const quickLinks = [
     { name: 'Accueil', href: '#home' },
     { name: 'Expertise', href: '#expertise' },
+    { name: 'Technologies', href: '#technologies' },
     { name: 'Projets', href: '#projects' },
+    { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -44,7 +46,7 @@ export function Footer() {
     <footer className="relative py-20 px-6 lg:px-8 border-t border-white/10">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-96 h-96 nothing-gradient-orange rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto">
@@ -55,10 +57,12 @@ export function Footer() {
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-full nothing-gradient-orange"></div>
                   <div className="absolute top-1 right-1 nothing-status"></div>
                 </div>
-                <span className="nothing-title text-2xl font-light">ATLANI Mylan</span>
+                <div className="flex flex-col">
+                  <span className="nothing-title text-2xl font-light tracking-widest">M·A</span>
+                  <span className="nothing-text text-sm opacity-60">Mylan Atlani</span>
+                </div>
               </div>
               
               <p className="nothing-text max-w-md opacity-70 leading-relaxed">
@@ -88,13 +92,20 @@ export function Footer() {
                 <li key={service}>
                   <a 
                     href="#contact" 
-                    className="nothing-text text-sm opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center space-x-2 group"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector('#contact');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="nothing-text text-sm opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center space-x-2 group cursor-pointer select-none"
                   >
                     <div 
-                      className="w-1 h-1 rounded-full nothing-gradient-orange opacity-60 group-hover:opacity-100 transition-opacity"
+                      className="w-1 h-1 rounded-full bg-white/40 opacity-60 group-hover:opacity-100 transition-opacity"
                       style={{ animationDelay: `${index * 100}ms` }}
                     ></div>
-                    <span>{service}</span>
+                    <span className="select-none">{service}</span>
                   </a>
                 </li>
               ))}
@@ -109,13 +120,20 @@ export function Footer() {
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="nothing-text text-sm opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center space-x-2 group"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="nothing-text text-sm opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center space-x-2 group cursor-pointer select-none"
                   >
                     <div 
-                      className="w-1 h-1 rounded-full nothing-gradient-orange opacity-60 group-hover:opacity-100 transition-opacity"
+                      className="w-1 h-1 rounded-full bg-white/40 opacity-60 group-hover:opacity-100 transition-opacity"
                       style={{ animationDelay: `${index * 100}ms` }}
                     ></div>
-                    <span>{link.name}</span>
+                    <span className="select-none">{link.name}</span>
                   </a>
                 </li>
               ))}

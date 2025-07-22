@@ -13,8 +13,10 @@ export function Navbar() {
 
   const navigation = [
     { name: t('home'), href: '#home' },
-    { name: t('about'), href: '#about' },
+    { name: 'Expertise', href: '#expertise' },
+    { name: 'Technologies', href: '#technologies' },
     { name: t('projects'), href: '#projects' },
+    { name: 'Services', href: '#services' },
     { name: t('contact'), href: '#contact' },
   ];
 
@@ -37,11 +39,10 @@ export function Navbar() {
           {/* Logo Nothing OS */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="relative">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full nothing-gradient-orange"></div>
               <div className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 nothing-status scale-75 sm:scale-100"></div>
             </div>
-            <span className="nothing-title text-lg sm:text-2xl font-light">
-              ATLANI
+            <span className="nothing-title text-lg sm:text-2xl font-light tracking-widest">
+              M·A
             </span>
           </div>
 
@@ -51,14 +52,21 @@ export function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="relative group py-2 nothing-text text-sm font-medium transition-all duration-300 hover:text-(--nothing-orange)"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector(item.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="relative group py-2 nothing-text text-sm font-medium transition-all duration-300 hover:text-(--nothing-orange) cursor-pointer select-none"
                 style={{ 
                   animationDelay: `${index * 100}ms`,
                   animation: 'nothing-slide-up 0.6s ease-out'
                 }}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 nothing-gradient-orange transition-all duration-300 group-hover:w-full rounded-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white/40 transition-all duration-300 group-hover:w-full rounded-full"></span>
               </a>
             ))}
           </div>
@@ -109,8 +117,15 @@ export function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block py-2 sm:py-3 px-3 sm:px-4 nothing-glass rounded-lg sm:rounded-xl nothing-text font-medium transition-all duration-300 hover:scale-105 hover:text-(--nothing-orange) text-sm sm:text-base"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    const element = document.querySelector(item.href);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="block py-2 sm:py-3 px-3 sm:px-4 nothing-glass rounded-lg sm:rounded-xl nothing-text font-medium transition-all duration-300 hover:scale-105 hover:text-(--nothing-orange) text-sm sm:text-base cursor-pointer select-none"
                   style={{ 
                     animationDelay: `${index * 100}ms`,
                     animation: isOpen ? 'nothing-slide-up 0.6s ease-out' : 'none'
