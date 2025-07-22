@@ -1,11 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Code2, Zap, Palette, Mail, Download, Github, ExternalLink, Linkedin, Server, Database, Cloud } from 'lucide-react';
+import { ArrowRight, Code2, Zap, Palette, Mail, Download, Github, ExternalLink, Linkedin, Server, Database, Cloud, Award, Users, Globe, Shield, Briefcase, GraduationCap } from 'lucide-react';
 import { ProgressDots } from '@/components/ui/progress-dots';
+import { useInView } from '@/hooks/use-in-view';
 
 export default function HomePage() {
   const t = useTranslations('home');
+  const [techRef, techInView] = useInView({ threshold: 0.3 });
+  const [projectsRef, projectsInView] = useInView({ threshold: 0.1 });
 
   const features = [
     {
@@ -30,28 +33,125 @@ export default function HomePage() {
 
   const projects = [
     {
-      title: 'Ciffréo Bona - Lead Developer',
+      title: 'Ciffréo Bona',
+      role: 'Lead Developer',
       description: 'Architecture backend moderne avec Go & NestJS, intégration OpenSearch, pipelines CI/CD et connexion ERP. Latence divisée par 2.',
-      technologies: ['Go', 'NestJS', 'OpenSearch', 'Docker', 'PayXpert'],
+      technologies: ['Go', 'NestJS', 'OpenSearch', 'Docker', 'PayXpert', 'GitHub Actions'],
       status: 'active',
       gradient: 'from-blue-400 to-purple-500',
-      period: '2024-2025'
+      period: 'Déc 2024 - Juin 2025',
+      type: 'Lead Dev',
+      icon: Server
     },
     {
-      title: 'Petpalz.io - CTO',
+      title: 'Petpalz.io',
+      role: 'CTO',
       description: 'Plateforme mobile-first de santé animale from scratch. API NestJS/Go, app Flutter, interface Next.js et infrastructure PostgreSQL.',
-      technologies: ['NestJS', 'Go', 'Flutter', 'Next.js', 'PostgreSQL'],
+      technologies: ['NestJS', 'Go', 'Flutter', 'Next.js', 'PostgreSQL', 'CI/CD'],
       status: 'active',
       gradient: 'from-green-400 to-blue-500',
-      period: '2024-2025'
+      period: 'Avr 2024 - Mai 2025',
+      type: 'CTO',
+      icon: Briefcase
     },
     {
-      title: 'Woman & Luxury - Fullstack',
+      title: 'Thales Digital Identity',
+      role: 'Chef de projet technique',
+      description: 'Projet national stratégique pour la carte Vitale numérique. Gestion de work packages critiques et coordination multi-sites.',
+      technologies: ['Sécurité', 'SESAM-Vitale', 'Agile', 'Multi-timezone'],
+      status: 'completed',
+      gradient: 'from-red-400 to-orange-500',
+      period: 'Oct 2023 - Mai 2024',
+      type: 'Chef de projet',
+      icon: Shield
+    },
+    {
+      title: 'La Plateforme_',
+      role: 'Responsable pédagogique',
+      description: 'Responsable des cursus Cybersécurité, Réseau et Développement. Création contenus, évaluation et suivi des apprenants.',
+      technologies: ['Cybersécurité', 'Réseau IP', 'Pédagogie', 'Evaluation'],
+      status: 'completed',
+      gradient: 'from-purple-400 to-pink-500',
+      period: 'Août 2022 - Oct 2023',
+      type: 'Education',
+      icon: GraduationCap
+    },
+    {
+      title: 'KBRW',
+      role: 'Lead Software Engineer',
+      description: 'Solutions WMS/OMS pour grands groupes (Michelin, LVMH, PSA). Architecture Elixir, NodeJS, React avec déploiement Jenkins.',
+      technologies: ['Elixir', 'NodeJS', 'React', 'SOLR', 'AWS', 'Jenkins'],
+      status: 'completed',
+      gradient: 'from-indigo-400 to-blue-500',
+      period: 'Nov 2020 - Sept 2021',
+      type: 'Lead Dev',
+      icon: Server
+    },
+    {
+      title: 'Woman & Luxury',
+      role: 'Freelance Développeur FullStack',
       description: 'Application mobile de mode complète : API NestJS, back-office React, interface créateurs Next.js, microservices Python/Go sur Azure.',
       technologies: ['NestJS', 'React', 'Next.js', 'Python', 'Go', 'Azure'],
       status: 'active',
       gradient: 'from-orange-400 to-red-500',
-      period: '2019-2025'
+      period: 'Mai 2019 - Mars 2025',
+      type: 'Fullstack',
+      icon: Code2
+    },
+    {
+      title: 'NEXEN Partners',
+      role: 'Architecte informatique',
+      description: 'Scripts Python pour déploiement AWS, documentation architecture réseau nationale SAMU, POCs ReactJS et VueJS.',
+      technologies: ['Python', 'AWS', 'ReactJS', 'VueJS', 'Architecture'],
+      status: 'completed',
+      gradient: 'from-teal-400 to-green-500',
+      period: 'Mars 2020 - Juil 2020',
+      type: 'Stage',
+      icon: Cloud
+    },
+    {
+      title: 'DIZIO LAB',
+      role: 'Chef de projet & Product owner',
+      description: 'Management équipe de 3 développeurs, coordination projets parallèles, audits techniques Android, gestion relations clients.',
+      technologies: ['Management', 'Android', 'Ruby', 'Product Owner'],
+      status: 'completed',
+      gradient: 'from-cyan-400 to-blue-500',
+      period: 'Sept 2019 - Fév 2020',
+      type: 'Management',
+      icon: Users
+    },
+    {
+      title: 'Epitech VR Project',
+      role: 'Développeur chef de projet',
+      description: 'Visite virtuelle école Epitech Marseille avec Unity en collaboration avec 3Drudder. Management équipe de 5 développeurs.',
+      technologies: ['Unity', 'VR', 'C#', 'Management', '3D'],
+      status: 'completed',
+      gradient: 'from-violet-400 to-purple-500',
+      period: 'Mai 2017 - Mai 2018',
+      type: 'Projet étudiant',
+      icon: Award
+    },
+    {
+      title: 'Groupe SII',
+      role: 'Développeur VR',
+      description: 'Établissement pôle VR/AR. Visualisation ordinateur démonté en réalité augmentée avec casque Daqri.',
+      technologies: ['VR', 'AR', 'Daqri', 'Visualisation 3D'],
+      status: 'completed',
+      gradient: 'from-emerald-400 to-teal-500',
+      period: 'Oct 2017 - Fév 2018',
+      type: 'Stage',
+      icon: Globe
+    },
+    {
+      title: 'Friool.com',
+      role: 'Développeur web',
+      description: 'Plateforme de billetterie associative sport. Développement fullstack Ruby on Rails et JavaScript en télétravail.',
+      technologies: ['Ruby on Rails', 'JavaScript', 'Billetterie'],
+      status: 'completed',
+      gradient: 'from-amber-400 to-orange-500',
+      period: 'Juil 2016 - Déc 2016',
+      type: 'Stage',
+      icon: Code2
     }
   ];
 
@@ -215,8 +315,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      {/* Technologies Section avec animations */}
+      <section ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
@@ -227,100 +327,134 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {technologies.map((tech, index) => (
-              <div key={tech.name} className="nothing-card">
+              <div 
+                key={tech.name} 
+                className={`nothing-card transform transition-all duration-700 ${
+                  techInView 
+                    ? 'translate-y-0 opacity-100' 
+                    : 'translate-y-8 opacity-0'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 150}ms` 
+                }}
+              >
                 <div className="flex items-center justify-between mb-4">
                   <span className="nothing-text font-medium text-sm sm:text-base">{tech.name}</span>
                   <span className="nothing-text text-xs sm:text-sm opacity-60">{tech.level}%</span>
                 </div>
                 
-                {/* Barre de progression en dots Nothing OS */}
-                <ProgressDots percentage={tech.level} delay={index * 100} />
+                {/* Barre de progression en dots Nothing OS avec animation */}
+                <ProgressDots 
+                  percentage={tech.level} 
+                  delay={techInView ? index * 100 : 0} 
+                  animate={techInView}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      {/* Projects Section avec animations */}
+      <section ref={projectsRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
             <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-              Projets Récents
+              Projets & Missions
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 nothing-gradient-orange mx-auto rounded-full mb-6 sm:mb-8"></div>
             <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
               <span className="hidden sm:inline">
-                Missions récentes en tant que Lead Dev et CTO : architecture backend, refonte et infrastructures scalables
+                8 ans d'expérience en Lead Dev, CTO et architecture backend - Des startups aux grands groupes
               </span>
               <span className="sm:hidden">
-                Missions Lead Dev et CTO récentes
+                8 ans d'expérience Lead Dev et CTO
               </span>
             </p>
           </div>
 
           {/* Projects Grid */}
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 sm:gap-8">
-            {projects.map((project, index) => (
-              <div 
-                key={project.title} 
-                className="nothing-card group overflow-hidden p-0"
-                style={{ 
-                  animationDelay: `${index * 200}ms`,
-                  animation: 'nothing-slide-up 0.8s ease-out'
-                }}
-              >
-                {/* Project Image/Preview */}
-                <div className={`h-48 sm:h-56 lg:h-64 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center space-x-1.5 sm:space-x-2">
-                    <div className={`nothing-status scale-75 sm:scale-100 ${project.status === 'active' ? 'bg-(--nothing-green)' : 'bg-(--nothing-yellow)'}`}></div>
-                    <span className="text-white text-xs font-medium">
-                      {project.status === 'active' ? 'Actif' : 'Dev'}
-                    </span>
+            {projects.map((project, index) => {
+              const IconComponent = project.icon;
+              return (
+                <div 
+                  key={`${project.title}-${project.period}`} 
+                  className={`nothing-card group overflow-hidden p-0 transform transition-all duration-700 ${
+                    projectsInView 
+                      ? 'translate-y-0 opacity-100 scale-100' 
+                      : 'translate-y-12 opacity-0 scale-95'
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 150}ms`
+                  }}
+                >
+                  {/* Project Header */}
+                  <div className={`h-48 sm:h-56 lg:h-64 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                    
+                    {/* Status & Type */}
+                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center space-x-1.5 sm:space-x-2">
+                      <div className={`nothing-status scale-75 sm:scale-100 ${project.status === 'active' ? 'bg-(--nothing-green)' : 'bg-(--nothing-blue)'}`}></div>
+                      <span className="text-white text-xs font-medium">
+                        {project.status === 'active' ? 'Actif' : 'Terminé'}
+                      </span>
+                    </div>
+                    
+                    {/* Period */}
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                      <span className="text-white/80 text-xs font-medium px-2 py-1 nothing-glass rounded-full">
+                        {project.period}
+                      </span>
+                    </div>
+
+                    {/* Type Badge */}
+                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                      <span className="text-white text-xs font-medium px-3 py-1 nothing-glass rounded-full flex items-center space-x-1">
+                        <IconComponent className="w-3 h-3" />
+                        <span>{project.type}</span>
+                      </span>
+                    </div>
+                    
+                    {/* Hover Actions */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="flex space-x-3 sm:space-x-4">
+                        <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
+                          <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+                        <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
+                          <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                    <span className="text-white/80 text-xs font-medium px-2 py-1 nothing-glass rounded-full">
-                      {project.period}
-                    </span>
-                  </div>
-                  
-                  {/* Hover Actions */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="flex space-x-3 sm:space-x-4">
-                      <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
-                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </button>
-                      <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </button>
+
+                  {/* Project Info */}
+                  <div className="p-4 sm:p-6 lg:p-8">
+                    <div className="mb-2">
+                      <h3 className="nothing-title text-lg sm:text-xl font-light">{project.title}</h3>
+                      <p className="nothing-text text-sm opacity-60">{project.role}</p>
+                    </div>
+                    <p className="nothing-text text-xs sm:text-sm opacity-70 mb-4 sm:mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {project.technologies.map((tech) => (
+                        <span 
+                          key={tech}
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 nothing-glass rounded-full text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                {/* Project Info */}
-                <div className="p-4 sm:p-6 lg:p-8">
-                  <h3 className="nothing-title text-lg sm:text-xl font-light mb-2 sm:mb-3">{project.title}</h3>
-                  <p className="nothing-text text-xs sm:text-sm opacity-70 mb-4 sm:mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {project.technologies.map((tech) => (
-                      <span 
-                        key={tech}
-                        className="px-2 sm:px-3 py-0.5 sm:py-1 nothing-glass rounded-full text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
