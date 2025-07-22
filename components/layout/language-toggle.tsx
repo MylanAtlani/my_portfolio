@@ -3,16 +3,29 @@
 import * as React from 'react';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
+import { useEffect, useRef } from 'react';
 
 export function LanguageToggle() {
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const scrollPositionRef = useRef<number>(0);
 
   const toggleLanguage = () => {
+    // Sauvegarder la position de scroll avant le changement
+    scrollPositionRef.current = window.scrollY;
+    
     const newLocale = currentLocale === 'fr' ? 'en' : 'fr';
-    router.push(pathname, { locale: newLocale });
+    router.replace(pathname, { locale: newLocale, scroll: false });
   };
+
+  // Restaurer la position de scroll après le changement de langue
+  useEffect(() => {
+    if (scrollPositionRef.current > 0) {
+      window.scrollTo(0, scrollPositionRef.current);
+      scrollPositionRef.current = 0; // Reset pour éviter les restaurations multiples
+    }
+  }, [currentLocale]);
 
   const languages = {
     fr: { 
