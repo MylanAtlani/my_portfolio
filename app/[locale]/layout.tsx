@@ -14,7 +14,7 @@ import '../globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://atlani-mylan.github.io'),
+  metadataBase: new URL('https://my-portfolio-tau-eight-60.vercel.app'),
   title: 'Mylan Atlani | Lead Dev Freelance & CTO',
   description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes avec Go, NestJS et Next.js. 8 ans d\'expérience au service des startups et scale-ups.',
   keywords: 'mylan atlani, lead developer, cto freelance, go, nestjs, nextjs, architecture backend, refonte, ci/cd, docker, postgresql, marseille, freelance',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://atlani-mylan.github.io',
+    url: 'https://my-portfolio-tau-eight-60.vercel.app',
     title: 'Mylan Atlani | Lead Dev Freelance & CTO',
     description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes avec Go, NestJS et Next.js.',
     siteName: 'Mylan Atlani Portfolio',
@@ -78,7 +78,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning className="scroll-smooth">
       <head>
-        <link rel="canonical" href="https://atlani-mylan.github.io" />
+        <link rel="canonical" href="https://my-portfolio-tau-eight-60.vercel.app" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/favicon.png" />

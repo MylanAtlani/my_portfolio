@@ -13,13 +13,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ['image/webp', 'image/avif'],
-    unoptimized: true, // Nécessaire pour l'export statique
   },
-  // Configuration pour GitHub Pages
-  output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
-  distDir: 'out',
 };
 
 export default withNextIntl(nextConfig);
