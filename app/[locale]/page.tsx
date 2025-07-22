@@ -470,17 +470,17 @@ export default function HomePage() {
                       )}
                     </div>
                     
-                    {/* Hover Actions */}
+                    {/* Hover Actions
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="flex space-x-3 sm:space-x-4">
-                        <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
+                      <div className="flex space-x-3 sm:space-x-14">
+                        <button className="p-2 sm:p-3 bg-black/10 backdrop-blur-sm rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
                           <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
-                        <button className="p-2 sm:p-3 nothing-glass rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
+                        <button className="p-2 sm:p-3 bg-black/10 backdrop-blur-sm rounded-lg sm:rounded-xl text-white hover:scale-110 transition-transform">
                           <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       </div>
-                    </div>
+                    </div>*/}
                   </div>
 
                   {/* Project Info */}
