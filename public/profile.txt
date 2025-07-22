@@ -1,0 +1,323 @@
+Coordonnées
+atlani-mylan@hotmail.fr
+www.linkedin.com/in/mylan-atlani
+(LinkedIn)
+moonimize.collective.work/ (Other)
+Principales compétences
+Go
+PostgreSQL
+Mylan Atlani
+Lead Dev Freelance / Chef de projet – Refacto, structuration & mise
+en production de backends robustes · NestJS · Next.js · Go · CI/CD
+Marseille, Provence-Alpes-Côte d’Azur, France
+Résumé
+J’aide les startups et scale-ups à structurer, industrialiser et livrer
+des backends robustes, évolutifs et documentés.
+Docker
+Languages
+Anglais (Professional Working)
+Ingénieur logiciel (EPITECH, M2), avec 8 ans d’expérience dont 7
+en freelance, j’interviens comme CTO fractionné, lead developer ou
+expert backend auprès d’équipes en croissance ou en difficulté.
+Francais (Native or Bilingual)
+Mes missions types :
+– Refonte ou mise en place d’architecture (Go, NestJS, Next.js)
+– Structuration CI/CD & infrastructure scalable (Docker, Traefik,
+PostgreSQL, AWS)
+– Conseil stratégique sur le choix techno, la dette technique et le
+delivery
+– Audit express ou intervention d’urgence pour redresser un projet
+✅ Mes clients apprécient :
+– Mon autonomie sur les projets complexes
+– Ma capacité à accompagner produit & technique ensemble
+– Ma transparence, mon efficacité, et ma pédagogie dans la
+transmission
+Je suis disponible pour des missions freelance de 2 jours/semaine à
+temps plein, en CTO part-time, lead dev ou consultant architecture.
+Discutons de vos enjeux tech → atlani.mylan@gmail.com
+Expérience
+Ciffréo Bona
+Lead Developer
+décembre 2024 - juin 2025 (7 mois)
+Marseille, Provence-Alpes-Côte d’Azur, France
+Contexte :
+Page 1 of 10– Stack legacy peu maintenable, dette technique importante
+– Manque de scalabilité et de fiabilité pour accompagner la croissance
+– Besoin de synchroniser en temps réel le stock, les produits et les
+commandes
+Mes interventions :
+– Architecture backend moderne avec Go & NestJS
+– Intégration d’un moteur de recherche performant via OpenSearch
+– Mise en place de pipelines CI/CD (Docker, GitHub Actions)
+– Connexion API ERP et système de stock
+– Intégration des paiements via PayXpert
+– Conseil technique régulier auprès de l'équipe et des décideurs
+✅ Résultats :
+– Amélioration significative des performances (latence divisée par 2)
+– Déploiement fiable en production sans interruption de service
+– Stack documentée, modulaire et évolutive
+– Gain de productivité pour l’équipe interne
+Petpalz.io
+CTO
+avril 2024 - mai 2025 (1 an 2 mois)
+Contexte :
+– Création from scratch d’une plateforme mobile-first pour la gestion de la
+santé animale
+– Objectif : accompagner les particuliers et professionnels (vétérinaires,
+éducateurs) sur une même solution
+– Besoin d’une architecture scalable et modulaire pour soutenir les futures
+évolutions (marketplace, abonnements, CRM, etc.)
+Mes interventions :
+– Conception et développement d’une API backend robuste avec NestJS et
+Go
+– Développement de l’application mobile grand public sous Flutter
+– Création d’une interface dédiée aux professionnels avec Next.js
+– Mise en place de l’architecture cloud et d’une base de données relationnelle
+PostgreSQL
+– Configuration des pipelines CI/CD pour automatiser les déploiements
+– Définition de la stratégie produit et accompagnement technique de la vision
+long terme
+Page 2 of 10✅ Résultats :
+– Lancement d’une première version stable auprès des premiers utilisateurs
+– Expérience fluide côté client et back-office professionnel
+– Infrastructure prête pour l’ouverture aux partenaires externes (vétérinaires,
+éducateurs, marques)
+– Base technique solide pour l’ajout de nouvelles fonctionnalités (notifications,
+paiements, IA, etc.)
+Woman and Luxury
+Freelance Développeur FullStack
+mai 2019 - mars 2025 (5 ans 11 mois)
+Paris
+Projet :
+Lancement d’une application mobile inédite dédiée à la mode, combinant
+réseau social, inspiration et création de contenu pour une startup ambitieuse
+dans l’univers du luxe féminin.
+Objectifs principaux :
+– Construire une stack technique complète et scalable pour un produit mobile
+grand public
+– Offrir une expérience fluide aux créateurs comme aux utilisateurs via un
+écosystème multi-interface
+– Structurer la gestion projet et technique dans un environnement startup
+early-stage
+Mes rôles et interventions :
+– Développement de l’API principale en NestJS, Express & orchestration via
+PM2
+– Conception et développement du back-office en ReactJS pour la modération
+et la gestion interne
+– Création de l’interface dédiée aux créateurs de contenu avec Next.js
+– Mise en place et maintenance de microservices en Python et Go
+– Architecture cloud pensée pour la scalabilité sur Microsoft Azure
+– Pilotage complet du projet tech (chefferie de projet, roadmap, sprints,
+documentation)
+– Conseil stratégique : choix des stacks, design system, organisation des
+repos GitHub / Bitbucket
+– Automatisation des déploiements avec Docker, Jenkins et intégration de CI/
+CD
+Page 3 of 10– Suivi produit via Jira et documentation technique sur Confluence
+Impact :
+– Écosystème digital complet livré pour une première levée de fonds
+– MVP opérationnel avec infrastructure cloud modulaire
+– Vision technique claire posée pour les futures évolutions de la plateforme
+Thales Digital Identity and Security (ex Gemalto)
+Freelance - Chef de projet technique et responsable Ingénierie
+Solutions
+octobre 2023 - mai 2024 (8 mois)
+France
+Mission à haute sensibilité
+Intervention sur un projet national stratégique visant à sécuriser la carte Vitale
+numérique, avec des exigences fortes en matière de confidentialité, intégrité et
+conformité réglementaire.
+Environnement projet
+– Collaboration étroite avec les équipes SESAM-Vitale
+– Delivery réparti sur 3 sites : France, République tchèque, Singapour
+– Contexte multiculturel, multi-timezone, haute exigence sécurité & qualité
+Responsabilités clés
+– Gestion de work packages techniques et fonctionnels critiques
+– Supervision technique des équipes (rôle de SEM) et animation des rituels
+agiles
+– Interface directe entre les pôles développement, test, sécurité et le client final
+– Suivi rigoureux du planning, des livrables et des indicateurs de qualité
+– Production de documentation projet répondant aux standards de
+l’administration
+Résultats marquants
+– Livraison sécurisée des modules clés de la carte Vitale numérique
+– Coordination fluide et continue malgré les différences de fuseaux horaires
+– Structuration des échanges inter-équipes et réduction notable des frictions
+projet
+– Amélioration de la visibilité client et du pilotage global du delivery
+La Plateforme_
+2 ans 1 mois
+Page 4 of 10Responsable pédagogique Cybersécurité Systèmes, Cloud et Réseau
+& Responsable pédagogique Logiciel
+août 2022 - octobre 2023 (1 an 3 mois)
+Marseille, Provence-Alpes-Côte d’Azur, France
+La Plateforme le campus méditerranéen du numérique !
+Des parcours frais de scolarité à zéro euros, ouverts à tous les talents, sans
+conditions de ressources et de diplômes.
+Un lieu de rencontre entre entreprises et apprenants pour le bénéfice de tous !
+Dans ce contexte je suis responsable pédagogique des cursus Administrateur
+cybersécurité, technicien réseau IP et développeur logiciel.
+Mes missions sont les suivantes :
+- Création et élaboration des contenus pédagogiques
+- Accompagnement des apprenants
+- Evaluation et suivi des apprenants
+- Gestion du bon déroulement de l'année
+- Référent technique
+- Mise en place des examens sur plateau technique
+- Suivi personnel des étudiants
+- Evolution des cursus via les retours des entreprises
+- Gestion et Achat du matériel technique (Baie de serveur, switch, enregistreur
+NVR, etc...)
+Responsable cybersécurité et développement sécurisé
+octobre 2021 - août 2022 (11 mois)
+Marseille, Provence-Alpes-Côte d’Azur, France
+KBRW
+Lead Software Engineer
+novembre 2020 - septembre 2021 (11 mois)
+Clermont-Ferrand, Auvergne-Rhône-Alpes, France
+La solution d’OMS de KBRW est une solution d’OMS global intégrant la
+gestion des inventaires, l’orchestration distribuée de commandes, la gestion
+de commandes omnicanales et la relation client.
+Robuste, évolutive et sur-mesure, la solution d’OMS de KBRW repose sur une
+expertise métier acquise au contact de clients leaders. Elle s’appuie sur une
+plateforme complètement maîtrisée, reposant sur des briques open sources
+développés en interne et maintenues par une communauté très active.
+Page 5 of 10Depuis 2009, la solution d’OMS de Kbrw, a permis le lancement de nombreux
+projets stratégiques avec des grands groupes Internationaux comme Auchan,
+LVMH, PSA et le Groupe Casino.
+En tant que Lead developer Fullstack pour développer des solutions WMS
+OMS pour des grands groupes comme :
+- Michelin
+- CLOG
+- LVMH
+- PSA
+Voici une liste de compétences qui m'ont été demandé lors de mon travail
+chez KBRW:
+- Gestion de projet
+- Relationnel client
+- Gestion des sprints
+- Gestion d'équipe
+- Développement de solution OMS WMS avec Elixir , NodeJS, React et
+Webflow
+- Déploiement via Jenkins
+- Utilisation de SOLR
+- Utilisation de AWS
+- Utilisation BDD Riak
+NEXEN Partners
+Architecte informatique
+mars 2020 - juillet 2020 (5 mois)
+Paris et périphérie
+Nexen Partners
+Nous nous construisons autour de la conviction que veiller autant à la
+satisfaction de ses clients qu'à celle de ses collaborateurs est le seul modèle
+durable.
+Nous formons un cabinet de conseil en systèmes d’information qui a des
+valeurs rares.
+https://www.nexen.partners
+Stage de fin d'études que j'ai réalisé en tant qu'Architecte Cloud.
+Page 6 of 10J'ai travaillé notamment sur plusieurs aspects :
+- Création de scripts python pour du déploiement AWS
+- Création de documentation pour une architecture réseau nationale pour le
+SAMU.
+- Création de POC en ReactJS et VueJS pour la création d'interface rapide
+pour les clients
+DIZIO LAB
+Chef de projet & Product owner
+septembre 2019 - février 2020 (6 mois)
+Région de Marseille, France
+J'ai effectué un stage en alternance en tant que chef de projet chez Dizio
+Lab, où j'étais en charge d'une équipe de trois développeurs web et mobiles.
+Pendant mon temps là-bas, j'ai eu plusieurs responsabilités :
+La coordination de plusieurs projets en parallèle
+La réalisation d'audits techniques sur des applications Android
+La conception d'un site web vitrine pour l'entreprise, dont voici le lien : https://
+www.diziolab.com
+La gestion des relations clients
+La fonction de référent technique pour Android et Ruby
+Woman and luxury
+Développeur back-end
+avril 2018 - août 2018 (5 mois)
+Pendant mon stage de troisième année, j'ai occupé le poste de développeur
+Fullstack pour une application de réseau social centrée sur le monde de la
+mode. Les compétences requises et mises en œuvre lors de ce stage étaient
+les suivantes :
+- Conception et développement de l'API en utilisant Ruby on Rails
+- Administration et gestion des serveurs hébergés chez AWS
+- Création d'un backoffice basé sur Ruby on Rails
+- Développement de l'application Android en utilisant le langage Kotlin
+- Mise en œuvre de Docker pour l'API
+- Gestion et manipulation de la base de données PostgreSQL
+Epitech
+2 ans 8 mois
+Développeur chef de projet
+Page 7 of 10mai 2017 - mai 2018 (1 an 1 mois)
+En tant que chef de projet et développeur au sein d'une équipe de cinq,
+j'ai contribué au développement d'une visite virtuelle pour l'école Epitech
+à Marseille. Ce projet ambitieux a permis aux utilisateurs d'explorer
+l'établissement d'une manière immersive et interactive.
+Le projet a été réalisé en utilisant Unity, un moteur de jeu puissant, pour créer
+l'environnement de réalité virtuelle. En plus de mes responsabilités de gestion
+de projet, j'ai également participé activement au développement technique,
+contribuant directement à la conception et à la programmation de l'application.
+Nous avons collaboré avec 3Drudder, une entreprise innovante dans le
+domaine de la réalité virtuelle, pour intégrer leur solution de déplacement
+novatrice. Cette technologie a permis d'améliorer l'expérience utilisateur,
+en offrant une manière plus naturelle et intuitive de se déplacer dans
+l'environnement virtuel de l'école.
+Ce projet nous a permis non seulement de développer nos compétences
+techniques en Unity et en réalité virtuelle, mais aussi de travailler en
+partenariat avec une entreprise innovante du secteur, en contribuant à un
+produit qui améliore l'accessibilité et l'exploration de l'école Epitech Marseille.
+Vice-president Hub Innovation Epitech Marseille
+février 2017 - septembre 2017 (8 mois)
+Région de Marseille, France
+Développeur Mobile
+octobre 2015 - juillet 2017 (1 an 10 mois)
+Région de Marseille, France
+Partenariat avec Le Delta Festival
+Gagnant Hackathon Airbus-Kedge
+avril 2017 - avril 2017 (1 mois)
+Région de Marseille, France
+Groupe SII
+Développeur VR
+octobre 2017 - février 2018 (5 mois)
+En collaboration avec Nicolas Sabas, nous avons contribué à l'établissement
+du pôle de réalité virtuelle (VR) et augmentée (AR) de l'entreprise SII située
+Page 8 of 10à Aix-en-Provence. Dans ce cadre, nous avons travaillé sur des projets de
+visualisation en VR et AR, utilisant notamment le casque innovant de Daqri.
+L'un des projets marquants sur lesquels nous avons travaillé a été la création
+d'une visualisation d'un ordinateur démonté, présenté en vue éclatée. Cette
+présentation unique permettait aux utilisateurs de voir et d'interagir avec
+les différents composants de l'ordinateur en réalité augmentée. Chaque
+composant, une fois sélectionné, offrait des informations détaillées, permettant
+ainsi aux utilisateurs d'obtenir une compréhension approfondie de la structure
+et du fonctionnement interne de l'ordinateur.
+Cette expérience a non seulement permis de renforcer mes compétences
+techniques dans le domaine de la VR et de l'AR, mais aussi d'appliquer ces
+technologies de manière innovante pour créer des outils éducatifs interactifs et
+immersifs. En tant que co-fondateur de ce pôle VR/AR, j'ai également acquis
+une expérience précieuse en matière de gestion de projet et de travail en
+équipe.
+Friool.com
+Développeur web
+juillet 2016 - décembre 2016 (6 mois)
+Marseille
+J'ai effectué mon stage de fin de première année chez Friool, où j'ai occupé le
+poste de développeur Fullstack, travaillant principalement avec Ruby on Rails
+et JavaScript sur un projet de billetterie associative dédiée au sport.
+Mes responsabilités dans ce projet comprenaient :
+- Conception et développement du site web et du serveur en utilisant Ruby on
+Rails et JavaScript
+- Mise en production et déploiement en environnement de test
+- Gestion autonome de mes tâches, le stage ayant été réalisé entièrement en
+télétravail
+- Fourniture de conseils techniques concernant l'intégration de nouvelles
+fonctionnalités
+Formation
+EPITECH - European Institute of Technology
+Page 9 of 10Master, Informatique · (2015 - 2020)
+Université Laval
+Management de projet , Marketing , architecte informatique · (2018 - 2019)
+Lycée l'Empéri
+Baccalauréat S, informatique et sciences du numériques · (2012 - 2015)
+Page 10 of 10

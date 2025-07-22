@@ -1,0 +1,43 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Toggle language"
+  },
+  "home": {
+    "title": "Lead Dev Freelance & CTO",
+    "subtitle": "Backend refactoring, structuring & production deployment",
+    "description": "I help startups and scale-ups structure, industrialize and deliver robust and scalable backends with Go, NestJS and Next.js.",
+    "cta": "Discover my projects",
+    "ctaContact": "Let's discuss your challenges"
+  },
+  "about": {
+    "title": "About",
+    "description": "EPITECH software engineer with 8 years of experience including 7 as a freelancer, specialized in robust backend architecture."
+  },
+  "projects": {
+    "title": "Recent Projects",
+    "subtitle": "Lead Dev and CTO missions",
+    "viewProject": "View project",
+    "viewCode": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Available for freelance missions",
+    "description": "Freelance missions from 2 days/week to full-time - Part-time CTO, Lead Dev or architecture consultant.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js and Tailwind CSS",
+    "location": "Marseille, France"
+  }
+} 

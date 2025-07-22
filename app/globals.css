@@ -1,0 +1,367 @@
+@import 'tailwindcss';
+
+/* Configuration Tailwind v4 directement dans le CSS */
+@theme {
+  --font-family-nothing: 'NDot47', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  --color-nothing-orange: #FF6B35;
+  --color-nothing-red: #FF4757;
+  --color-nothing-yellow: #FFC048;
+  --color-nothing-green: #2ED573;
+  --color-nothing-blue: #3742FA;
+  
+  --color-nothing-gray-50: #FAFAFA;
+  --color-nothing-gray-100: #F5F5F5;
+  --color-nothing-gray-200: #EEEEEE;
+  --color-nothing-gray-800: #212121;
+  --color-nothing-gray-900: #0A0A0A;
+}
+
+/* Police Nothing OS */
+@font-face {
+  font-family: 'NDot47';
+  src: url('/fonts/ndot-47.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variables Nothing OS */
+:root {
+  /* Couleurs principales Nothing */
+  --nothing-orange: #FF6B35;
+  --nothing-red: #FF4757;
+  --nothing-yellow: #FFC048;
+  --nothing-green: #2ED573;
+  --nothing-blue: #3742FA;
+  
+  /* Grays Nothing */
+  --nothing-gray-50: #FAFAFA;
+  --nothing-gray-100: #F5F5F5;
+  --nothing-gray-200: #EEEEEE;
+  --nothing-gray-800: #212121;
+  --nothing-gray-900: #0A0A0A;
+  
+  /* Typographie */
+  --font-nothing: 'NDot47', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Curseur Nothing OS - Flèche en dots */
+* {
+  cursor: none;
+}
+
+/* Curseur flèche Nothing OS composé de dots */
+.nothing-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.05s ease-out;
+}
+
+/* Flèche en dots - Structure SVG-like avec CSS */
+.nothing-cursor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-image: 
+ 
+    /* Corps flèche */
+    radial-gradient(circle at 10px 2px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 10px 6px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 14px 6px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 10px 10px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 14px 10px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 18px 10px, var(--nothing-orange) 1px, transparent 1px),
+    /* Pointe flèche */
+    radial-gradient(circle at 10px 14px, var(--nothing-orange) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 4px var(--nothing-orange));
+}
+
+/* États du curseur Nothing OS */
+.nothing-cursor.hover::before {
+  background-image: 
+    /* Flèche hover - rouge */
+
+    radial-gradient(circle at 10px 2px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 10px 6px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 14px 6px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 10px 10px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 14px 10px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 18px 10px, var(--nothing-red) 1px, transparent 1.2px),
+    /* Pointe flèche */
+    radial-gradient(circle at 10px 14px, var(--nothing-red) 1px, transparent 1.2px);
+  filter: drop-shadow(0 0 8px var(--nothing-red));
+  transform: scale(1.1);
+}
+
+.nothing-cursor.click::before {
+  background-image: 
+    /* Flèche click - jaune */
+ 
+    radial-gradient(circle at 10px 2px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 10px 6px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 14px 6px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 10px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 14px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 18px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
+    /* Pointe flèche */
+    radial-gradient(circle at 10px 14px, var(--nothing-yellow) 1px, transparent 1.4px);
+  filter: drop-shadow(0 0 12px var(--nothing-yellow));
+  transform: scale(0.9);
+}
+
+/* Curseur texte - I-beam en dots */
+.nothing-cursor.text {
+  width: 16px;
+  height: 20px;
+}
+
+.nothing-cursor.text::before {
+  background-image: 
+    /* I-beam vertical */
+    radial-gradient(circle at 8px 2px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 5px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 8px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 11px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 14px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 17px, var(--nothing-blue) 1px, transparent 1px),
+    /* Barres horizontales */
+    radial-gradient(circle at 4px 2px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 12px 2px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 4px 17px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 12px 17px, var(--nothing-blue) 1px, transparent 1px);
+  background-size: 16px 20px;
+  filter: drop-shadow(0 0 4px var(--nothing-blue));
+  animation: nothing-cursor-blink 1.2s ease-in-out infinite;
+}
+
+/* Animation clignotement pour curseur texte */
+@keyframes nothing-cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Masquer le curseur sur les éléments interactifs */
+button, a, input, textarea, select, [role="button"], [tabindex]:not([tabindex="-1"]) {
+  cursor: none !important;
+}
+
+/* Curseur pour les zones de texte */
+input, textarea, [contenteditable] {
+  cursor: none !important;
+}
+
+/* Base styles Nothing OS */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Désactiver l'édition par défaut partout */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Réactiver la sélection sur les éléments qui en ont besoin */
+input, textarea, [contenteditable="true"], p, span, div.selectable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+body {
+  font-family: var(--font-system);
+  background-color: var(--nothing-gray-50);
+  color: var(--nothing-gray-900);
+  /* Empêcher l'édition du body */
+  -webkit-user-modify: read-only;
+}
+
+.dark body {
+  background-color: var(--nothing-gray-900);
+  color: var(--nothing-gray-50);
+}
+
+/* Typography Nothing OS */
+.nothing-title {
+  font-family: var(--font-nothing);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.nothing-text {
+  font-family: var(--font-system);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+/* Glass morphism Nothing OS */
+.nothing-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .nothing-glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradients Nothing OS */
+.nothing-gradient-orange {
+  background: linear-gradient(135deg, var(--nothing-orange) 0%, var(--nothing-red) 100%);
+}
+
+.nothing-gradient-text {
+  background: linear-gradient(135deg, var(--nothing-orange) 0%, var(--nothing-red) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Boutons Nothing OS */
+.nothing-btn-primary {
+  background: linear-gradient(135deg, var(--nothing-orange) 0%, var(--nothing-red) 100%);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: none;
+}
+
+.nothing-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+}
+
+.nothing-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  color: var(--nothing-gray-900);
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: none;
+}
+
+.dark .nothing-btn-secondary {
+  color: var(--nothing-gray-50);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.nothing-btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cards Nothing OS */
+.nothing-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.dark .nothing-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nothing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.dark .nothing-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations Nothing OS */
+@keyframes nothing-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes nothing-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes nothing-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nothing-animate-float {
+  animation: nothing-float 6s ease-in-out infinite;
+}
+
+.nothing-animate-pulse {
+  animation: nothing-pulse 2s ease-in-out infinite;
+}
+
+.nothing-animate-slide-up {
+  animation: nothing-slide-up 0.8s ease-out;
+}
+
+/* Status dots Nothing OS */
+.nothing-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nothing-green);
+  box-shadow: 0 0 20px var(--nothing-green);
+  animation: nothing-pulse 2s ease-in-out infinite;
+}
+
+/* Scrollbar Nothing OS */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nothing-orange);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nothing-red);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 107, 53, 0.2);
+  color: var(--nothing-gray-900);
+}
