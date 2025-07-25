@@ -5,12 +5,12 @@ import { Inter } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from '@/providers/theme-provider';
+import { ToasterProvider } from '@/providers/toaster-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { NothingCursor } from '@/components/ui/nothing-cursor';
 import { EditProtection } from '@/components/ui/edit-protection';
-import { GoogleTagManager } from '@/components/ui/gtm';
-import { ToasterProvider } from '@/providers/toaster-provider';
+import Script from 'next/script';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -64,12 +64,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
   width: 'device-width',
   initialScale: 1,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' },
-  ],
   maximumScale: 1,
 };
 
@@ -108,29 +108,53 @@ export default async function LocaleLayout({
         <meta name="geo.placename" content="Marseille" />
         <meta name="geo.position" content="43.296482;5.369780" />
         <meta name="ICBM" content="43.296482, 5.369780" />
+        
+        {/* Google Tag Manager - DANS LE HEAD */}
+        <Script
+          id="gtm-head"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-MZNXKQ24');
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
       </head>
       <body className={`${inter.className} antialiased min-h-screen`}>
+        {/* Google Tag Manager (noscript) - JUSTE APRÈS <body> */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MZNXKQ24"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        
         <ThemeProvider>
-          <ToasterProvider>
           <NextIntlClientProvider messages={messages}>
-            {/* Google Tag Manager */}
-            <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-            
-            {/* Curseur Nothing OS Custom */}
-            <NothingCursor />
-            
-            {/* Protection contre l'édition accidentelle */}
-            <EditProtection />
-            
-            <div className="min-h-screen flex flex-col">
-              <Navbar />
-              <main className="flex-1 relative">
-                {children}
-              </main>
-              <Footer />
-            </div>
+            <ToasterProvider>
+              {/* Curseur Nothing OS Custom */}
+              <NothingCursor />
+              
+              {/* Protection contre l'édition accidentelle */}
+              <EditProtection />
+              
+              <div className="min-h-screen flex flex-col">
+                <Navbar />
+                <main className="flex-1 relative">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </ToasterProvider>
           </NextIntlClientProvider>
-          </ToasterProvider>
         </ThemeProvider>
       </body>
     </html>
