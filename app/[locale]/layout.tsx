@@ -9,42 +9,58 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { NothingCursor } from '@/components/ui/nothing-cursor';
 import { EditProtection } from '@/components/ui/edit-protection';
+import { GoogleTagManager } from '@/components/ui/gtm';
 import { ToasterProvider } from '@/providers/toaster-provider';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://my-portfolio-tau-eight-60.vercel.app'),
-  title: 'Mylan Atlani | Lead Dev Freelance & CTO',
-  description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes avec Go, NestJS et Next.js. 8 ans d\'expérience au service des startups et scale-ups.',
-  keywords: 'mylan atlani, lead developer, cto freelance, go, nestjs, nextjs, architecture backend, refonte, ci/cd, docker, postgresql, marseille, freelance',
+  metadataBase: new URL('https://mylanatlani.com'),
+  title: 'Mylan Atlani | Lead Dev Freelance & CTO - Marseille',
+  description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes avec Go, NestJS et Next.js. 8 ans d\'expérience au service des startups et scale-ups à Marseille.',
+  keywords: 'mylan atlani, lead developer, cto freelance, go, nestjs, nextjs, architecture backend, refonte, ci/cd, docker, postgresql, marseille, freelance, développeur freelance, cto fractionné',
   authors: [{ name: 'Mylan Atlani' }],
   creator: 'Mylan Atlani',
   publisher: 'Mylan Atlani',
-  robots: 'index, follow',
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.png', type: 'image/png' }
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.png',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  alternates: {
+    canonical: 'https://mylanatlani.com',
+    languages: {
+      'fr': 'https://mylanatlani.com/fr',
+      'en': 'https://mylanatlani.com/en',
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://my-portfolio-tau-eight-60.vercel.app',
-    title: 'Mylan Atlani | Lead Dev Freelance & CTO',
+    url: 'https://mylanatlani.com',
+    title: 'Mylan Atlani | Lead Dev Freelance & CTO - Marseille',
     description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes avec Go, NestJS et Next.js.',
     siteName: 'Mylan Atlani Portfolio',
-    images: ['/favicon.png'],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mylan Atlani - Lead Dev Freelance & CTO',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mylan Atlani | Lead Dev Freelance & CTO',
     description: 'Lead Dev Freelance & CTO spécialisé dans la refonte d\'architectures backend robustes.',
+    images: ['/og-image.png'],
   },
+  verification: {
+    google: 'votre-code-verification-google',
+    yandex: 'votre-code-verification-yandex',
+    yahoo: 'votre-code-verification-yahoo',
+  },
+  category: 'technology',
+  classification: 'Portfolio professionnel',
+  referrer: 'origin-when-cross-origin',
 };
 
 export const viewport: Viewport = {
@@ -52,8 +68,9 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' }
-  ]
+    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' },
+  ],
+  maximumScale: 1,
 };
 
 export function generateStaticParams() {
@@ -82,7 +99,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning className="scroll-smooth">
       <head>
-        <link rel="canonical" href="https://my-portfolio-tau-eight-60.vercel.app" />
+        <link rel="canonical" href="https://mylanatlani.com" />
         <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
         <link rel="icon" href="/favicon.png?v=2" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico?v=2" />
@@ -96,6 +113,9 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <ToasterProvider>
           <NextIntlClientProvider messages={messages}>
+            {/* Google Tag Manager */}
+            <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+            
             {/* Curseur Nothing OS Custom */}
             <NothingCursor />
             

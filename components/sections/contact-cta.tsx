@@ -21,6 +21,7 @@ import { validateContactForm } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Honeypot } from '@/components/ui/honeypot';
+import { useGTM } from '@/hooks/use-gtm';
 
 interface ContactMethod {
   id: string;
@@ -38,6 +39,7 @@ export function ContactCTASection() {
   const t = useTranslations('contact');
   const [ref, inView] = useInView({ threshold: 0.2 });
   const { toasts, removeToast, showSuccess, showError } = useToast();
+  const { trackContactForm } = useGTM();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -109,6 +111,9 @@ export function ContactCTASection() {
       const result = await sendContactEmail(formData);
       
       if (result.success) {
+        // Tracking GTM
+        trackContactForm(formData);
+        
         showSuccess('Message envoyé avec succès ! Je vous répondrai dans les 24h.');
         
         // Reset form
