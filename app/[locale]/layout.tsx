@@ -9,6 +9,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { NothingCursor } from '@/components/ui/nothing-cursor';
 import { EditProtection } from '@/components/ui/edit-protection';
+import { ToasterProvider } from '@/providers/toaster-provider';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -93,6 +94,7 @@ export default async function LocaleLayout({
       </head>
       <body className={`${inter.className} antialiased min-h-screen`}>
         <ThemeProvider>
+          <ToasterProvider>
           <NextIntlClientProvider messages={messages}>
             {/* Curseur Nothing OS Custom */}
             <NothingCursor />
@@ -108,6 +110,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
           </NextIntlClientProvider>
+          </ToasterProvider>
         </ThemeProvider>
       </body>
     </html>

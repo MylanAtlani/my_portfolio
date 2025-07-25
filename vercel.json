@@ -1,14 +1,12 @@
 {
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/fr",
-      "permanent": true
+  "functions": {
+    "app/api/contact/route.ts": {
+      "maxDuration": 30
     }
-  ],
+  },
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/api/contact",
       "headers": [
         {
           "key": "X-Content-Type-Options",

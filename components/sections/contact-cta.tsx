@@ -16,6 +16,11 @@ import {
   Linkedin,
   Globe
 } from 'lucide-react';
+import { sendContactEmail } from '@/lib/email';
+import { validateContactForm } from '@/lib/validation';
+import { useToast } from '@/hooks/use-toast';
+import { Toaster } from '@/components/ui/toaster';
+import { Honeypot } from '@/components/ui/honeypot';
 
 interface ContactMethod {
   id: string;
@@ -32,6 +37,8 @@ interface ContactMethod {
 export function ContactCTASection() {
   const t = useTranslations('contact');
   const [ref, inView] = useInView({ threshold: 0.2 });
+  const { toasts, removeToast, showSuccess, showError } = useToast();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,7 +48,6 @@ export function ContactCTASection() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const contactMethods: ContactMethod[] = [
     {
@@ -89,16 +95,23 @@ export function ContactCTASection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation côté client
+    const validation = validateContactForm(formData);
+    if (!validation.isValid) {
+      showError(validation.errors[0]);
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    try {
+      const result = await sendContactEmail(formData);
       
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
+      if (result.success) {
+        showSuccess('Message envoyé avec succès ! Je vous répondrai dans les 24h.');
+        
+        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -107,8 +120,15 @@ export function ContactCTASection() {
           budget: '',
           message: ''
         });
-      }, 3000);
-    }, 2000);
+      } else {
+        showError(result.error || 'Erreur lors de l\'envoi du message');
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      showError('Erreur de connexion. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -119,112 +139,97 @@ export function ContactCTASection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
-          <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
-            {t('title')}
-          </h2>
-          <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
-          <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
-            <span className="hidden sm:inline">
-              {t('subtitle')}
-            </span>
-            <span className="sm:hidden">
-              {t('subtitle')}
-            </span>
-          </p>
+    <>
+      <section id="contact" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
+        {/* Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
         </div>
 
-        {/* Availability Banner */}
-        <div className={`flex justify-center mb-12 sm:mb-16 transform transition-all duration-700 ${
-          inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-        }`}>
-          <div className="inline-flex items-center space-x-3 px-6 py-3 nothing-glass rounded-full">
-            <div className="nothing-status"></div>
-            <Clock className="w-4 h-4 text-[var(--nothing-green)]" />
-            <span className="nothing-text text-sm font-medium">
-              {t('description')}
-            </span>
+        <div className="max-w-7xl mx-auto relative">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
+            <h2 className="nothing-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6">
+              {t('title')}
+            </h2>
+            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 mx-auto rounded-full mb-6 sm:mb-8"></div>
+            <p className="nothing-text text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto opacity-70 px-4 sm:px-0">
+              {t('subtitle')}
+            </p>
           </div>
-        </div>
 
-        {/* Contact Methods Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
-          {contactMethods.map((method, index) => {
-            const IconComponent = method.icon;
-            
-            return (
-              <a
-                key={method.id}
-                href={method.href}
-                target={method.id !== 'email' ? '_blank' : undefined}
-                rel={method.id !== 'email' ? 'noopener noreferrer' : undefined}
-                className={`nothing-card group relative overflow-hidden text-center transform transition-all duration-700 hover:scale-105 ${
-                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 150}ms`
-                }}
-              >
-                {/* Popular Badge */}
-                {method.popular && (
-                  <div className="absolute top-4 right-4 px-2 py-1 bg-[var(--nothing-orange)] text-black text-xs font-bold rounded-full">
-                    {t('popular_badge')}
+          {/* Contact Methods Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
+            {contactMethods.map((method, index) => {
+              const IconComponent = method.icon;
+              
+              return (
+                <a
+                  key={method.id}
+                  href={method.href}
+                  target={method.id !== 'email' ? '_blank' : undefined}
+                  rel={method.id !== 'email' ? 'noopener noreferrer' : undefined}
+                  className={`nothing-card group relative overflow-hidden text-center transform transition-all duration-700 hover:scale-105 ${
+                    inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 150}ms`
+                  }}
+                >
+                  {/* Popular Badge */}
+                  {method.popular && (
+                    <div className="absolute top-4 right-4 px-2 py-1 bg-[var(--nothing-orange)] text-black text-xs font-bold rounded-full">
+                      {t('popular_badge')}
+                    </div>
+                  )}
+
+                  {/* Background Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+
+                  <div className="relative p-6 sm:p-8">
+                    {/* Icon */}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 nothing-glass rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="w-6 h-6 sm:w-8 sm:h-8" />
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="nothing-title text-lg font-light mb-2">
+                      {method.title}
+                    </h3>
+                    <p className="nothing-text text-sm opacity-70 mb-4">
+                      {method.description}
+                    </p>
+
+                    {/* Action */}
+                    <div className="flex items-center justify-center space-x-2 nothing-text text-sm font-medium group-hover:text-[var(--nothing-orange)] transition-colors duration-300">
+                      <span>{method.action}</span>
+                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
-                )}
+                </a>
+              );
+            })}
+          </div>
 
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+          {/* Contact Form */}
+          <div className={`max-w-4xl mx-auto transform transition-all duration-700 ${
+            inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`} style={{ transitionDelay: '600ms' }}>
+            <div className="nothing-card p-8 sm:p-12">
+              <div className="text-center mb-8 sm:mb-12">
+                <h3 className="nothing-title text-2xl sm:text-3xl font-light mb-4">
+                  {t('form_title')}
+                </h3>
+                <p className="nothing-text opacity-70">
+                  {t('form_description')}
+                </p>
+              </div>
 
-                <div className="relative p-6 sm:p-8">
-                  {/* Icon */}
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 nothing-glass rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="nothing-title text-lg font-light mb-2">
-                    {method.title}
-                  </h3>
-                  <p className="nothing-text text-sm opacity-70 mb-4">
-                    {method.description}
-                  </p>
-
-                  {/* Action */}
-                  <div className="flex items-center justify-center space-x-2 nothing-text text-sm font-medium group-hover:text-[var(--nothing-orange)] transition-colors duration-300">
-                    <span>{method.action}</span>
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-
-        {/* Contact Form */}
-        <div className={`max-w-4xl mx-auto transform transition-all duration-700 ${
-          inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-        }`} style={{ transitionDelay: '600ms' }}>
-          <div className="nothing-card p-8 sm:p-12">
-            <div className="text-center mb-8 sm:mb-12">
-              <h3 className="nothing-title text-2xl sm:text-3xl font-light mb-4">
-                {t('form_title')}
-              </h3>
-              <p className="nothing-text opacity-70">
-                {t('form_description')}
-              </p>
-            </div>
-
-            {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot - invisible pour les utilisateurs */}
+                <Honeypot name="website" />
+                
                 {/* Form Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -237,6 +242,7 @@ export function ContactCTASection() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
+                      maxLength={100}
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
                       placeholder={t('form_name_placeholder')}
                     />
@@ -252,6 +258,7 @@ export function ContactCTASection() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
+                      maxLength={254}
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
                       placeholder={t('form_email_placeholder')}
                     />
@@ -301,10 +308,10 @@ export function ContactCTASection() {
                       className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300"
                     >
                       <option value="">{t('form_budget_select_option')}</option>
-                                             <option value="3k-10k">{t('form_budget_3k_10k_option')}</option>
-                       <option value="10k-25k">{t('form_budget_10k_25k_option')}</option>
-                       <option value="25k-50k">{t('form_budget_25k_50k_option')}</option>
-                       <option value="50k+">{t('form_budget_50k_option')}</option>
+                      <option value="3k-10k">{t('form_budget_3k_10k_option')}</option>
+                      <option value="10k-25k">{t('form_budget_10k_25k_option')}</option>
+                      <option value="25k-50k">{t('form_budget_25k_50k_option')}</option>
+                      <option value="50k+">{t('form_budget_50k_option')}</option>
                       <option value="à-discuter">{t('form_budget_a_discuter_option')}</option>
                     </select>
                   </div>
@@ -321,9 +328,13 @@ export function ContactCTASection() {
                     onChange={handleInputChange}
                     required
                     rows={4}
+                    maxLength={2000}
                     className="w-full px-4 py-3 nothing-glass rounded-xl focus:ring-2 focus:ring-[var(--nothing-orange)] outline-none transition-all duration-300 resize-none"
                     placeholder={t('form_message_placeholder')}
                   />
+                  <div className="text-xs text-gray-400 mt-1">
+                    {formData.message.length}/2000 caractères
+                  </div>
                 </div>
 
                 {/* Submit Button */}
@@ -331,7 +342,7 @@ export function ContactCTASection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="nothing-btn-primary flex items-center space-x-3 px-8 py-4 group"
+                    className="nothing-btn-primary flex items-center space-x-3 px-8 py-4 group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -348,20 +359,13 @@ export function ContactCTASection() {
                   </button>
                 </div>
               </form>
-            ) : (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-[var(--nothing-green)] mx-auto mb-6" />
-                <h3 className="nothing-title text-2xl font-light mb-4">
-                  Message envoyé avec succès !
-                </h3>
-                <p className="nothing-text opacity-70">
-                  Je vous répondrai dans les 24h. En attendant, n'hésitez pas à consulter mon portfolio complet.
-                </p>
-              </div>
-            )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Toaster */}
+      <Toaster toasts={toasts} onRemove={removeToast} />
+    </>
   );
-} 
+}
