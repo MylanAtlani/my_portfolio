@@ -18,8 +18,8 @@ export function Footer() {
       icon: Mail,
     },
     {
-      name: 'Portfolio',
-      href: 'https://moonimize.collective.work/',
+      name: 'Malt',
+      href: 'https://malt.fr/profile/mylanatlani',
       icon: Globe,
     },
   ];

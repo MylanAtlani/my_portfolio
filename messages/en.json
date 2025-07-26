@@ -421,9 +421,9 @@
       "description": "Quick and responsive chat",
       "action": "Start chat"
     },
-    "portfolio": {
-      "title": "Complete Portfolio",
-      "description": "See all my projects in detail",
+    "malt": {
+      "title": "Malt",
+      "description": "See my Malt profile",
       "action": "Visit site"
     },
     "form": {

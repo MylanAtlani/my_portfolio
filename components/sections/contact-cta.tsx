@@ -79,17 +79,17 @@ export function ContactCTASection() {
       title: t('whatsapp.title'),
       description: t('whatsapp.description'),
       action: t('whatsapp.action'),
-      href: 'https://wa.me/33123456789',
+      href: 'https://wa.me/330658068199',
       color: 'var(--nothing-orange)',
       gradient: 'from-green-400 to-emerald-500'
     },
     {
-      id: 'portfolio',
+      id: 'malt',
       icon: Globe,
-      title: t('portfolio.title'),
-      description: t('portfolio.description'),
-      action: t('portfolio.action'),
-      href: 'https://moonimize.collective.work/',
+      title: t('malt.title'),
+      description: t('malt.description'),
+      action: t('malt.action'),
+      href: 'https://malt.fr/profile/mylanatlani',
       color: 'var(--nothing-yellow)',
       gradient: 'from-purple-400 to-pink-500'
     }

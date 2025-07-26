@@ -426,9 +426,9 @@
       "description": "Chat rapide et réactif",
       "action": "Démarrer le chat"
     },
-    "portfolio": {
-      "title": "Portfolio Complet",
-      "description": "Voir tous mes projets en détail",
+    "malt": {
+      "title": "Malt",
+      "description": "Voir mon profil Malt",
       "action": "Visiter le site"
     },
     "form": {
