@@ -2,13 +2,20 @@
 
 import { useTranslations } from 'next-intl';
 import { useInView } from '@/hooks/use-in-view';
-import { getProjects } from '@/data/projects';
+import { getDetailedProjects } from '@/data/projects';
+import { adaptProjectsForLegacy } from '@/lib/project-adapter';
 import { OptimizedImage } from '@/components/ui/optimized-image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { ExternalLink } from 'lucide-react';
 
 export function ProjectsSection() {
   const t = useTranslations();
+  const params = useParams();
+  const locale = params?.locale as string || 'fr';
   const [projectsRef, projectsInView] = useInView({ threshold: 0.1 });
-  const projects = getProjects(t);
+  const detailedProjects = getDetailedProjects(t);
+  const projects = adaptProjectsForLegacy(detailedProjects);
 
   return (
     <section id="projects" ref={projectsRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
@@ -34,9 +41,10 @@ export function ProjectsSection() {
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             return (
-              <div 
-                key={`${project.title}-${project.period}`} 
-                className={`nothing-card group overflow-hidden p-0 transform transition-all duration-700 ${
+              <Link 
+                key={`${project.title}-${project.period}`}
+                href={`/${locale}/projects/${project.id}`}
+                className={`nothing-card group overflow-hidden p-0 transform transition-all duration-700 hover:scale-105 block ${
                   projectsInView 
                     ? 'translate-y-0 opacity-100 scale-100' 
                     : 'translate-y-12 opacity-0 scale-95'
@@ -62,8 +70,15 @@ export function ProjectsSection() {
                     </div>
                   </div>
                   
+                  {/* Link indicator */}
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <ExternalLink className="w-4 h-4 text-white" />
+                    </div>
+                  </div>
+                  
                   {/* Status & Type */}
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center space-x-1.5 sm:space-x-2">
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center space-x-1.5 sm:space-x-2">
                     <div className={`nothing-status scale-75 sm:scale-100 ${project.status === 'active' ? 'bg-(--nothing-green)' : 'bg-(--nothing-blue)'}`}></div>
                     <span className="text-white text-xs font-medium">
                       {project.status === 'active' ? t('projects.active') : t('projects.completed')}
@@ -71,7 +86,7 @@ export function ProjectsSection() {
                   </div>
                   
                   {/* Period */}
-                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                  <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4">
                     <span className="text-white/80 text-xs font-medium px-2 py-1 nothing-glass rounded-full">
                       {project.period}
                     </span>
@@ -117,7 +132,7 @@ export function ProjectsSection() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

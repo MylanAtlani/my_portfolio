@@ -1,0 +1,167 @@
+EXPÉRIENCES
+Lead developer
+Ci réo Bona - Marseille - France - Décembre 2024 à mai 2025
+Contexte
+Stack legacy peu maintenable, dette technique importante
+Manque de scalabilité et de ﬁabilité pour accompagner la croissance
+Besoin de synchroniser en temps réel le stock, les produits et les commandes
+Missions
+Architecture backend moderne avec Go & NestJS
+Intégration d’un moteur de recherche performant via OpenSearch en Go
+Frontend development (Next.js)
+Mise en place de pipelines CI/CD (Docker, GitHub Actions)
+Mise en place de pipelines CI/CD (Docker, GitHub Actions)
+Connexion API ERP et système de stock
+intégration des paiements via PayXpert
+Conseil technique régulier auprès de l'équipe et des décideurs
+Résultats
+Amélioration signiﬁcative des performances (latence divisée par 2)
+Déploiement ﬁable en production sans interruption de service
+Stack documentée, modulaire et évolutive
+Gain de productivité pour l’équipe interne
+Environnement technique
+NestJS, Golang, Next.js
+AWS, GitHub Actions, Docker
+CI/CD
+Technical Project Manager & Head of Solution Engineering
+Thales DIS - Gémenos - France - Octobre 2023 à mai 2024
+Contexte
+Mission à haute sensibilité
+Intervention sur un projet national stratégique visant à sécuriser la carte Vitale numérique, avec des exigences fortes en matière de
+conﬁdentialité, intégrité et conformité réglementaire.
+Missions
+Environnement projet
+– Collaboration étroite avec les équipes SESAM-Vitale
+– Delivery réparti sur 3 sites : France, République tchèque, Singapour
+– Contexte multiculturel, multi-timezone, haute exigence sécurité & qualité
+Gestion de work packages techniques et fonctionnels critiques
+Supervision technique des équipes (rôle de SEM) et animation des rituels agiles
+Interface directe entre les pôles développement, test, sécurité et le client ﬁnal
+Suivi rigoureux du planning, des livrables et des indicateurs de qualité
+Production de documentation projet répondant aux standards de l’administration
+Résultats
+Livraison sécurisée des modules clés de la carte Vitale numérique
+Coordination ﬂuide et continue malgré les di érences de fuseaux horaires
+Structuration des échanges inter-équipes et réduction notable des frictions projet
+Ekkiden Group
+Paris, Lyon, Sophia Antipolis, Lille, Genève, Lausanne, Munich, Madrid
+www.ekkiden.com
+2/5Amélioration de la visibilité client et du pilotage global du delivery
+Environnement technique
+Cloud on premise
+Android
+iOS
+Gestion de projet
+Référent technique
+CTO
+PetPalz.io - Marseille - Avril 2024 à mai 2025
+Contexte
+Création from scratch d’une plateforme mobile-ﬁrst pour la gestion de la santé animale
+Objectif : accompagner les particuliers et professionnels (vétérinaires, éducateurs) sur une même solution
+Besoin d’une architecture scalable et modulaire pour soutenir les futures évolutions (marketplace, abonnements, CRM, etc.)
+Missions
+Conception et développement d’une API backend robuste avec NestJS et Go
+Développement de l’application mobile grand public sous Flutter
+Création d’une interface dédiée aux professionnels avec Next.js
+Mise en place de l’architecture cloud et d’une base de données relationnelle PostgreSQL
+Conﬁguration des pipelines CI/CD pour automatiser les déploiements avec docker swarm
+Déﬁnition de la stratégie produit et accompagnement technique de la vision long terme
+Résultats
+Lancement d’une première version stable auprès des premiers utilisateurs
+Expérience ﬂuide côté client et back-o ce professionnel
+Infrastructure prête pour l’ouverture aux partenaires externes (vétérinaires, éducateurs, marques)
+Base technique solide pour l’ajout de nouvelles fonctionnalités (notiﬁcations, paiements, IA, etc.)
+Environnement technique
+NestJS, Go, NextJS, Flutter
+Docker Swarm
+CTO & FullStack Developer
+Woman & Luxury - Marseille - 2019 à janvier 2025
+Contexte
+Lancement d’une application mobile inédite dédiée à la mode, combinant réseau social, inspiration et création de contenu pour une startup
+ambitieuse dans l’univers du luxe féminin.
+Construire une stack technique complète et scalable pour un produit mobile grand public
+O rir une expérience ﬂuide aux créateurs comme aux utilisateurs via un écosystème multi-interface
+Structurer la gestion projet et technique dans un environnement startup early-stage
+Missions
+Développement de l’API principale en NestJS, Go & orchestration via PM2
+Conception et développement du back-o ce en ReactJS pour la modération et la gestion interne
+Création de l’interface dédiée aux créateurs de contenu avec Next.js
+Mise en place et maintenance de microservices en Python et Go
+Ekkiden Group
+Paris, Lyon, Sophia Antipolis, Lille, Genève, Lausanne, Munich, Madrid
+www.ekkiden.com
+3/5Architecture cloud pensée pour la scalabilité sur Microsoft Azure
+Pilotage complet du projet tech (che erie de projet, roadmap, sprints, documentation)
+Conseil stratégique : choix des stacks, design system, organisation des repos GitHub / Bitbucket
+Automatisation des déploiements avec Docker, Jenkins et intégration de CI/CD
+Suivi produit via Jira et documentation technique sur Conﬂuence
+Résultats
+Écosystème digital complet livré pour une première levée de fonds
+MVP opérationnel avec infrastructure cloud modulaire
+Vision technique claire posée pour les futures évolutions de la plateforme
+Environnement technique
+NestJS, Go et NextJS
+GitHub Actions, Docker
+CI/CD, DevOps
+Azure, MongoDB Atlas
+Cybersecurity & Software Teaching Lead
+LaPlateforme_ - Marseille??? - France - 2021 à 2023
+Contexte
+La Plateforme le campus méditerranéen du numérique !
+Des parcours frais de scolarité à zéro euros, ouverts à tous les talents, sans conditions de ressources et de diplômes.
+Un lieu de rencontre entre entreprises et apprenants pour le bénéﬁce de tous !
+Dans ce contexte je suis responsable pédagogique des cursus Administrateur cybersécurité, technicien réseau IP et développeur logiciel.
+Missions
+Création et élaboration des contenus pédagogiques
+Accompagnement des apprenants
+Evaluation et suivi des apprenants
+Gestion du bon déroulement de l'année
+Référent technique
+Mise en place des examens sur plateau technique
+Suivi personnel des étudiants
+Evolution des cursus via les retours des entreprises
+Gestion et Achat du matériel technique (Baie de serveur, switch, enregistreur NVR, etc...)
+Développement interne de l'infrastructure technique de l’école (Cloud, Serveur locaux, connectivité des locaux)
+Lead Software Engineer
+KBRW - Clermont-ferrand - France - 2020 à 2021
+Contexte
+La solution d’OMS de KBRW est une solution d’OMS global intégrant la gestion des inventaires, l’orchestration distribuée de commandes, la
+gestion de commandes omnicanales et la relation client.
+Robuste, évolutive et sur-mesure, la solution d’OMS de KBRW repose sur une expertise métier acquise au contact de clients leaders. Elle
+s’appuie sur une plateforme complètement maîtrisée, reposant sur des briques open sources développés en interne et maintenues par une
+communauté très active.
+Depuis 2009, la solution d’OMS de Kbrw, a permis le lancement de nombreux projets stratégiques avec des grands groupes Internationaux
+comme Auchan, LVMH, PSA et le Groupe Casino.
+Ekkiden Group
+Paris, Lyon, Sophia Antipolis, Lille, Genève, Lausanne, Munich, Madrid
+www.ekkiden.com
+4/5Missions
+Pilotage de sprints et coordination d’équipe
+Conception et développement d’outils métier (OMS/WMS) en Elixir, Node.js et React
+Déploiement via Jenkins, intégration AWS, BDD Riak, moteur de recherche SOLR
+Collaboration directe avec les clients et gestion de projet technique
+Résultats
+Livraison de solutions critiques en production pour des groupes internationaux
+Renforcement de la ﬁabilité et de la scalabilité des systèmes
+Reconnaissance client sur la qualité des livrables et du suivi projet
+Environnement technique
+Elixir, Node.js
+React, Webﬂow
+Riak, Solr
+Jenkins, AWS, Docker
+IT Architect
+Nexen Partners - Paris - Mars 2020 à juillet 2020
+Contexte
+Stage de ﬁn d’études au sein de Nexen Partners, cabinet de conseil IT axé sur la satisfaction client et collaborateur. Projet à forte dimension
+cloud et architecture réseau pour des acteurs publics.
+Missions
+Développement de scripts Python pour l’automatisation de déploiements AWS
+Rédaction de documentation technique pour l’architecture réseau du SAMU
+Réalisation de POCs front-end (ReactJS, VueJS) pour accélérer les phases de prototypage client
+Résultats
+Contribution concrète à un projet d’envergure nationale
+Amélioration de la rapidité de livraison des interfaces clients
+Documentation claire et réutilisable livrée pour les équipes opérationnelles
+Environnement technique
+AWS
+Python, ReactJS et VueJS

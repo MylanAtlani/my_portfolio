@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useInView } from '@/hooks/use-in-view';
 import { technologies } from '@/data/technologies';
+import { LegacyTechnology } from '@/types/legacy';
 
 export function TechnologiesSection() {
   const t = useTranslations();
@@ -26,7 +27,7 @@ export function TechnologiesSection() {
 
         {/* Technologies Grid avec design Nothing OS */}
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {technologies.map((tech, index) => {
+          {technologies.map((tech: LegacyTechnology, index: number) => {
             const TechIcon = tech.icon;
             return (
               <div 
@@ -61,7 +62,7 @@ export function TechnologiesSection() {
                   
                   {/* Indicateur d'expertise Nothing OS */}
                   <div className="flex space-x-1">
-                    {[...Array(Math.min(tech.years, 5))].map((_, i) => (
+                    {[...Array(Math.min(tech.years || 0, 5))].map((_, i: number) => (
                       <div 
                         key={i}
                         className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[var(--nothing-orange)] opacity-60 group-hover:opacity-100 transition-opacity duration-300"

@@ -52,55 +52,259 @@
     "freelance": "Freelance",
     "cdi": "Full-time",
     "stage": "Internship",
+    "personnel": "Personal",
     "active": "Active",
     "completed": "Completed",
+    "paused": "Paused",
+    "backToProjects": "Back to projects",
+    "aboutProject": "About the project",
+    "mission": "Mission",
+    "challenges": "Challenges",
+    "achievements": "Achievements",
+    "learnings": "Key learnings",
+    "technologies": "Technologies",
+    "links": "Links",
+    "company": "Company",
+    "period": "Period",
+    "duration": "Duration",
+    "team": "Team",
+    "people": "people",
+    "viewDemo": "View project",
+    "sourceCode": "Source code",
+    "caseStudy": "Case study",
     "ciffreo": {
-      "title": "Ciffréo Bona",
-      "role": "Lead Developer",
+      "title": "Ciffreo Bona",
+      "role": "Lead Developer", 
       "description": "Modern backend architecture with Go & NestJS, OpenSearch integration, CI/CD pipelines and ERP connection. Latency divided by 2.",
-      "period": "Dec 2024 - June 2025"
+      "fullDescription": "Legacy stack poorly maintainable with significant technical debt. Need for scalability and reliability to support growth with real-time synchronization of stock, products and orders.",
+      "period": "December 2024 - May 2025",
+      "duration": "6 months",
+      "mission": [
+        "Modern backend architecture with Go & NestJS",
+        "Integration of high-performance search engine via OpenSearch in Go",
+        "Frontend development (Next.js)",
+        "Setup of CI/CD pipelines (Docker, GitHub Actions)",
+        "ERP API connection and stock system",
+        "Payment integration via PayXpert",
+        "Regular technical consulting to team and decision makers"
+      ],
+      "challenges": [
+        "Legacy stack poorly maintainable with significant technical debt",
+        "Lack of scalability and reliability to support growth",
+        "Need to synchronize stock, products and orders in real time",
+        "Complex integration with existing systems"
+      ],
+      "achievements": [
+        "Significant performance improvement (latency divided by 2)",
+        "Reliable production deployment without service interruption",
+        "Documented, modular and scalable stack",
+        "Productivity gain for internal team"
+      ],
+      "learnings": [
+        "Modern backend architecture with Go and NestJS",
+        "High-performance search engine integration",
+        "Performance optimization and scalability",
+        "Robust CI/CD pipeline implementation"
+      ]
     },
     "petpalz": {
-      "title": "Petpalz.io",
+      "title": "PetPalz.io",
       "role": "CTO",
-      "description": "Mobile-first pet health platform from scratch. NestJS/Go API, Flutter app, Next.js interface and PostgreSQL infrastructure.",
-      "period": "Apr 2024 - May 2025"
+      "description": "From scratch creation of a mobile-first platform for pet health management. NestJS/Go API, Flutter app, Next.js interface and PostgreSQL infrastructure.",
+      "fullDescription": "From scratch creation of a mobile-first platform for pet health management. Goal: support individuals and professionals (veterinarians, trainers) on the same solution with scalable and modular architecture.",
+      "period": "April 2024 - May 2025",
+      "duration": "13 months", 
+      "mission": [
+        "Design and development of robust backend API with NestJS and Go",
+        "Development of consumer mobile application with Flutter",
+        "Creation of professional-dedicated interface with Next.js",
+        "Setup of cloud architecture and PostgreSQL relational database",
+        "Configuration of CI/CD pipelines to automate deployments with docker swarm",
+        "Definition of product strategy and technical support for long-term vision"
+      ],
+      "challenges": [
+        "Scalable and modular architecture to support future evolutions",
+        "Management of individuals and professionals on the same solution",
+        "Marketplace, subscriptions, CRM and other evolution objectives"
+      ],
+      "achievements": [
+        "Launch of stable first version with first users",
+        "Smooth experience on client side and professional back-office",
+        "Infrastructure ready for opening to external partners",
+        "Solid technical foundation for adding new features"
+      ],
+      "learnings": [
+        "Complete mobile-first architecture",
+        "Multi-profile platform management",
+        "Scalability for marketplace and ecosystem",
+        "Product strategy and long-term technical vision"
+      ]
     },
     "thales": {
       "title": "Thales Digital Identity",
-      "role": "Technical Project Manager",
-      "description": "Strategic national project for digital health card. Critical work package management and multi-site coordination.",
-      "period": "Oct 2023 - May 2024"
+      "role": "Technical Project Manager & Head of Solution Engineering",
+      "description": "High-sensitivity mission on strategic national project to secure digital health card. Multi-site coordination and critical work package management.",
+      "fullDescription": "High-sensitivity mission on a strategic national project to secure the digital health card, with strong requirements for confidentiality, integrity and regulatory compliance.",
+      "period": "October 2023 - May 2024",
+      "duration": "8 months",
+      "mission": [
+        "Close collaboration with SESAM-Vitale teams",
+        "Delivery distributed across 3 sites: France, Czech Republic, Singapore",
+        "Management of critical technical and functional work packages",
+        "Technical supervision of teams (SEM role) and agile ritual animation",
+        "Direct interface between development, test, security and end client",
+        "Production of project documentation meeting administration standards"
+      ],
+      "challenges": [
+        "Multicultural, multi-timezone context",
+        "High security & quality requirements",
+        "Strong requirements for confidentiality and integrity",
+        "Strict regulatory compliance",
+        "Complex multi-site coordination"
+      ],
+      "achievements": [
+        "Secure delivery of key digital health card modules",
+        "Smooth and continuous coordination despite time zone differences",
+        "Structuring of inter-team exchanges and notable reduction of project friction",
+        "Improved client visibility and overall delivery management"
+      ],
+      "learnings": [
+        "Critical national project management",
+        "International multi-timezone team coordination",
+        "Security standards and regulatory compliance",
+        "Technical management in highly secure environment"
+      ]
+    },
+    "woman": {
+      "title": "Woman & Luxury",
+      "role": "CTO & FullStack Developer",
+      "description": "Launch of an unprecedented mobile application dedicated to fashion, combining social network, inspiration and content creation for an ambitious startup in the feminine luxury universe.",
+      "fullDescription": "Launch of an unprecedented mobile application dedicated to fashion, combining social network, inspiration and content creation for an ambitious startup in the feminine luxury universe. Build a complete and scalable technical stack for a consumer mobile product.",
+      "period": "2019 - January 2025",
+      "duration": "6 years",
+      "mission": [
+        "Development of main API in NestJS, Go & orchestration via PM2",
+        "Design and development of ReactJS back-office for moderation and internal management",
+        "Creation of interface dedicated to content creators with Next.js",
+        "Setup and maintenance of microservices in Python and Go",
+        "Cloud architecture designed for scalability on Microsoft Azure",
+        "Complete tech project management (project leadership, roadmap, sprints, documentation)",
+        "Strategic consulting: stack choices, design system, GitHub / Bitbucket repo organization",
+        "Deployment automation with Docker, Jenkins and CI/CD integration",
+        "Product tracking via Jira and technical documentation on Confluence"
+      ],
+      "challenges": [
+        "Offer smooth experience to creators and users via multi-interface ecosystem",
+        "Structure project and technical management in early-stage startup environment",
+        "Manage complexity of consumer mobile product in luxury universe"
+      ],
+      "achievements": [
+        "Complete digital ecosystem delivered for first fundraising",
+        "Operational MVP with modular cloud infrastructure",
+        "Clear technical vision set for future platform evolutions"
+      ],
+      "learnings": [
+        "Complete startup digital ecosystem architecture",
+        "Technical management in early-stage environment",
+        "Azure cloud stack for consumer applications",
+        "Long-term technical and strategic management"
+      ]
     },
     "plateforme": {
       "title": "La Plateforme_",
-      "role": "Educational Manager",
-      "description": "Manager of Cybersecurity, Network and Development courses. Content creation, evaluation and learner follow-up.",
-      "period": "Aug 2022 - Oct 2023"
+      "role": "Educational Manager Cybersecurity & Software Teaching Lead",
+      "description": "Educational manager for Cybersecurity Administrator, IP Network Technician and Software Developer programs. Mediterranean digital campus with free programs open to all.",
+      "fullDescription": "Educational manager for Cybersecurity Administrator, IP Network Technician and Software Developer programs. La Plateforme_: the Mediterranean digital campus with zero tuition fee programs, open to all talents.",
+      "period": "2021 - 2023",
+      "duration": "2 years",
+      "mission": [
+        "Creation and development of educational content",
+        "Student support",
+        "Student evaluation and follow-up",
+        "Management of smooth year progress",
+        "Technical reference",
+        "Setup of technical platform exams",
+        "Personal student follow-up",
+        "Program evolution through company feedback",
+        "Internal development of school technical infrastructure"
+      ],
+      "challenges": [
+        "Free programs open to all without resource and diploma conditions",
+        "Meeting place between companies and learners",
+        "Program adaptation to field needs",
+        "Management of students with very heterogeneous profiles"
+      ],
+      "achievements": [
+        "Cybersecurity Administrator, IP Network Technician and Software Developer operational programs",
+        "Technical equipment management and purchase (Server bay, switch, NVR recorder, etc.)",
+        "School technical infrastructure (Cloud, Local servers, premises connectivity)",
+        "Solid company partnerships for internships and jobs"
+      ],
+      "learnings": [
+        "Pedagogy adapted to varied technical profiles",
+        "Complete educational infrastructure management",
+        "Company relations and training ecosystem",
+        "Professional program development"
+      ]
     },
     "kbrw": {
       "title": "KBRW",
       "role": "Lead Software Engineer",
-      "description": "WMS/OMS solutions for large groups (Michelin, LVMH, PSA). Elixir, NodeJS, React architecture with Jenkins deployment.",
-      "period": "Nov 2020 - Sept 2021"
-    },
-    "woman": {
-      "title": "Woman & Luxury",
-      "role": "FullStack Developer",
-      "description": "Complete fashion mobile application: NestJS API, React back-office, Next.js creator interface, Python/Go microservices on Azure.",
-      "period": "May 2019 - March 2025"
+      "description": "Global OMS solution integrating inventory management, distributed order orchestration for international large groups (Auchan, LVMH, PSA, Casino).",
+      "fullDescription": "Global OMS solution integrating inventory management, distributed order orchestration, omnichannel order management and customer relations. Robust, scalable and custom-made for international large groups.",
+      "period": "2020 - 2021",
+      "duration": "1 year",
+      "mission": [
+        "Sprint management and team coordination",
+        "Design and development of business tools (OMS/WMS) in Elixir, Node.js and React",
+        "Deployment via Jenkins, AWS integration, Riak database, SOLR search engine",
+        "Direct collaboration with clients and technical project management"
+      ],
+      "challenges": [
+        "Robust, scalable and custom solution",
+        "Fully mastered platform based on internally developed open source components",
+        "Strategic projects with international large groups"
+      ],
+      "achievements": [
+        "Delivery of critical solutions in production for international groups",
+        "Strengthening of system reliability and scalability",
+        "Client recognition on deliverable quality and project follow-up"
+      ],
+      "learnings": [
+        "Distributed architecture with Elixir for critical systems",
+        "Project management for international large accounts",
+        "Custom OMS/WMS solutions",
+        "Complete technical ecosystem (Elixir, React, AWS, Riak, SOLR)"
+      ]
     },
     "nexen": {
-      "title": "NEXEN Partners",
+      "title": "Nexen Partners",
       "role": "IT Architect",
-      "description": "Python scripts for AWS deployment, national network architecture documentation for SAMU, ReactJS and VueJS POCs.",
-      "period": "March 2020 - July 2020"
-    },
-    "dizio": {
-      "title": "DIZIO LAB",
-      "role": "Project Manager & Product Owner",
-      "description": "Management of 3 developer team, parallel project coordination, Android technical audits, client relationship management.",
-      "period": "Sept 2019 - Feb 2020"
+      "description": "Final studies internship at Nexen Partners, IT consulting firm. Strong cloud and network architecture project for public actors with SAMU.",
+      "fullDescription": "Final studies internship at Nexen Partners, IT consulting firm focused on client and employee satisfaction. Strong cloud and network architecture project for public actors.",
+      "period": "March 2020 - July 2020",
+      "duration": "5 months",
+      "mission": [
+        "Development of Python scripts for AWS deployment automation",
+        "Technical documentation writing for SAMU network architecture",
+        "Frontend POCs (ReactJS, VueJS) to accelerate client prototyping phases"
+      ],
+      "challenges": [
+        "National scale project",
+        "Complex network architecture for public actors",
+        "Comparison and prototyping of frontend technologies"
+      ],
+      "achievements": [
+        "Concrete contribution to national scale project",
+        "Improvement of client interface delivery speed",
+        "Clear and reusable documentation delivered for operational teams"
+      ],
+      "learnings": [
+        "AWS cloud deployment automation",
+        "Network architecture for public sector",
+        "Frontend framework prototyping and comparison",
+        "Technical documentation for large scale projects"
+      ]
     }
   },
   "testimonials": {

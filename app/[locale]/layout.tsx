@@ -6,7 +6,7 @@ import type { Metadata, Viewport } from 'next';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { ToasterProvider } from '@/providers/toaster-provider';
-import { Navbar } from '@/components/layout/navbar';
+import { NavbarWrapper } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { NothingCursor } from '@/components/ui/nothing-cursor';
 import { EditProtection } from '@/components/ui/edit-protection';
@@ -162,7 +162,7 @@ export default async function LocaleLayout({
               <EditProtection />
               
               <div className="min-h-screen flex flex-col">
-                <Navbar />
+                <NavbarWrapper />
                 <main className="flex-1 relative">
                   {children}
                 </main>

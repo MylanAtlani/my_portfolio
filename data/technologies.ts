@@ -1,7 +1,7 @@
-import { Technology } from '@/types';
+import { LegacyTechnology } from '@/types/legacy';
 import { Terminal, Layers, Code, Database, Cpu, Cloud, Smartphone, Code2 } from 'lucide-react';
 
-export const technologies: Technology[] = [
+export const technologies: LegacyTechnology[] = [
   { name: 'Go', years: 4, icon: Terminal },
   { name: 'NestJS', years: 5, icon: Layers },
   { name: 'Next.js', years: 4, icon: Code },
