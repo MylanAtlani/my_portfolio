@@ -5,7 +5,7 @@ import { Server, Briefcase, Shield, GraduationCap, Code2, Cloud, Users, Database
 const technologies: Record<string, Technology> = {
   // Frontend
   react: { name: 'React', category: 'frontend', level: 'expert', icon: Globe, color: 'text-blue-500' },
-  nextjs: { name: 'Next.js', category: 'frontend', level: 'expert', icon: Globe, color: 'text-black' },
+  nextjs: { name: 'Next.js', category: 'frontend', level: 'expert', icon: Globe, color: 'text-pink-600' },
   vue: { name: 'Vue.js', category: 'frontend', level: 'advanced', icon: Globe, color: 'text-green-500' },
   flutter: { name: 'Flutter', category: 'mobile', level: 'advanced', icon: Smartphone, color: 'text-blue-400' },
   

@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './theme-toggle';
 import { LanguageToggle } from './language-toggle';
 import { Menu, X, Home } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useParams, usePathname } from 'next/navigation';
 
 interface NavbarProps {
@@ -42,7 +42,7 @@ export function Navbar({ simplified = false }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo Nothing OS */}
-            <Link href={`/${locale}`} className="flex items-center space-x-2 sm:space-x-3 group hover:scale-105 transition-transform duration-300">
+            <Link href={`/`} className="flex items-center space-x-2 sm:space-x-3 group hover:scale-105 transition-transform duration-300">
               <div className="relative">
                 <div className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 nothing-status scale-75 sm:scale-100"></div>
               </div>
@@ -55,7 +55,7 @@ export function Navbar({ simplified = false }: NavbarProps) {
             <div className="flex items-center space-x-4">
               {/* Retour Home */}
               <Link 
-                href={`/${locale}`}
+                href={`/`}
                 className="hidden sm:flex items-center gap-2 nothing-glass rounded-xl px-4 py-2 hover:scale-105 transition-all duration-300 group"
               >
                 <Home className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" style={{ color: 'var(--nothing-orange)' }} />

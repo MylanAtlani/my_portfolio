@@ -42,7 +42,7 @@ export function LogoSwitch({ src, alt, className = '' }: LogoSwitchProps) {
       preset="logo"
       className={`object-contain opacity-90 hover:opacity-100 transition-all duration-300 ${
         isDark 
-          ? 'filter invert brightness-110' 
+          ? 'filter brightness-0 invert' 
           : 'filter grayscale(1) brightness-50 contrast-150'
       } ${className}`}
     />

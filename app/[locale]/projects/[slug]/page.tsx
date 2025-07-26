@@ -9,6 +9,8 @@ import { getDetailedProjects } from '@/data/projects';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/navbar';
 import { LogoSwitch } from '@/components/ui/logo-switch';
+import { SectionHeader } from '@/components/ui/section-header';
+import { ListItem } from '@/components/ui/list-item';
 
 interface ProjectPageProps {
   params: Promise<{
@@ -119,8 +121,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {/* Hero Section Dynamique */}
       <div className="relative overflow-hidden">
         {/* Background Pattern Enhanced */}
-                  <div className="absolute inset-0">
-            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`}></div>
+        <div className="absolute inset-0">
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`}></div>
           
           {/* Floating geometric elements */}
           <div className="absolute inset-0" >
@@ -164,83 +166,83 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24 ">
+        <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12 lg:py-24">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 mb-8 text-sm nothing-animate-slide-up">
-            <Link href={`/${resolvedParams.locale}`} className="nothing-text opacity-70 hover:opacity-100 transition-all duration-300">
+          <nav className="flex items-center gap-2 mb-6 sm:mb-8 text-xs sm:text-sm nothing-animate-slide-up overflow-x-auto">
+            <Link href={`/${resolvedParams.locale}`} className="nothing-text opacity-70 hover:opacity-100 transition-all duration-300 whitespace-nowrap">
               {t('navigation.home')}
             </Link>
             <span className="nothing-text opacity-40">/</span>
-            <Link href={`/${resolvedParams.locale}#projects`} className="nothing-text opacity-70 hover:opacity-100 transition-all duration-300">
+            <Link href={`/${resolvedParams.locale}#projects`} className="nothing-text opacity-70 hover:opacity-100 transition-all duration-300 whitespace-nowrap">
               {t('projects.title')}
             </Link>
             <span className="nothing-text opacity-40">/</span>
-            <span className="nothing-text font-medium">{project.title}</span>
+            <span className="nothing-text font-medium truncate">{project.title}</span>
           </nav>
 
           {/* Hero Content */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-16 items-start">
             {/* Left: Project Info */}
-            <div className="lg:col-span-8">
-              <div className="flex items-center gap-6 mb-6">
-                <div className="relative">
-                                    <div className="w-60 h-60 lg:w-40 lg:h-40 nothing-card p-4 lg:p-6 flex items-center justify-center">
+            <div className="lg:col-span-8 sm:col-span-12">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6">
+                <div className="relative self-start sm:self-center">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-40 lg:h-40 nothing-card p-3 sm:p-4 lg:p-6 flex items-center justify-center">
                     <LogoSwitch 
                       src={project.companyLogo}
                       alt={`${project.company} logo`}
                     />
                   </div>
-                  <div className="absolute -top-3 -right-3">
-                    <div className={`w-8 h-8 rounded-full ${statusConfig[project.status].bg} ${statusConfig[project.status].border} border flex items-center justify-center shadow-lg`}>
-                      <StatusIcon className={`w-4 h-4 ${statusConfig[project.status].color}`} />
+                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3">
+                    <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${statusConfig[project.status].bg} ${statusConfig[project.status].border} border flex items-center justify-center shadow-lg`}>
+                      <StatusIcon className={`w-3 h-3 sm:w-4 sm:h-4 ${statusConfig[project.status].color}`} />
                     </div>
                   </div>
                 </div>
                 
-                <div>
-                  <h1 className="nothing-title text-3xl lg:text-5xl xl:text-6xl font-light mb-2 nothing-animate-slide-up">
+                <div className="flex-1 sm:flex-3 min-w-0">
+                  <h1 className="nothing-title text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-light mb-2 nothing-animate-slide-up leading-tight">
                     {project.title}
                   </h1>
-                  <p className="nothing-text text-lg lg:text-xl font-light opacity-80 nothing-animate-slide-up" style={{ animationDelay: '200ms' }}>
+                  <p className="nothing-text text-base sm:text-lg lg:text-sm xl:text-base font-light opacity-80 nothing-animate-slide-up leading-relaxed hidden sm:block" style={{ animationDelay: '200ms' }}>
                     {project.role} chez {project.company}
                   </p>
                 </div>
               </div>
 
               {/* Status & Type Tags */}
-              <div className="flex flex-wrap gap-3 mb-8 nothing-animate-slide-up" style={{ animationDelay: '300ms' }}>
-                <span className={`inline-flex items-center justify-center px-5 py-2.5 rounded-2xl text-sm font-medium ${statusConfig[project.status].bg} ${statusConfig[project.status].color} ${statusConfig[project.status].border} border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
-                  <StatusIcon className={`w-4 h-4 mr-2 ${statusConfig[project.status].color}`} />
+              <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 nothing-animate-slide-up" style={{ animationDelay: '300ms' }}>
+                <span className={`inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium ${statusConfig[project.status].bg} ${statusConfig[project.status].color} ${statusConfig[project.status].border} border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
+                  <StatusIcon className={`w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 ${statusConfig[project.status].color}`} />
                   {statusConfig[project.status].label}
                 </span>
-                <span className="inline-flex items-center justify-center px-5 py-2.5 rounded-2xl text-sm font-medium nothing-glass border backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                <span className="inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium nothing-glass border backdrop-blur-sm hover:scale-105 transition-all duration-300">
                   {project.type === 'freelance' ? t('projects.freelance') : 
                    project.type === 'cdi' ? t('projects.cdi') : 
                    project.type === 'stage' ? t('projects.stage') : 
                    t('projects.personnel')}
                 </span>
-                <span className="inline-flex items-center justify-center px-5 py-2.5 rounded-2xl text-sm font-medium nothing-glass border backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                <span className="inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium nothing-glass border backdrop-blur-sm hover:scale-105 transition-all duration-300">
                   {project.mainTechnology || project.technologies[0]?.name}
                 </span>
               </div>
 
               {/* Project Description */}
-              <p className="nothing-text text-lg lg:text-xl leading-relaxed mb-8 max-w-3xl opacity-80 dark:opacity-90 nothing-animate-slide-up" style={{ animationDelay: '400ms' }}>
+              <p className="nothing-text text-base sm:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8 max-w-3xl opacity-80 dark:opacity-90 nothing-animate-slide-up" style={{ animationDelay: '400ms' }}>
                 {project.fullDescription || project.description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 nothing-animate-slide-up" style={{ animationDelay: '500ms' }}>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 nothing-animate-slide-up" style={{ animationDelay: '500ms' }}>
                 {project.companyWebsite && (
                   <a
                     href={project.companyWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 nothing-glass rounded-xl font-medium hover:scale-105 transition-all duration-300 group"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 nothing-glass rounded-xl font-medium hover:scale-105 transition-all duration-300 group text-sm sm:text-base"
                     style={{ backgroundColor: 'var(--nothing-orange)', color: 'white' }}
                   >
                     <ExternalLink className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                    Visiter {project.company}
+                    <span className="truncate">Visiter {project.company}</span>
                   </a>
                 )}
                 {project.demoUrl && (
@@ -248,7 +250,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 nothing-card hover:scale-105 transition-all duration-300 group"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 nothing-card hover:scale-105 transition-all duration-300 group text-sm sm:text-base"
                   >
                     <Play className="w-4 h-4 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-blue)' }} />
                     <span className="nothing-text">{t('projects.viewDemo')}</span>
@@ -258,42 +260,58 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             {/* Right: Key Stats */}
-            <div className="lg:col-span-4 nothing-animate-slide-up" style={{ animationDelay: '300ms' }}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="nothing-card text-center p-6 hover:scale-105 transition-all duration-300 group">
-                  <Calendar className="w-8 h-8 mx-auto mb-3 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-blue)' }} />
-                  <div className="text-2xl font-light nothing-title mb-1">
-                    {project.period.split(' - ')[1] || project.period}
+            <div className="lg:col-span-4 md:col-span-12 nothing-animate-slide-up lg:order-last" style={{ animationDelay: '300ms' }}>
+              <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                <div className="nothing-card p-3 sm:p-4 lg:p-6 hover:scale-105 transition-all duration-300 group">
+                  <div className="flex items-center gap-3 sm:flex-col sm:items-center sm:gap-2 lg:gap-3">
+                    <Calendar className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-blue)' }} />
+                    <div className="flex-1 sm:text-center">
+                      <div className="text-sm sm:text-lg lg:text-2xl font-light nothing-title mb-0.5 sm:mb-1">
+                        {project.period.split(' - ')[1] || project.period}
+                      </div>
+                      <div className="text-xs sm:text-sm nothing-text opacity-70">{t('projects.period')}</div>
+                    </div>
                   </div>
-                  <div className="text-sm nothing-text opacity-70">{t('projects.period')}</div>
                 </div>
 
                 {project.duration && (
-                  <div className="nothing-card text-center p-6 hover:scale-105 transition-all duration-300 group">
-                    <Sparkles className="w-8 h-8 mx-auto mb-3 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-green)' }} />
-                    <div className="text-2xl font-light nothing-title mb-1">
-                      {project.duration}
+                  <div className="nothing-card p-3 sm:p-4 lg:p-6 hover:scale-105 transition-all duration-300 group">
+                    <div className="flex items-center gap-3 sm:flex-col sm:items-center sm:gap-2 lg:gap-3">
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-green)' }} />
+                      <div className="flex-1 sm:text-center">
+                        <div className="text-sm sm:text-lg lg:text-2xl font-light nothing-title mb-0.5 sm:mb-1">
+                          {project.duration}
+                        </div>
+                        <div className="text-xs sm:text-sm nothing-text opacity-70">{t('projects.duration')}</div>
+                      </div>
                     </div>
-                    <div className="text-sm nothing-text opacity-70">{t('projects.duration')}</div>
                   </div>
                 )}
 
                 {project.teamSize && (
-                  <div className="nothing-card text-center p-6 hover:scale-105 transition-all duration-300 group">
-                    <Users className="w-8 h-8 mx-auto mb-3 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-orange)' }} />
-                    <div className="text-2xl font-light nothing-title mb-1">
-                      {project.teamSize}
+                  <div className="nothing-card p-3 sm:p-4 lg:p-6 hover:scale-105 transition-all duration-300 group">
+                    <div className="flex items-center gap-3 sm:flex-col sm:items-center sm:gap-2 lg:gap-3">
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-orange)' }} />
+                      <div className="flex-1 sm:text-center">
+                        <div className="text-sm sm:text-lg lg:text-2xl font-light nothing-title mb-0.5 sm:mb-1">
+                          {project.teamSize}
+                        </div>
+                        <div className="text-xs sm:text-sm nothing-text opacity-70">{t('projects.people')}</div>
+                      </div>
                     </div>
-                    <div className="text-sm nothing-text opacity-70">{t('projects.people')}</div>
                   </div>
                 )}
 
-                <div className="nothing-card text-center p-6 hover:scale-105 transition-all duration-300 group">
-                  <Building className="w-8 h-8 mx-auto mb-3 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-red)' }} />
-                  <div className="text-lg font-light nothing-title mb-1">
-                    {project.technologies.length}
+                <div className="nothing-card p-3 sm:p-4 lg:p-6 hover:scale-105 transition-all duration-300 group">
+                  <div className="flex items-center gap-3 sm:flex-col sm:items-center sm:gap-2 lg:gap-3">
+                    <Building className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0 group-hover:scale-110 transition-transform" style={{ color: 'var(--nothing-red)' }} />
+                    <div className="flex-1 sm:text-center">
+                      <div className="text-sm sm:text-base lg:text-lg font-light nothing-title mb-0.5 sm:mb-1">
+                        {project.technologies.length}
+                      </div>
+                      <div className="text-xs sm:text-sm nothing-text opacity-70">Technologies</div>
+                    </div>
                   </div>
-                  <div className="text-sm nothing-text opacity-70">Technologies</div>
                 </div>
               </div>
             </div>
@@ -309,22 +327,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Mission */}
             {project.mission && (
               <section className="nothing-animate-slide-up" style={{ animationDelay: '600ms' }}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-2xl nothing-glass border flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full" style={{ backgroundColor: 'var(--nothing-blue)' }}></div>
-                  </div>
-                  <h2 className="nothing-title text-3xl font-light">{t('projects.mission')}</h2>
-                </div>
+                <SectionHeader
+                  title={t('projects.mission')}
+                  icon={null}
+                  iconColor="var(--nothing-blue)"
+                  size="lg"
+                  className="mb-8"
+                />
                 <div className="space-y-4">
                   {project.mission.map((item, index) => (
-                    <div key={index} className="nothing-card p-6 hover:scale-[1.02] transition-all duration-300 group">
-                      <div className="flex items-start gap-4">
-                        <div className="w-2 h-2 rounded-full mt-3 group-hover:scale-150 transition-transform duration-300" style={{ backgroundColor: 'var(--nothing-blue)' }}></div>
-                        <p className="nothing-text leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-                          {item}
-                        </p>
-                      </div>
-                    </div>
+                    <ListItem
+                      key={index}
+                      dotColor="var(--nothing-blue)"
+                      dotSize="md"
+                      cardStyle={true}
+                      hoverEffect="scale"
+                    >
+                      <p className="nothing-text leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity text-sm">
+                        {item}
+                      </p>
+                    </ListItem>
                   ))}
                 </div>
               </section>
@@ -334,20 +356,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="grid md:grid-cols-2 gap-8">
               {project.challenges && (
                 <section className="nothing-animate-slide-up" style={{ animationDelay: '700ms' }}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-10 h-10 rounded-xl nothing-glass border flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--nothing-orange)' }}></div>
-                    </div>
-                    <h3 className="nothing-title text-2xl font-light">{t('projects.challenges')}</h3>
-                  </div>
+                  <SectionHeader
+                    title={t('projects.challenges')}
+                    icon={null}
+                    iconColor="var(--nothing-orange)"
+                    size="md"
+                    className="mb-6"
+                  />
                   <div className="space-y-3">
                     {project.challenges.map((item, index) => (
-                      <div key={index} className="flex items-start gap-3 p-4 nothing-card hover:translate-x-2 transition-all duration-300 group">
-                        <div className="w-1.5 h-1.5 rounded-full mt-2 group-hover:scale-150 transition-transform duration-300" style={{ backgroundColor: 'var(--nothing-orange)' }}></div>
+                      <ListItem
+                        key={index}
+                        dotColor="var(--nothing-orange)"
+                        dotSize="md"
+                        hoverEffect="translate"
+                      >
                         <p className="text-sm nothing-text opacity-80 group-hover:opacity-100 transition-opacity">
                           {item}
                         </p>
-                      </div>
+                      </ListItem>
                     ))}
                   </div>
                 </section>
@@ -355,20 +382,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               {project.achievements && (
                 <section className="nothing-animate-slide-up" style={{ animationDelay: '800ms' }}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-10 h-10 rounded-xl nothing-glass border flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--nothing-green)' }}></div>
-                    </div>
-                    <h3 className="nothing-title text-2xl font-light">{t('projects.achievements')}</h3>
-                  </div>
+                  <SectionHeader
+                    title={t('projects.achievements')}
+                    icon={null}
+                    iconColor="var(--nothing-green)"
+                    size="md"
+                    className="mb-6"
+                  />
                   <div className="space-y-3">
                     {project.achievements.map((item, index) => (
-                      <div key={index} className="flex items-start gap-3 p-4 nothing-card hover:translate-x-2 transition-all duration-300 group">
-                        <div className="w-1.5 h-1.5 rounded-full mt-2 group-hover:scale-150 transition-transform duration-300" style={{ backgroundColor: 'var(--nothing-green)' }}></div>
+                      <ListItem
+                        key={index}
+                        dotColor="var(--nothing-green)"
+                        dotSize="md"
+                        hoverEffect="translate"
+                      >
                         <p className="text-sm nothing-text opacity-80 group-hover:opacity-100 transition-opacity">
                           {item}
                         </p>
-                      </div>
+                      </ListItem>
                     ))}
                   </div>
                 </section>
@@ -378,22 +410,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Learnings */}
             {project.learnings && (
               <section className="nothing-animate-slide-up" style={{ animationDelay: '900ms' }}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-2xl nothing-glass border flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full" style={{ backgroundColor: 'var(--nothing-red)' }}></div>
-                  </div>
-                  <h2 className="nothing-title text-3xl font-light">{t('projects.learnings')}</h2>
-                </div>
+                <SectionHeader
+                  title={t('projects.learnings')}
+                  icon={null}
+                  iconColor="var(--nothing-red)"
+                  size="lg"
+                  className="mb-8"
+                />
                 <div className="grid sm:grid-cols-2 gap-4">
                   {project.learnings.map((item, index) => (
-                    <div key={index} className="nothing-card p-6 hover:scale-105 transition-all duration-300 group">
-                      <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full mt-2 group-hover:scale-150 transition-transform duration-300" style={{ backgroundColor: 'var(--nothing-red)' }}></div>
-                        <p className="nothing-text opacity-80 group-hover:opacity-100 transition-opacity">
-                          {item}
-                        </p>
-                      </div>
-                    </div>
+                    <ListItem
+                      key={index}
+                      dotColor="var(--nothing-red)"
+                      dotSize="md"
+                      hoverEffect="scale"
+                    >
+                      <p className="nothing-text opacity-80 group-hover:opacity-100 transition-opacity">
+                        {item}
+                      </p>
+                    </ListItem>
                   ))}
                 </div>
               </section>
@@ -404,12 +439,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="space-y-8">
             {/* Technologies */}
             <section className="nothing-animate-slide-up" style={{ animationDelay: '600ms' }}>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-2xl nothing-glass border flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full" style={{ backgroundColor: 'var(--nothing-green)' }}></div>
-                </div>
-                <h3 className="nothing-title text-3xl font-light">{t('projects.technologies')}</h3>
-              </div>
+              <SectionHeader
+                title={t('projects.technologies')}
+                icon={null}
+                iconColor="var(--nothing-green)"
+                size="lg"
+                className="mb-8"
+              />
               <div className="space-y-3">
                 {project.technologies.map((tech, index) => (
                   <div key={tech.name} className="nothing-card p-4 hover:scale-105 transition-all duration-300 group">
@@ -430,12 +466,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Links */}
             {(project.demoUrl || project.githubUrl || project.caseStudyUrl) && (
               <section className="nothing-animate-slide-up" style={{ animationDelay: '1000ms' }}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-2xl nothing-glass border flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full" style={{ backgroundColor: 'var(--nothing-orange)' }}></div>
-                  </div>
-                  <h3 className="nothing-title text-3xl font-light">{t('projects.links')}</h3>
-                </div>
+                <SectionHeader
+                  title={t('projects.links')}
+                  icon={null}
+                  iconColor="var(--nothing-orange)"
+                  size="lg"
+                  className="mb-8"
+                />
                 <div className="space-y-3">
                   {project.githubUrl && (
                     <a
