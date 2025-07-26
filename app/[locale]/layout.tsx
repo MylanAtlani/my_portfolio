@@ -13,7 +13,13 @@ import { EditProtection } from '@/components/ui/edit-protection';
 import Script from 'next/script';
 import '../globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mylanatlani.com'),
@@ -109,6 +115,15 @@ export default async function LocaleLayout({
         <meta name="geo.position" content="43.296482;5.369780" />
         <meta name="ICBM" content="43.296482, 5.369780" />
         
+        {/* Font Preloads pour optimiser le chargement */}
+        <link
+          rel="preload"
+          href="/fonts/ndot-47.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        
         {/* Google Tag Manager - DANS LE HEAD */}
         <Script
           id="gtm-head"
@@ -125,7 +140,7 @@ export default async function LocaleLayout({
         />
         {/* End Google Tag Manager */}
       </head>
-      <body className={`${inter.className} antialiased min-h-screen`}>
+      <body className={`${inter.className} ${inter.variable} antialiased min-h-screen`}>
         {/* Google Tag Manager (noscript) - JUSTE APRÈS <body> */}
         <noscript>
           <iframe 

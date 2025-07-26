@@ -3,6 +3,7 @@
 /* Configuration Tailwind v4 directement dans le CSS */
 @theme {
   --font-family-nothing: 'NDot47', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-inter: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   
   --color-nothing-orange: #FF6B35;
@@ -18,13 +19,17 @@
   --color-nothing-gray-900: #0A0A0A;
 }
 
-/* Police Nothing OS */
+/* Police Nothing OS - Optimisée pour les performances */
 @font-face {
   font-family: 'NDot47';
   src: url('/fonts/ndot-47.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  /* Optimisations supplémentaires */
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums;
 }
 
 /* Variables Nothing OS */
@@ -43,8 +48,9 @@
   --nothing-gray-800: #212121;
   --nothing-gray-900: #0A0A0A;
   
-  /* Typographie */
+  /* Typographie optimisée avec font-display: swap */
   --font-nothing: 'NDot47', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-inter: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 

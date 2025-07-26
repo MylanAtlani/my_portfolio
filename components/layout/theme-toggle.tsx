@@ -25,6 +25,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className="relative w-9 h-9 sm:w-12 sm:h-12 nothing-glass rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-110 group overflow-hidden"
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre'}
     >
       {/* Background glow */}
       <div className={`absolute inset-0 rounded-lg sm:rounded-xl transition-all duration-500 ${

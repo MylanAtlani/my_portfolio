@@ -50,6 +50,7 @@ export function LanguageToggle() {
       onClick={toggleLanguage}
       className="relative w-9 h-9 sm:w-12 sm:h-12 nothing-glass rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-110 group overflow-hidden"
       title={`Switch to ${nextLang.name}`}
+      aria-label={`Changer vers ${nextLang.name}`}
     >
       {/* Background glow */}
       <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

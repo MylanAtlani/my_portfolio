@@ -37,12 +37,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting par IP
+    // Rate limiting par IP (renforcé : 2 requêtes par minute)
     const clientIP = request.headers.get('x-forwarded-for') || 
                     request.headers.get('x-real-ip') || 
                     'unknown';
     
-    const isAllowed = checkRateLimit(clientIP, 3, 60000); // 3 requêtes par minute
+    const isAllowed = checkRateLimit(clientIP, 2, 60000); // 2 requêtes par minute (plus strict)
     if (!isAllowed) {
       return NextResponse.json(
         { error: 'Trop de requêtes. Veuillez réessayer dans 1 minute.' },
@@ -50,11 +50,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting par email
-    const emailRateLimit = checkRateLimit(`email:${email}`, 2, 300000); // 2 requêtes par email en 5 minutes
+    // Rate limiting par email (renforcé : 1 requête par email en 5 minutes)
+    const emailRateLimit = checkRateLimit(`email:${email}`, 1, 300000); // 1 requête par email en 5 minutes
     if (!emailRateLimit) {
       return NextResponse.json(
-        { error: 'Trop de messages depuis cet email. Veuillez réessayer plus tard.' },
+        { error: 'Un email par adresse toutes les 5 minutes maximum. Veuillez réessayer plus tard.' },
         { status: 429 }
       );
     }

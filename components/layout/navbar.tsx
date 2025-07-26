@@ -88,6 +88,9 @@ export function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 nothing-glass rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-110"
+              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <div className="relative w-5 h-5 sm:w-6 sm:h-6">
                 <X 
@@ -106,9 +109,12 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          isOpen ? 'max-h-screen opacity-100 pb-4 sm:pb-6' : 'max-h-0 opacity-0'
-        }`}>
+        <div 
+          id="mobile-menu"
+          className={`lg:hidden overflow-hidden transition-all duration-500 ${
+            isOpen ? 'max-h-screen opacity-100 pb-4 sm:pb-6' : 'max-h-0 opacity-0'
+          }`}
+        >
           <div className="border-t border-white/10 pt-4 sm:pt-6">
             <div className="grid gap-3 sm:gap-4">
               {navigation.map((item, index) => (
