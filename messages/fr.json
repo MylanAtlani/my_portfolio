@@ -82,7 +82,7 @@
       "role": "Lead Developer",
       "description": "Architecture backend moderne avec Go & NestJS, intégration OpenSearch, pipelines CI/CD et connexion ERP. Latence divisée par 2.",
       "fullDescription": "Stack legacy peu maintenable avec dette technique importante. Besoin de scalabilité et fiabilité pour accompagner la croissance avec synchronisation temps réel du stock, produits et commandes.",
-      "period": "Décembre 2024 - Mai 2025",
+      "period": "Déc 2024 - Mai 2025",
       "duration": "6 mois",
       "mission": [
         "Architecture backend moderne avec Go & NestJS",
@@ -117,7 +117,7 @@
       "role": "CTO",
       "description": "Création from scratch d'une plateforme mobile-first pour la gestion de la santé animale. API NestJS/Go, app Flutter, interface Next.js et infrastructure PostgreSQL.",
       "fullDescription": "Création from scratch d'une plateforme mobile-first pour la gestion de la santé animale. Objectif : accompagner les particuliers et professionnels (vétérinaires, éducateurs) sur une même solution avec architecture scalable et modulaire.",
-      "period": "Avril 2024 - Mai 2025",
+      "period": "Avr 2024 - Mai 2025",
       "duration": "13 mois",
       "mission": [
         "Conception et développement d'une API backend robuste avec NestJS et Go",
@@ -150,7 +150,7 @@
       "role": "Chef de projet technique & Head of Solution Engineering",
       "description": "Mission à haute sensibilité sur projet national stratégique visant à sécuriser la carte Vitale numérique. Coordination multi-sites et gestion work packages critiques.",
       "fullDescription": "Mission à haute sensibilité sur un projet national stratégique visant à sécuriser la carte Vitale numérique, avec des exigences fortes en matière de confidentialité, intégrité et conformité réglementaire.",
-      "period": "Octobre 2023 - Mai 2024",
+      "period": "Oct 2023 - Mai 2024",
       "duration": "8 mois",
       "mission": [
         "Collaboration étroite avec les équipes SESAM-Vitale",
@@ -185,7 +185,7 @@
       "role": "CTO & FullStack Developer",
       "description": "Lancement d'une application mobile inédite dédiée à la mode, combinant réseau social, inspiration et création de contenu pour une startup ambitieuse dans l'univers du luxe féminin.",
       "fullDescription": "Lancement d'une application mobile inédite dédiée à la mode, combinant réseau social, inspiration et création de contenu pour une startup ambitieuse dans l'univers du luxe féminin. Construire une stack technique complète et scalable pour un produit mobile grand public.",
-      "period": "2019 - Janvier 2025",
+      "period": "2019 - Jan 2025",
       "duration": "6 ans",
       "mission": [
         "Développement de l'API principale en NestJS, Go & orchestration via PM2",
@@ -287,7 +287,7 @@
       "role": "Architecte informatique",
       "description": "Stage de fin d'études au sein de Nexen Partners, cabinet de conseil IT. Projet à forte dimension cloud et architecture réseau pour des acteurs publics avec le SAMU.",
       "fullDescription": "Stage de fin d'études au sein de Nexen Partners, cabinet de conseil IT axé sur la satisfaction client et collaborateur. Projet à forte dimension cloud et architecture réseau pour des acteurs publics.",
-      "period": "Mars 2020 - Juillet 2020",
+      "period": "Mar 2020 - Juil 2020",
       "duration": "5 mois",
       "mission": [
         "Développement de scripts Python pour l'automatisation de déploiements AWS",

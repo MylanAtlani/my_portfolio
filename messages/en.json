@@ -77,7 +77,7 @@
       "role": "Lead Developer", 
       "description": "Modern backend architecture with Go & NestJS, OpenSearch integration, CI/CD pipelines and ERP connection. Latency divided by 2.",
       "fullDescription": "Legacy stack poorly maintainable with significant technical debt. Need for scalability and reliability to support growth with real-time synchronization of stock, products and orders.",
-      "period": "December 2024 - May 2025",
+      "period": "Dec 2024 - May 2025",
       "duration": "6 months",
       "mission": [
         "Modern backend architecture with Go & NestJS",
@@ -112,7 +112,7 @@
       "role": "CTO",
       "description": "From scratch creation of a mobile-first platform for pet health management. NestJS/Go API, Flutter app, Next.js interface and PostgreSQL infrastructure.",
       "fullDescription": "From scratch creation of a mobile-first platform for pet health management. Goal: support individuals and professionals (veterinarians, trainers) on the same solution with scalable and modular architecture.",
-      "period": "April 2024 - May 2025",
+      "period": "Apr 2024 - May 2025",
       "duration": "13 months", 
       "mission": [
         "Design and development of robust backend API with NestJS and Go",
@@ -145,7 +145,7 @@
       "role": "Technical Project Manager & Head of Solution Engineering",
       "description": "High-sensitivity mission on strategic national project to secure digital health card. Multi-site coordination and critical work package management.",
       "fullDescription": "High-sensitivity mission on a strategic national project to secure the digital health card, with strong requirements for confidentiality, integrity and regulatory compliance.",
-      "period": "October 2023 - May 2024",
+      "period": "Oct 2023 - May 2024",
       "duration": "8 months",
       "mission": [
         "Close collaboration with SESAM-Vitale teams",
@@ -180,7 +180,7 @@
       "role": "CTO & FullStack Developer",
       "description": "Launch of an unprecedented mobile application dedicated to fashion, combining social network, inspiration and content creation for an ambitious startup in the feminine luxury universe.",
       "fullDescription": "Launch of an unprecedented mobile application dedicated to fashion, combining social network, inspiration and content creation for an ambitious startup in the feminine luxury universe. Build a complete and scalable technical stack for a consumer mobile product.",
-      "period": "2019 - January 2025",
+      "period": "2019 - Jan 2025",
       "duration": "6 years",
       "mission": [
         "Development of main API in NestJS, Go & orchestration via PM2",
@@ -282,7 +282,7 @@
       "role": "IT Architect",
       "description": "Final studies internship at Nexen Partners, IT consulting firm. Strong cloud and network architecture project for public actors with SAMU.",
       "fullDescription": "Final studies internship at Nexen Partners, IT consulting firm focused on client and employee satisfaction. Strong cloud and network architecture project for public actors.",
-      "period": "March 2020 - July 2020",
+      "period": "Mar 2020 - Jul 2020",
       "duration": "5 months",
       "mission": [
         "Development of Python scripts for AWS deployment automation",

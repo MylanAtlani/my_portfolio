@@ -86,8 +86,8 @@ export function ProjectsSection() {
                   </div>
                   
                   {/* Period */}
-                  <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4">
-                    <span className="text-white/80 text-xs font-medium px-2 py-1 nothing-glass rounded-full">
+                  <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 flex items-center">
+                    <span className="text-white/80 text-xs font-medium px-3 py-1 nothing-glass rounded-full">
                       {project.period}
                     </span>
                   </div>
