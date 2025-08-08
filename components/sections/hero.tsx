@@ -14,7 +14,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-0">
+    <section id="home" className="relative min-h-[calc(100svh-var(--nav-h)-var(--scroll-indicator-h))] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[var(--nav-h)] pb-[var(--scroll-indicator-h)]">
       <div className="max-w-7xl mx-auto text-center nothing-animate-slide-up">
         {/* Status Badge - Responsive */}
         <div className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-6 sm:mb-8">

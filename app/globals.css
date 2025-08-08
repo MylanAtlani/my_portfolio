@@ -52,6 +52,20 @@
   --font-nothing: 'NDot47', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-inter: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Hauteur de la navbar (mobile par défaut) */
+  --nav-h: 64px;
+  /* Hauteur réservée pour l'indicateur de scroll (masqué par défaut sur mobile) */
+  --scroll-indicator-h: 0px;
+}
+
+/* Ajustement de la hauteur de la navbar sur >= sm */
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 120px;
+    /* h-10 (40px) + bottom-8 (32px) = 72px */
+    --scroll-indicator-h: 72px;
+  }
 }
 
 /* Curseur Nothing OS - Flèche en dots */
@@ -179,6 +193,9 @@ input, textarea, [contenteditable] {
   -ms-user-select: none;
   user-select: none;
 }
+
+/* Décalage du scroll pour les ancres afin d'éviter le recouvrement par la navbar */
+html { scroll-padding-top: var(--nav-h); }
 
 /* Réactiver la sélection sur les éléments qui en ont besoin */
 input, textarea, [contenteditable="true"], p, span, div.selectable {
