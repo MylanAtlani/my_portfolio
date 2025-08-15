@@ -60,9 +60,9 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   verification: {
-    google: 'votre-code-verification-google',
-    yandex: 'votre-code-verification-yandex',
-    yahoo: 'votre-code-verification-yahoo',
+    google: 'google-site-verification',
+    yandex: 'yandex-verification',
+    yahoo: 'yahoo-site-verification',
   },
   category: 'technology',
   classification: 'Portfolio professionnel',

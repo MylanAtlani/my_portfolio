@@ -2,42 +2,61 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mylanatlani.com';
+  const lastModified = new Date().toISOString().split('T')[0];
   
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      lastModified: lastModified,
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/fr`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      lastModified: lastModified,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/en`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      lastModified: lastModified,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/#expertise`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: `${baseUrl}/fr/expertise`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#projects`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: `${baseUrl}/en/expertise`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: `${baseUrl}/fr/projects`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/projects`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/fr/contact`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/en/contact`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
   ];

@@ -6,8 +6,8 @@
   },
   "home": {
     "title": "Lead Dev Freelance & CTO - Marseille",
-    "subtitle": "Refonte et structuration d'architectures backend robustes",
-    "description": "Je vous accompagne dans la refonte, l'industrialisation et la livraison de backends robustes et scalables. Ingénieur EPITECH avec 8 ans d'expérience dont 7 en freelance.",
+    "subtitle": "Mylan Atlani - Refonte et structuration d'architectures backend robustes",
+    "description": "Je suis Mylan Atlani, Lead Developer freelance et CTO basé à Marseille. Je vous accompagne dans la refonte, l'industrialisation et la livraison de backends robustes et scalables. Ingénieur EPITECH avec 8 ans d'expérience dont 7 en freelance.",
     "cta": "Découvrir mes projets",
     "ctaContact": "Discutons de vos enjeux",
     "available": "Disponible pour projets",
@@ -446,12 +446,12 @@
     }
   },
   "footer": {
-    "rights": "Tous droits réservés.",
-    "builtWith": "Développé avec Next.js et Tailwind CSS",
+    "rights": "© 2025 Mylan Atlani - Tous droits réservés.",
+    "builtWith": "Développé avec Next.js et Tailwind CSS par Mylan Atlani",
     "design": "Design Nothing OS",
     "location": "📍 Marseille, France",
     "remote": "🌍 Remote friendly",
-    "description": "Lead Dev Freelance & CTO - Spécialisé dans la refonte d'architectures backend robustes avec Go, NestJS et Next.js. 8 ans d'expérience au service des startups et scale-ups.",
+    "description": "Mylan Atlani - Lead Dev Freelance & CTO basé à Marseille. Spécialisé dans la refonte d'architectures backend robustes avec Go, NestJS et Next.js. 8 ans d'expérience au service des startups et scale-ups.",
     "status": "Disponible pour missions",
     "services": {
       "title": "Services",
