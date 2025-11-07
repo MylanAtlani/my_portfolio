@@ -68,9 +68,11 @@
   }
 }
 
-/* Curseur Nothing OS - Flèche en dots */
-* {
-  cursor: none;
+/* Curseur Nothing OS - Flèche en dots (désactivé sur mobile/tablette) */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
 }
 
 /* Curseur flèche Nothing OS composé de dots */
@@ -173,14 +175,16 @@
   51%, 100% { opacity: 0.3; }
 }
 
-/* Masquer le curseur sur les éléments interactifs */
-button, a, input, textarea, select, [role="button"], [tabindex]:not([tabindex="-1"]) {
-  cursor: none !important;
-}
+/* Masquer le curseur sur les éléments interactifs (seulement desktop) */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  button, a, input, textarea, select, [role="button"], [tabindex]:not([tabindex="-1"]) {
+    cursor: none !important;
+  }
 
-/* Curseur pour les zones de texte */
-input, textarea, [contenteditable] {
-  cursor: none !important;
+  /* Curseur pour les zones de texte */
+  input, textarea, [contenteditable] {
+    cursor: none !important;
+  }
 }
 
 /* Base styles Nothing OS */
@@ -279,7 +283,6 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   border: none;
-  cursor: none;
 }
 
 .nothing-btn-primary:hover {
@@ -296,7 +299,6 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: none;
 }
 
 .dark .nothing-btn-secondary {

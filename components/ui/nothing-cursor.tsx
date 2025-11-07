@@ -15,10 +15,14 @@ export function NothingCursor() {
       // Détecter seulement les vrais mobiles/tablettes
       const hasTouch = 'ontouchstart' in window;
       const hasMaxTouchPoints = navigator.maxTouchPoints > 0;
-      const isSmallScreen = window.innerWidth <= 768; // Seulement mobile/tablette réels
-      
-      // Détection plus précise : vraiment mobile/tablette
-      const isMobileDevice = (hasTouch || hasMaxTouchPoints) && isSmallScreen;
+      const isSmallScreen = window.innerWidth < 1024; // Mobile et tablette < 1024px
+
+      // Vérifier aussi si le dispositif supporte le hover précis (desktop)
+      const hasHover = window.matchMedia('(hover: hover)').matches;
+      const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+      // Désactiver le curseur sur mobile/tablette OU si pas de hover/pointeur précis
+      const isMobileDevice = isSmallScreen || !hasHover || !hasFinePointer || hasTouch || hasMaxTouchPoints;
       setIsMobile(isMobileDevice);
     };
 

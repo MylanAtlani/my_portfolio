@@ -15,7 +15,7 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-[calc(100svh-var(--nav-h)-var(--scroll-indicator-h))] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[var(--nav-h)] pb-[var(--scroll-indicator-h)]">
-      <div className="max-w-7xl mx-auto text-center nothing-animate-slide-up">
+      <div className="max-w-7xl mx-auto text-center nothing-animate-slide-up py-8 sm:py-0">
         {/* Status Badge - Responsive */}
         <div className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-6 sm:mb-8">
           <div className="nothing-status scale-75 sm:scale-100"></div>
@@ -71,7 +71,7 @@ export function HeroSection() {
         </div>
 
         {/* Stats - Compact mobile version */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-sm sm:max-w-2xl mx-auto px-4 sm:px-0">
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-sm sm:max-w-2xl mx-auto px-4 sm:px-0 pb-4 sm:pb-0">
           <div className="text-center">
             <div className="nothing-title text-xl sm:text-3xl md:text-4xl nothing-gradient-text">8+</div>
             <div className="nothing-text text-xs sm:text-sm opacity-60">

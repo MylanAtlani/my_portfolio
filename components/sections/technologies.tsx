@@ -12,7 +12,7 @@ export function TechnologiesSection() {
   return (
     <section id="technologies" ref={techRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background gradient subtil */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--nothing-orange)]/3 via-transparent to-[var(--nothing-blue)]/3"></div>
+      <div className="absolute inset-0 bg-gradient from-[var(--nothing-orange)]/3 via-transparent to-[var(--nothing-blue)]/3"></div>
       
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 nothing-animate-slide-up">
