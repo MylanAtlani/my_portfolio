@@ -65,7 +65,7 @@ export function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
+    <section id="services" className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>

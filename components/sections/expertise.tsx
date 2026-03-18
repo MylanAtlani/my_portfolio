@@ -9,7 +9,7 @@ export function ExpertiseSection() {
   const t = useTranslations();
 
   return (
-    <section id="expertise" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="expertise" className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

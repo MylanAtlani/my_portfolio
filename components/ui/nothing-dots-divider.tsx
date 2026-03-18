@@ -9,7 +9,7 @@ interface SectionDividerProps {
 
 export function NothingDotsDivider({ className = '' }: SectionDividerProps) {
   return (
-    <div className={`flex items-center justify-center py-8 sm:py-12 ${className}`}>
+    <div className={`flex items-center justify-center py-4 sm:py-12 ${className}`}>
       <motion.div
         className="w-full max-w-xs sm:max-w-md h-px"
         style={{

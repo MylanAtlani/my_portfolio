@@ -18,7 +18,7 @@ export function ProjectsSection() {
   const projects = adaptProjectsForLegacy(detailedProjects);
 
   return (
-    <section id="projects" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

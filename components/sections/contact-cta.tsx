@@ -75,7 +75,7 @@ export function ContactCTASection() {
   const t = useTranslations('contact');
 
   return (
-    <section id="contact" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
+    <section id="contact" className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto relative">
         {/* Split layout */}
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">

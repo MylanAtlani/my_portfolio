@@ -36,7 +36,7 @@ export function TechnologiesSection() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
-    <section id="technologies" ref={sectionRef} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="technologies" ref={sectionRef} className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient from-[var(--nothing-orange)]/3 via-transparent to-[var(--nothing-blue)]/3"></div>
 

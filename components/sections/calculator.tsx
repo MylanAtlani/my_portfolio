@@ -95,7 +95,7 @@ export function CalculatorSection() {
   const durationLabels = [1, 3, 6, 9, 12];
 
   return (
-    <section id="calculator" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
+    <section id="calculator" className="py-10 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5" />
       </div>
