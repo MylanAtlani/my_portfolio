@@ -39,51 +39,41 @@ export function NothingCursor() {
     // Signal to CSS that JS cursor is active — hides the SVG fallback cursor
     document.documentElement.setAttribute('data-custom-cursor', '');
 
-    const INTERACTIVE_SELECTOR = 'button, a, [role="button"], [tabindex]:not([tabindex="-1"])';
-    const TEXT_SELECTOR = 'input, textarea, [contenteditable]';
+    const INTERACTIVE_SELECTOR = 'button, a, [role="button"], [tabindex]:not([tabindex="-1"]), input[type="range"]';
+    const TEXT_SELECTOR = 'input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]):not([type="color"]):not([type="hidden"]), textarea, [contenteditable]';
 
-    // Suivre la position de la souris
+    // Détecter l'état du curseur à chaque mouvement via l'élément sous la souris
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+
+      const target = e.target as HTMLElement;
+      if (!target?.closest) return;
+
+      if (target.closest(TEXT_SELECTOR)) {
+        setIsText(true);
+        setIsHovering(false);
+      } else if (target.closest(INTERACTIVE_SELECTOR)) {
+        setIsText(false);
+        setIsHovering(true);
+      } else {
+        setIsText(false);
+        setIsHovering(false);
+      }
     };
 
     // Gérer les clics
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    // Event delegation — one listener handles all interactive elements
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest?.(TEXT_SELECTOR)) {
-        setIsText(true);
-        setIsHovering(false);
-      } else if (target.closest?.(INTERACTIVE_SELECTOR)) {
-        setIsHovering(true);
-        setIsText(false);
-      }
-    };
-
-    const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest?.(INTERACTIVE_SELECTOR) || target.closest?.(TEXT_SELECTOR)) {
-        setIsHovering(false);
-        setIsText(false);
-      }
-    };
-
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       document.documentElement.removeAttribute('data-custom-cursor');
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [isMobile]);
 

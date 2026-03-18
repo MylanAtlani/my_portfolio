@@ -78,7 +78,7 @@
 
   /* Once JS cursor component mounts, hide the native cursor entirely */
   html[data-custom-cursor] * {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
@@ -182,40 +182,23 @@
   51%, 100% { opacity: 0.3; }
 }
 
-/* Masquer le curseur sur les éléments interactifs (seulement desktop) */
-@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-  button, a, input, textarea, select, [role="button"], [tabindex]:not([tabindex="-1"]) {
-    cursor: none !important;
-  }
-
-  /* Curseur pour les zones de texte */
-  input, textarea, [contenteditable] {
-    cursor: none !important;
-  }
-}
+/* Le cursor: none !important est déjà géré par html[data-custom-cursor] * ci-dessus */
 
 /* Base styles Nothing OS */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Désactiver l'édition par défaut partout */
+}
+
+/* Empêcher la sélection de texte sur les éléments interactifs */
+button, [role="button"] {
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
 /* Décalage du scroll pour les ancres afin d'éviter le recouvrement par la navbar */
 html { scroll-padding-top: var(--nav-h); }
-
-/* Réactiver la sélection sur les éléments qui en ont besoin */
-input, textarea, [contenteditable="true"], p, span, div.selectable,
-h1, h2, h3, h4, h5, h6, li, td, th, a, code, pre, blockquote {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
 
 body {
   font-family: var(--font-system);
