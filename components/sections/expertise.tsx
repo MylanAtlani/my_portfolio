@@ -13,7 +13,7 @@ export function ExpertiseSection() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 sm:mb-16 lg:mb-20"
           variants={sectionHeader}
           initial="hidden"
           whileInView="visible"

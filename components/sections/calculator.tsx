@@ -103,7 +103,7 @@ export function CalculatorSection() {
       <div className="relative max-w-3xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8 sm:mb-16"
           variants={sectionHeader}
           initial="hidden"
           whileInView="visible"

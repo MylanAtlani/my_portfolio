@@ -75,7 +75,7 @@ export function ServicesSection() {
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 sm:mb-16 lg:mb-20"
           variants={sectionHeader}
           initial="hidden"
           whileInView="visible"
@@ -98,7 +98,7 @@ export function ServicesSection() {
 
         {/* Availability Status */}
         <motion.div
-          className="flex justify-center mb-12 sm:mb-16"
+          className="flex justify-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
