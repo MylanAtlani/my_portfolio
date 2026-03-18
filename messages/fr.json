@@ -77,6 +77,8 @@
     "viewDemo": "Voir le projet",
     "sourceCode": "Code source",
     "caseStudy": "Étude de cas",
+    "previous": "Précédent",
+    "next": "Suivant",
     "ciffreo": {
       "title": "Ciffreo Bona",
       "role": "Lead Developer",
@@ -376,7 +378,32 @@
       "estimated": "Budget estimé",
       "indicative": "Tarif indicatif • Devis personnalisé",
       "discuss": "Discuter du projet",
-      "calculator": "Calculateur de budget"
+      "calculator": "Estimer mon budget"
+    },
+    "calculator": {
+      "title": "Estimez Votre Budget",
+      "subtitle": "Configurez votre mission en 3 étapes",
+      "step1_title": "Choisissez votre service",
+      "step1_subtitle": "Quel accompagnement recherchez-vous ?",
+      "step2_title": "Configurez votre mission",
+      "step2_subtitle": "Ajustez l'engagement et la durée",
+      "step3_title": "Votre estimation",
+      "step3_subtitle": "Budget indicatif personnalisé",
+      "engagement": "Niveau d'engagement",
+      "duration": "Durée de la mission",
+      "months": "mois",
+      "days": "jours",
+      "audit_days": "Durée de l'audit",
+      "monthly_cost": "Coût mensuel",
+      "total_cost": "Budget total",
+      "breakdown": "Détail du calcul",
+      "tjm_label": "TJM moyen",
+      "days_per_month": "jours/mois",
+      "disclaimer": "Ce budget est indicatif et sera ajusté selon la complexité de votre projet",
+      "cta": "Discutons de votre projet",
+      "back": "Retour",
+      "next": "Suivant",
+      "restart": "Nouvelle estimation"
     }
   },
   "contact": {

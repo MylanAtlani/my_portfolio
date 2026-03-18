@@ -26,6 +26,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  size-adjust: 105%;
   /* Optimisations supplémentaires */
   font-feature-settings: "kern" 1, "liga" 1;
   font-variant-ligatures: common-ligatures;
@@ -68,9 +69,15 @@
   }
 }
 
-/* Curseur Nothing OS - Flèche en dots (désactivé sur mobile/tablette) */
+/* Curseur Nothing OS - SVG fallback for browsers that don't support radial-gradient cursors */
+/* The inline SVG provides a small orange dot-arrow visible before JS mounts */
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='10' cy='2' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='10' cy='6' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='14' cy='6' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='10' cy='10' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='14' cy='10' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='18' cy='10' r='1.2' fill='%23FF6B35'/%3E%3Ccircle cx='10' cy='14' r='1.2' fill='%23FF6B35'/%3E%3C/svg%3E") 0 0, auto;
+  }
+
+  /* Once JS cursor component mounts, hide the native cursor entirely */
+  html[data-custom-cursor] * {
     cursor: none;
   }
 }
@@ -98,17 +105,17 @@
   background-image: 
  
     /* Corps flèche */
-    radial-gradient(circle at 10px 2px, var(--nothing-orange) 1px, transparent 1px),
-    radial-gradient(circle at 10px 6px, var(--nothing-orange) 1px, transparent 1px),
-    radial-gradient(circle at 14px 6px, var(--nothing-orange) 1px, transparent 1px),
-    radial-gradient(circle at 10px 10px, var(--nothing-orange) 1px, transparent 1px),
-    radial-gradient(circle at 14px 10px, var(--nothing-orange) 1px, transparent 1px),
-    radial-gradient(circle at 18px 10px, var(--nothing-orange) 1px, transparent 1px),
+    radial-gradient(circle at 10px 2px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
+    radial-gradient(circle at 10px 6px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
+    radial-gradient(circle at 14px 6px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
+    radial-gradient(circle at 10px 10px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
+    radial-gradient(circle at 14px 10px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
+    radial-gradient(circle at 18px 10px, var(--nothing-orange, #FF6B35) 1px, transparent 1px),
     /* Pointe flèche */
-    radial-gradient(circle at 10px 14px, var(--nothing-orange) 1px, transparent 1px);
+    radial-gradient(circle at 10px 14px, var(--nothing-orange, #FF6B35) 1px, transparent 1px);
   background-size: 24px 24px;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 4px var(--nothing-orange));
+  filter: drop-shadow(0 0 4px var(--nothing-orange, #FF6B35));
 }
 
 /* États du curseur Nothing OS */
@@ -116,15 +123,15 @@
   background-image: 
     /* Flèche hover - rouge */
 
-    radial-gradient(circle at 10px 2px, var(--nothing-red) 1px, transparent 1.2px),
-    radial-gradient(circle at 10px 6px, var(--nothing-red) 1px, transparent 1.2px),
-    radial-gradient(circle at 14px 6px, var(--nothing-red) 1px, transparent 1.2px),
-    radial-gradient(circle at 10px 10px, var(--nothing-red) 1px, transparent 1.2px),
-    radial-gradient(circle at 14px 10px, var(--nothing-red) 1px, transparent 1.2px),
-    radial-gradient(circle at 18px 10px, var(--nothing-red) 1px, transparent 1.2px),
+    radial-gradient(circle at 10px 2px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
+    radial-gradient(circle at 10px 6px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
+    radial-gradient(circle at 14px 6px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
+    radial-gradient(circle at 10px 10px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
+    radial-gradient(circle at 14px 10px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
+    radial-gradient(circle at 18px 10px, var(--nothing-red, #FF4757) 1px, transparent 1.2px),
     /* Pointe flèche */
-    radial-gradient(circle at 10px 14px, var(--nothing-red) 1px, transparent 1.2px);
-  filter: drop-shadow(0 0 8px var(--nothing-red));
+    radial-gradient(circle at 10px 14px, var(--nothing-red, #FF4757) 1px, transparent 1.2px);
+  filter: drop-shadow(0 0 8px var(--nothing-red, #FF4757));
   transform: scale(1.1);
 }
 
@@ -132,15 +139,15 @@
   background-image: 
     /* Flèche click - jaune */
  
-    radial-gradient(circle at 10px 2px, var(--nothing-yellow) 1px, transparent 1.4px),
-    radial-gradient(circle at 10px 6px, var(--nothing-yellow) 1px, transparent 1.4px),
-    radial-gradient(circle at 14px 6px, var(--nothing-yellow) 1px, transparent 1.4px),
-    radial-gradient(circle at 10px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
-    radial-gradient(circle at 14px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
-    radial-gradient(circle at 18px 10px, var(--nothing-yellow) 1px, transparent 1.4px),
+    radial-gradient(circle at 10px 2px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
+    radial-gradient(circle at 10px 6px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
+    radial-gradient(circle at 14px 6px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
+    radial-gradient(circle at 10px 10px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
+    radial-gradient(circle at 14px 10px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
+    radial-gradient(circle at 18px 10px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px),
     /* Pointe flèche */
-    radial-gradient(circle at 10px 14px, var(--nothing-yellow) 1px, transparent 1.4px);
-  filter: drop-shadow(0 0 12px var(--nothing-yellow));
+    radial-gradient(circle at 10px 14px, var(--nothing-yellow, #FFC048) 1px, transparent 1.4px);
+  filter: drop-shadow(0 0 12px var(--nothing-yellow, #FFC048));
   transform: scale(0.9);
 }
 
@@ -153,19 +160,19 @@
 .nothing-cursor.text::before {
   background-image: 
     /* I-beam vertical */
-    radial-gradient(circle at 8px 2px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 8px 5px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 8px 8px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 8px 11px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 8px 14px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 8px 17px, var(--nothing-blue) 1px, transparent 1px),
+    radial-gradient(circle at 8px 2px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 8px 5px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 8px 8px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 8px 11px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 8px 14px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 8px 17px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
     /* Barres horizontales */
-    radial-gradient(circle at 4px 2px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 12px 2px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 4px 17px, var(--nothing-blue) 1px, transparent 1px),
-    radial-gradient(circle at 12px 17px, var(--nothing-blue) 1px, transparent 1px);
+    radial-gradient(circle at 4px 2px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 12px 2px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 4px 17px, var(--nothing-blue, #3742FA) 1px, transparent 1px),
+    radial-gradient(circle at 12px 17px, var(--nothing-blue, #3742FA) 1px, transparent 1px);
   background-size: 16px 20px;
-  filter: drop-shadow(0 0 4px var(--nothing-blue));
+  filter: drop-shadow(0 0 4px var(--nothing-blue, #3742FA));
   animation: nothing-cursor-blink 1.2s ease-in-out infinite;
 }
 
@@ -202,7 +209,8 @@
 html { scroll-padding-top: var(--nav-h); }
 
 /* Réactiver la sélection sur les éléments qui en ont besoin */
-input, textarea, [contenteditable="true"], p, span, div.selectable {
+input, textarea, [contenteditable="true"], p, span, div.selectable,
+h1, h2, h3, h4, h5, h6, li, td, th, a, code, pre, blockquote {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
@@ -443,6 +451,40 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--nothing-red);
+}
+
+/* Nothing OS Dot Pattern Background */
+.nothing-dot-pattern {
+  background-image: radial-gradient(circle, var(--nothing-orange) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.04;
+}
+
+.dark .nothing-dot-pattern {
+  opacity: 0.03;
+}
+
+/* Nothing OS Line Accent */
+.nothing-line-accent {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nothing-orange), transparent);
+  opacity: 0.2;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .nothing-animate-float,
+  .nothing-animate-pulse {
+    animation: none;
+  }
+}
+
+/* Mobile backdrop-filter optimization */
+@media (max-width: 768px) {
+  .nothing-glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 /* Selection */

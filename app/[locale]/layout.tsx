@@ -127,7 +127,7 @@ export default async function LocaleLayout({
         {/* Google Tag Manager - DANS LE HEAD */}
         <Script
           id="gtm-head"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

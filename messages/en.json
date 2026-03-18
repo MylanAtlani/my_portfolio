@@ -72,6 +72,8 @@
     "viewDemo": "View project",
     "sourceCode": "Source code",
     "caseStudy": "Case study",
+    "previous": "Previous",
+    "next": "Next",
     "ciffreo": {
       "title": "Ciffreo Bona",
       "role": "Lead Developer", 
@@ -371,7 +373,32 @@
       "estimated": "Estimated budget",
       "indicative": "Indicative rate • Custom quote",
       "discuss": "Discuss project",
-      "calculator": "Budget calculator"
+      "calculator": "Estimate my budget"
+    },
+    "calculator": {
+      "title": "Estimate Your Budget",
+      "subtitle": "Configure your mission in 3 steps",
+      "step1_title": "Choose your service",
+      "step1_subtitle": "What kind of support are you looking for?",
+      "step2_title": "Configure your mission",
+      "step2_subtitle": "Adjust engagement level and duration",
+      "step3_title": "Your estimate",
+      "step3_subtitle": "Personalized indicative budget",
+      "engagement": "Engagement level",
+      "duration": "Mission duration",
+      "months": "months",
+      "days": "days",
+      "audit_days": "Audit duration",
+      "monthly_cost": "Monthly cost",
+      "total_cost": "Total budget",
+      "breakdown": "Calculation breakdown",
+      "tjm_label": "Average daily rate",
+      "days_per_month": "days/month",
+      "disclaimer": "This budget is indicative and will be adjusted based on your project's complexity",
+      "cta": "Let's discuss your project",
+      "back": "Back",
+      "next": "Next",
+      "restart": "New estimate"
     }
   },
   "contact": {

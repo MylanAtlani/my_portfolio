@@ -1,7 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useTheme } from 'next-themes';
+
+const DESKTOP_COUNT = 85;
+const MOBILE_COUNT = 35;
+const CONNECTION_DISTANCE = 150;
+const MOUSE_RADIUS = 200;
+const GRID_SIZE = 160; // Spatial hash cell size
 
 interface Particle {
   x: number;
@@ -9,15 +15,40 @@ interface Particle {
   vx: number;
   vy: number;
   size: number;
-  opacity: number;
-  color: string;
+  baseOpacity: number;
+  phase: number; // replaces Date.now() per-particle
+  isOrange: boolean;
 }
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>(0);
+  const mouseRef = useRef({ x: -9999, y: -9999 });
+  const scrollRef = useRef(0);
+  const isTouchRef = useRef(false);
   const { theme } = useTheme();
+
+  const initParticles = useCallback((width: number, height: number) => {
+    const isMobile = width < 768;
+    const count = isMobile ? MOBILE_COUNT : DESKTOP_COUNT;
+    const particles: Particle[] = [];
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        baseOpacity: Math.random() * 0.4 + 0.1,
+        phase: Math.random() * Math.PI * 2,
+        isOrange: Math.random() > 0.5,
+      });
+    }
+
+    particlesRef.current = particles;
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,105 +57,162 @@ export function ParticleField() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Resize canvas
+    // Detect touch device
+    isTouchRef.current = 'ontouchstart' in window;
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      initParticles(canvas.width, canvas.height);
     };
 
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize particles
-    const initParticles = () => {
-      const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 20000));
-      particlesRef.current = [];
-
-      for (let i = 0; i < particleCount; i++) {
-        particlesRef.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.1,
-          color: Math.random() > 0.5 ? 'var(--nothing-orange)' : 'var(--nothing-blue)'
-        });
+    // Mouse tracking (desktop only)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isTouchRef.current) {
+        mouseRef.current = { x: e.clientX, y: e.clientY };
       }
     };
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -9999, y: -9999 };
+    };
 
-    initParticles();
+    // Scroll tracking
+    const handleScroll = () => {
+      scrollRef.current = window.scrollY;
+    };
 
-    // Animation loop
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const isLight = () => theme === 'light';
+    let time = 0;
+
+    // Spatial hash for O(n) connection lookups
+    const findNeighbors = (particles: Particle[], idx: number): number[] => {
+      const p = particles[idx];
+      const neighbors: number[] = [];
+      for (let j = idx + 1; j < particles.length; j++) {
+        const dx = p.x - particles[j].x;
+        const dy = p.y - particles[j].y;
+        if (Math.abs(dx) < CONNECTION_DISTANCE && Math.abs(dy) < CONNECTION_DISTANCE) {
+          const dist = dx * dx + dy * dy;
+          if (dist < CONNECTION_DISTANCE * CONNECTION_DISTANCE) {
+            neighbors.push(j);
+          }
+        }
+      }
+      return neighbors;
+    };
+
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
 
-      // Couleurs adaptées au thème
-      const isLight = theme === 'light';
+      const light = isLight();
+      const mouse = mouseRef.current;
+      const scroll = scrollRef.current;
+      const viewportH = window.innerHeight;
 
-      particlesRef.current.forEach((particle) => {
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+      // Scroll-based activity factor: particles are more active near the top
+      const scrollFactor = Math.max(0.3, 1 - (scroll / (viewportH * 2)));
+
+      time += 0.01;
+
+      const particles = particlesRef.current;
+
+      // Update & draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Mouse attraction (desktop only)
+        if (!isTouchRef.current) {
+          const mdx = mouse.x - p.x;
+          const mdy = mouse.y - p.y;
+          const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+          if (mDist < MOUSE_RADIUS && mDist > 0) {
+            const force = (1 - mDist / MOUSE_RADIUS) * 0.02;
+            p.vx += (mdx / mDist) * force;
+            p.vy += (mdy / mDist) * force;
+          }
+        }
+
+        // Apply velocity with scroll-based damping
+        p.x += p.vx * scrollFactor;
+        p.y += p.vy * scrollFactor;
+
+        // Damping
+        p.vx *= 0.995;
+        p.vy *= 0.995;
 
         // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        if (p.x < 0 || p.x > w) { p.vx *= -1; p.x = Math.max(0, Math.min(w, p.x)); }
+        if (p.y < 0 || p.y > h) { p.vy *= -1; p.y = Math.max(0, Math.min(h, p.y)); }
 
-        // Keep particles in bounds
-        particle.x = Math.max(0, Math.min(canvas.width, particle.x));
-        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+        // Opacity with smooth sine pulse
+        const baseOp = light ? 0.3 : 0.1;
+        const pulseIntensity = light ? 0.4 : 0.3;
+        const opacity = (baseOp + Math.abs(Math.sin(time + p.phase)) * pulseIntensity) * scrollFactor;
 
-        // Pulse opacity - Plus visible en mode clair
-        const baseOpacity = isLight ? 0.3 : 0.1;
-        const pulseIntensity = isLight ? 0.4 : 0.3;
-        particle.opacity = baseOpacity + Math.abs(Math.sin(Date.now() * 0.001 + particle.x * 0.001)) * pulseIntensity;
+        // Speed for trail effect
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        const trailSize = p.size + Math.min(speed * 3, 3);
 
-        // Draw particle
+        // Draw particle with glow
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        
-        // Create gradient for glow effect with theme-aware colors
-        const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 2
-        );
-        
-        if (particle.color === 'var(--nothing-orange)') {
-          const orangeColor = isLight ? '255, 140, 0' : '255, 165, 0'; // Plus foncé en mode clair
-          gradient.addColorStop(0, `rgba(${orangeColor}, ${particle.opacity})`);
-          gradient.addColorStop(1, `rgba(${orangeColor}, 0)`);
+        ctx.arc(p.x, p.y, trailSize, 0, Math.PI * 2);
+
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, trailSize * 2.5);
+        if (p.isOrange) {
+          const c = light ? '255, 140, 0' : '255, 165, 0';
+          gradient.addColorStop(0, `rgba(${c}, ${opacity})`);
+          gradient.addColorStop(1, `rgba(${c}, 0)`);
         } else {
-          const blueColor = isLight ? '30, 100, 180' : '0, 162, 255'; // Plus foncé en mode clair
-          gradient.addColorStop(0, `rgba(${blueColor}, ${particle.opacity})`);
-          gradient.addColorStop(1, `rgba(${blueColor}, 0)`);
+          const c = light ? '30, 100, 180' : '0, 162, 255';
+          gradient.addColorStop(0, `rgba(${c}, ${opacity})`);
+          gradient.addColorStop(1, `rgba(${c}, 0)`);
         }
-        
         ctx.fillStyle = gradient;
         ctx.fill();
 
-        // Draw connections
-        particlesRef.current.forEach((otherParticle) => {
-          if (particle !== otherParticle) {
-            const dx = particle.x - otherParticle.x;
-            const dy = particle.y - otherParticle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+        // Draw connections (only check j > i to avoid duplicates)
+        const neighbors = findNeighbors(particles, i);
+        for (const j of neighbors) {
+          const other = particles[j];
+          const dx = p.x - other.x;
+          const dy = p.y - other.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 100) {
-              ctx.beginPath();
-              ctx.moveTo(particle.x, particle.y);
-              ctx.lineTo(otherParticle.x, otherParticle.y);
-              
-              // Couleur des lignes adaptée au thème
-              const lineColor = isLight ? '50, 50, 50' : '255, 255, 255';
-              const lineOpacity = isLight ? 0.2 : 0.1;
-              ctx.strokeStyle = `rgba(${lineColor}, ${lineOpacity * (1 - distance / 100)})`;
-              ctx.lineWidth = isLight ? 0.8 : 0.5;
-              ctx.stroke();
-            }
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(other.x, other.y);
+
+          const lineColor = light ? '50, 50, 50' : '255, 255, 255';
+          const lineOpacity = (light ? 0.15 : 0.08) * (1 - dist / CONNECTION_DISTANCE) * scrollFactor;
+          ctx.strokeStyle = `rgba(${lineColor}, ${lineOpacity})`;
+          ctx.lineWidth = light ? 0.8 : 0.5;
+          ctx.stroke();
+        }
+      }
+
+      // Nothing OS static dot grid layer (very subtle)
+      const gridSpacing = 80;
+      const dotOpacity = (light ? 0.04 : 0.02) * scrollFactor;
+      if (dotOpacity > 0.005) {
+        ctx.fillStyle = light ? `rgba(0, 0, 0, ${dotOpacity})` : `rgba(255, 255, 255, ${dotOpacity})`;
+        for (let gx = gridSpacing / 2; gx < w; gx += gridSpacing) {
+          for (let gy = gridSpacing / 2; gy < h; gy += gridSpacing) {
+            ctx.beginPath();
+            ctx.arc(gx, gy, 0.8, 0, Math.PI * 2);
+            ctx.fill();
           }
-        });
-      });
+        }
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -133,17 +221,20 @@ export function ParticleField() {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [theme]); // Ajouter theme comme dépendance pour relancer l'animation quand le thème change
+  }, [theme, initParticles]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
+      style={{ opacity: 0.4, willChange: 'transform' }}
     />
   );
-} 
+}

@@ -21,8 +21,8 @@ export function NothingCursor() {
       const hasHover = window.matchMedia('(hover: hover)').matches;
       const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-      // Désactiver le curseur sur mobile/tablette OU si pas de hover/pointeur précis
-      const isMobileDevice = isSmallScreen || !hasHover || !hasFinePointer || hasTouch || hasMaxTouchPoints;
+      // Only hide cursor if small screen OR device lacks both hover and fine pointer
+      const isMobileDevice = isSmallScreen || (!hasHover && !hasFinePointer);
       setIsMobile(isMobileDevice);
     };
 
@@ -35,6 +35,13 @@ export function NothingCursor() {
   useEffect(() => {
     // Si mobile/tablette, ne pas afficher le curseur custom
     if (isMobile) return;
+
+    // Signal to CSS that JS cursor is active — hides the SVG fallback cursor
+    document.documentElement.setAttribute('data-custom-cursor', '');
+
+    const INTERACTIVE_SELECTOR = 'button, a, [role="button"], [tabindex]:not([tabindex="-1"])';
+    const TEXT_SELECTOR = 'input, textarea, [contenteditable]';
+
     // Suivre la position de la souris
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -44,86 +51,41 @@ export function NothingCursor() {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    // Gérer les hovers sur les éléments interactifs
-    const handleMouseEnter = (e: Event) => {
+    // Event delegation — one listener handles all interactive elements
+    const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
-      if (target.matches('button, a, [role="button"], [tabindex]:not([tabindex="-1"])')) {
-        setIsHovering(true);
-        setIsText(false);
-      } else if (target.matches('input, textarea, [contenteditable]')) {
+      if (target.closest?.(TEXT_SELECTOR)) {
         setIsText(true);
         setIsHovering(false);
-      } else {
+      } else if (target.closest?.(INTERACTIVE_SELECTOR)) {
+        setIsHovering(true);
+        setIsText(false);
+      }
+    };
+
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest?.(INTERACTIVE_SELECTOR) || target.closest?.(TEXT_SELECTOR)) {
         setIsHovering(false);
         setIsText(false);
       }
     };
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-      setIsText(false);
-    };
-
-    // Ajouter les événements
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
-    // Événements pour tous les éléments interactifs
-    const interactiveElements = document.querySelectorAll(
-      'button, a, input, textarea, [contenteditable], [role="button"], [tabindex]:not([tabindex="-1"])'
-    );
-
-    interactiveElements.forEach(element => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    // Observer pour les nouveaux éléments ajoutés dynamiquement
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            const element = node as HTMLElement;
-            const newInteractiveElements = element.querySelectorAll?.(
-              'button, a, input, textarea, [contenteditable], [role="button"], [tabindex]:not([tabindex="-1"])'
-            );
-            
-            newInteractiveElements?.forEach(newElement => {
-              newElement.addEventListener('mouseenter', handleMouseEnter);
-              newElement.addEventListener('mouseleave', handleMouseLeave);
-            });
-
-            // Vérifier si l'élément lui-même est interactif
-            if (element.matches?.('button, a, input, textarea, [contenteditable], [role="button"], [tabindex]:not([tabindex="-1"])')) {
-              element.addEventListener('mouseenter', handleMouseEnter);
-              element.addEventListener('mouseleave', handleMouseLeave);
-            }
-          }
-        });
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-    // Cleanup
     return () => {
+      document.documentElement.removeAttribute('data-custom-cursor');
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
-      
-      interactiveElements.forEach(element => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
-
-      observer.disconnect();
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
     };
-  }, []);
+  }, [isMobile]);
 
   // Ne pas afficher le curseur sur mobile/tablette
   if (isMobile) return null;
