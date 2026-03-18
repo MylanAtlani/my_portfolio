@@ -1,49 +1,87 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { ParticleField } from '@/components/ui/particle-field';
 import { HeroSection } from '@/components/sections/hero';
 import { ExpertiseSection } from '@/components/sections/expertise';
 import { TechnologiesSection } from '@/components/sections/technologies';
 import { ProjectsSection } from '@/components/sections/projects';
 import { TestimonialsSection } from '@/components/sections/testimonials';
-import { ServicesSection } from '@/components/sections/services';
-import { ContactCTASection } from '@/components/sections/contact-cta';
+import { NothingDotsDivider } from '@/components/ui/nothing-dots-divider';
+import { StickyCTA } from '@/components/ui/sticky-cta';
+// Below-fold sections — dynamic imports for code splitting
+const ServicesSection = dynamic(() =>
+  import('@/components/sections/services').then(m => ({ default: m.ServicesSection }))
+);
+const CalculatorSection = dynamic(() =>
+  import('@/components/sections/calculator').then(m => ({ default: m.CalculatorSection }))
+);
+const ContactCTASection = dynamic(() =>
+  import('@/components/sections/contact-cta').then(m => ({ default: m.ContactCTASection }))
+);
 
 export default function HomePage() {
-
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Particle Field Background */}
       <ParticleField />
-      
-      {/* Floating background elements - Smaller on mobile */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 nothing-gradient-blue rounded-full blur-3xl opacity-10 nothing-animate-float"></div>
-        <div className="absolute bottom-20 sm:bottom-40 left-10 sm:left-20 w-32 sm:w-80 h-32 sm:h-80 bg-(--nothing-blue) rounded-full blur-3xl opacity-10 nothing-animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 sm:w-60 h-24 sm:h-60 bg-(--nothing-green) rounded-full blur-3xl opacity-15 nothing-animate-float" style={{ animationDelay: '4s' }}></div>
-      </div>
 
-      {/* Hero Section */}
+      {/* Mesh gradient background */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          background: [
+            'radial-gradient(ellipse 80% 60% at 15% 20%, rgba(55, 66, 250, 0.07) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 50% at 85% 75%, rgba(55, 66, 250, 0.05) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 75% 15%, rgba(46, 213, 115, 0.06) 0%, transparent 65%)',
+            'radial-gradient(ellipse 70% 60% at 20% 80%, rgba(255, 107, 53, 0.06) 0%, transparent 65%)',
+            'radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 71, 87, 0.04) 0%, transparent 60%)',
+          ].join(', '),
+        }}
+      />
+
+      {/* Sticky CTA */}
+      <StickyCTA />
+
+      {/* === Sections (conversion-optimized order) === */}
+
+      {/* 1. Hero — First impression */}
       <HeroSection />
 
-      {/* Expertise Section */}
-      <ExpertiseSection />
+      <NothingDotsDivider />
 
-      {/* Technologies Section */}
-      <TechnologiesSection />
-
-      {/* Projects Section */}
+      {/* 2. Projects — Proof of work immediately */}
       <ProjectsSection />
 
-      {/* Testimonials Section */}
+      <NothingDotsDivider />
+
+      {/* 3. Testimonials — Social proof compounds */}
       <TestimonialsSection />
 
-      {/* Services Section */}
+      <NothingDotsDivider />
+
+      {/* 4. Expertise — Technical credibility */}
+      <ExpertiseSection />
+
+      <NothingDotsDivider />
+
+      {/* 5. Technologies — Stack details */}
+      <TechnologiesSection />
+
+      <NothingDotsDivider />
+
+      {/* 6. Services — Visitor is now warm */}
       <ServicesSection />
 
-      {/* Contact Section Unified */}
-      <ContactCTASection />
+      <NothingDotsDivider />
 
+      {/* 7. Calculator — Budget estimation wizard */}
+      <CalculatorSection />
+
+      <NothingDotsDivider />
+
+      {/* 8. Contact — CTA at the end */}
+      <ContactCTASection />
     </div>
   );
 }
