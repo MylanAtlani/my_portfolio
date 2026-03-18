@@ -94,7 +94,7 @@ export function HeroSection() {
             <h1>
               <AnimatedTitle
                 text="ATLANI"
-                className="block text-5xl xs:text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-none tracking-tight"
+                className="block text-6xl xs:text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-none tracking-tight"
               />
               <AnimatedTitle
                 text="Mylan"
