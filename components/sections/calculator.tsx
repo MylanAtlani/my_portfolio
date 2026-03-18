@@ -309,7 +309,7 @@ export function CalculatorSection() {
                   <div className="flex gap-3 mt-8">
                     <motion.button
                       onClick={() => goTo(0)}
-                      className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 py-3"
+                      className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 !px-4 !py-3 text-sm"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -318,7 +318,7 @@ export function CalculatorSection() {
                     </motion.button>
                     <motion.button
                       onClick={() => goTo(2)}
-                      className="nothing-btn-primary flex-1 flex items-center justify-center gap-2 py-3"
+                      className="nothing-btn-primary flex-1 flex items-center justify-center gap-2 !px-4 !py-3 text-sm"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -405,7 +405,7 @@ export function CalculatorSection() {
                   <div className="flex flex-col gap-3">
                     <motion.a
                       href="#contact"
-                      className="nothing-btn-primary flex items-center justify-center gap-2 py-3 w-full"
+                      className="nothing-btn-primary flex items-center justify-center gap-2 !px-4 !py-3 text-sm w-full"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -415,7 +415,7 @@ export function CalculatorSection() {
                     <div className="flex gap-3">
                       <motion.button
                         onClick={() => goTo(1)}
-                        className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 py-3"
+                        className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 !px-3 !py-3 text-sm"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
@@ -431,7 +431,7 @@ export function CalculatorSection() {
                           setDuration(3);
                           setAuditDays(4);
                         }}
-                        className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 py-3"
+                        className="nothing-btn-secondary flex-1 flex items-center justify-center gap-2 !px-3 !py-3 text-sm"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
@@ -489,10 +489,19 @@ function SliderInput({
           transition={{ type: 'spring', stiffness: 200, damping: 25 }}
         />
       </div>
-      <div className="flex justify-between text-xs opacity-50 px-1">
-        {labels.map((l) => (
-          <span key={l}>{l}</span>
-        ))}
+      <div className="relative h-4 text-xs opacity-50">
+        {labels.map((l) => {
+          const labelPct = ((l - min) / (max - min)) * 100;
+          return (
+            <span
+              key={l}
+              className="absolute -translate-x-1/2"
+              style={{ left: `${labelPct}%` }}
+            >
+              {l}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
