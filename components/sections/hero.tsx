@@ -70,7 +70,7 @@ export function HeroSection() {
       className="relative min-h-[calc(100svh-var(--nav-h)-var(--scroll-indicator-h))] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[var(--nav-h)] pb-[var(--scroll-indicator-h)]"
     >
       <motion.div
-        className="max-w-7xl mx-auto w-full py-8 sm:py-0"
+        className="max-w-7xl mx-auto w-full py-4 sm:py-0"
         style={{ y: backgroundY }}
       >
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-16">
@@ -78,7 +78,7 @@ export function HeroSection() {
           <div className="flex-1 text-center lg:text-left">
             {/* Status Badge */}
             <motion.div
-              className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-6 sm:mb-8"
+              className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 nothing-glass rounded-full mb-4 sm:mb-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.2 }}
@@ -94,11 +94,11 @@ export function HeroSection() {
             <h1>
               <AnimatedTitle
                 text="ATLANI"
-                className="block text-6xl xs:text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-none tracking-tight"
+                className="block text-5xl xs:text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-none tracking-tight"
               />
               <AnimatedTitle
                 text="Mylan"
-                className="block text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-2 sm:mt-4 pb-4 sm:pb-6"
+                className="block text-5xl xs:text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-1 sm:mt-4 pb-2 sm:pb-6"
                 charClassName="nothing-gradient-text"
                 lineHeight={1.4}
                 delay={6}
@@ -107,7 +107,7 @@ export function HeroSection() {
 
             {/* Decorative line */}
             <motion.div
-              className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 rounded-full mx-auto lg:mx-0 mt-6 sm:mt-8"
+              className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-white/20 rounded-full mx-auto lg:mx-0 mt-4 sm:mt-8"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.7 }}
@@ -115,7 +115,7 @@ export function HeroSection() {
 
             {/* Title */}
             <motion.h2
-              className="nothing-text text-base sm:text-xl md:text-2xl lg:text-3xl font-light opacity-80 mt-6 sm:mt-8"
+              className="nothing-text text-base sm:text-xl md:text-2xl lg:text-3xl font-light opacity-80 mt-3 sm:mt-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 0.8, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.6 }}
@@ -125,7 +125,7 @@ export function HeroSection() {
 
             {/* Description */}
             <motion.p
-              className="nothing-text text-sm sm:text-lg md:text-xl lg:text-2xl max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto lg:mx-0 mt-4 sm:mt-6 mb-8 sm:mb-12 opacity-70 leading-relaxed"
+              className="nothing-text text-sm sm:text-lg md:text-xl lg:text-2xl max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto lg:mx-0 mt-3 sm:mt-6 mb-5 sm:mb-12 opacity-70 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 0.7, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.9 }}
@@ -168,7 +168,7 @@ export function HeroSection() {
 
           {/* Right column — Stats */}
           <motion.div
-            className="mt-12 lg:mt-0 lg:border-l lg:border-white/10 lg:pl-16"
+            className="mt-6 sm:mt-12 lg:mt-0 lg:border-l lg:border-white/10 lg:pl-16"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
