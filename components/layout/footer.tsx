@@ -38,12 +38,11 @@ export function Footer() {
     t('services.refactoring'),
     t('services.cicd'),
     t('services.consulting'),
-    t('services.audit'),
-    t('services.cto')
+    t('services.audit')
   ];
 
   return (
-    <footer className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+    <footer className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[var(--nothing-gray-50)] dark:bg-[var(--nothing-gray-900)]">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 right-0 w-96 h-96 nothing-gradient-blue rounded-full blur-3xl opacity-5"></div>
